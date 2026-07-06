@@ -31,11 +31,8 @@ export default function Tour360({
   const [loading, setLoading] = useState(true);
   const [isFull, setIsFull] = useState(false);
 
-  const scene = scenes[sceneIdx];
-
-  useEffect(() => {
-    setSceneIdx(0);
-  }, [scenes]);
+  const safeSceneIdx = Math.min(sceneIdx, Math.max(scenes.length - 1, 0));
+  const scene = scenes[safeSceneIdx];
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -309,9 +306,9 @@ export default function Tour360({
                 setSceneIdx(i);
                 setInteracted(false);
               }}
-              aria-pressed={i === sceneIdx}
+              aria-pressed={i === safeSceneIdx}
               className={`cursor-pointer border px-4 py-2 font-mono text-[0.56rem] tracking-[0.16em] uppercase backdrop-blur-sm transition-all duration-300 ${
-                i === sceneIdx
+                i === safeSceneIdx
                   ? "border-carmine bg-ink/80 text-bone"
                   : "border-bone/20 bg-ink/55 text-bone/60 hover:text-bone"
               }`}

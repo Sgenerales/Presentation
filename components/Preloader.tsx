@@ -24,7 +24,7 @@ export default function Preloader() {
           key="preloader"
           exit={{ y: "-100%" }}
           transition={{ duration: 0.9, ease: EASE }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink"
+          className="preloader-failsafe pointer-events-none fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink"
           aria-hidden
         >
           <div className="overflow-hidden">

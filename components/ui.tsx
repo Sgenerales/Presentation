@@ -92,10 +92,7 @@ export function Counter({
 
   useEffect(() => {
     if (!inView) return;
-    if (reduced) {
-      setText(value.toLocaleString("es-BO"));
-      return;
-    }
+    if (reduced) return;
     const controls = animate(mv, value, {
       duration: 2,
       ease: EASE,
@@ -106,7 +103,7 @@ export function Counter({
 
   return (
     <span ref={ref} className={className}>
-      {text}
+      {reduced && inView ? value.toLocaleString("es-BO") : text}
       {suffix}
     </span>
   );

@@ -147,6 +147,24 @@ body {
   animation: scrollcue 2.4s ease-in-out infinite;
 }
 
+/* Salida de emergencia del preloader: si React no hidrata o un script falla,
+   la cortina se retira igual y la landing queda visible. */
+@keyframes preloaderFailsafe {
+  0%, 72% {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+}
+.preloader-failsafe {
+  animation: preloaderFailsafe 3s var(--ease-lux) forwards;
+}
+
 /* Subrayado que crece (links editoriales) */
 .link-lux {
   position: relative;
@@ -185,6 +203,9 @@ body {
   .marquee-track,
   .scroll-cue {
     animation: none;
+  }
+  .preloader-failsafe {
+    animation: preloaderFailsafe 0.2s ease-out forwards;
   }
   .img-zoom img {
     transition: none;
