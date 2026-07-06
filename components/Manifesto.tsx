@@ -10,7 +10,7 @@ export default function Manifesto() {
         <div className="grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>
-              <Eyebrow tone="dark">Propiedad única · gestión directa</Eyebrow>
+              <Eyebrow tone="dark">01 — Propiedad única, gestión directa</Eyebrow>
             </Reveal>
             <RevealLines
               className="display mt-10 text-[clamp(2.2rem,4.6vw,4.2rem)] text-ink"

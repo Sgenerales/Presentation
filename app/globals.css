@@ -29,10 +29,6 @@
   --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background: var(--color-ink);
   color: var(--color-bone);
@@ -108,7 +104,7 @@ body {
   overflow: hidden;
 }
 .img-zoom img {
-  transition: transform 1.4s var(--ease-lux);
+  transition: transform 0.85s var(--ease-lux);
   will-change: transform;
 }
 .img-zoom:hover img {
@@ -141,7 +137,7 @@ body {
   );
 }
 .marquee-track {
-  animation: marquee 42s linear infinite;
+  animation: marquee 30s linear infinite;
   will-change: transform;
 }
 .marquee-track-triple {
@@ -217,7 +213,7 @@ body {
   100% { transform: scale(1.0) translateY(-1.5%); }
 }
 .kenburns {
-  animation: kenburns 18s var(--ease-lux) forwards;
+  animation: kenburns 14s var(--ease-lux) forwards;
   will-change: transform;
 }
 
@@ -279,9 +275,6 @@ body {
 
 /* Accesibilidad: reduce motion */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   .kenburns,
   .marquee-track,
   .scroll-cue,

@@ -13,7 +13,7 @@ export default function Preloader() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setDone(true), reduced ? 150 : 2050);
+    const t = setTimeout(() => setDone(true), reduced ? 150 : 1250);
     return () => clearTimeout(t);
   }, [reduced]);
 
@@ -23,7 +23,7 @@ export default function Preloader() {
         <motion.div
           key="preloader"
           exit={{ y: "-100%" }}
-          transition={{ duration: 0.9, ease: EASE }}
+          transition={{ duration: 0.65, ease: EASE }}
           className="preloader-failsafe pointer-events-none fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink"
           aria-hidden
         >
@@ -31,7 +31,7 @@ export default function Preloader() {
             <motion.div
               initial={{ y: "120%" }}
               animate={{ y: 0 }}
-              transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
+              transition={{ duration: 0.65, delay: 0.08, ease: EASE }}
               className="flex items-baseline gap-3"
             >
               <span className="font-sans text-3xl font-light tracking-[0.18em] text-bone md:text-4xl">
@@ -45,13 +45,13 @@ export default function Preloader() {
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 1.5, delay: 0.35, ease: EASE }}
+            transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
             className="mt-6 h-px w-48 origin-left bg-bone/25 md:w-64"
           />
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="eyebrow mt-6 text-stone"
           >
             Santa Cruz de la Sierra

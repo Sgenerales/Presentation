@@ -211,6 +211,70 @@ export function PlanP8() {
   );
 }
 
+/**
+ * Mini-plano de nivel para el explorador de la torre: huella de la planta
+ * con alas Norte/Sur coloreadas por estado. Cada piso tiene su plano.
+ */
+export function PlanChip({
+  norte,
+  sur,
+  variant = "tipo",
+}: {
+  norte: "libre" | "ocupado" | "proyecto";
+  sur: "libre" | "ocupado" | "proyecto";
+  variant?: "tipo" | "pb" | "ss";
+}) {
+  const fillFor = (s: typeof norte, hov = false) =>
+    s === "libre"
+      ? `rgba(192,66,78,${hov ? 0.5 : 0.34})`
+      : `rgba(242,239,232,${hov ? 0.16 : 0.09})`;
+  const strokeFor = (s: typeof norte) =>
+    s === "libre" ? "rgba(192,66,78,0.9)" : "rgba(242,239,232,0.28)";
+
+  if (variant === "ss") {
+    return (
+      <svg viewBox="0 0 300 130" className="h-auto w-full" role="img" aria-label="Plano subsuelo">
+        <rect x="10" y="14" width="280" height="102" fill="rgba(242,239,232,0.06)" stroke="rgba(242,239,232,0.3)" strokeWidth="1.4" />
+        {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+          <rect key={i} x={26 + i * 32} y="26" width="22" height="34" fill="rgba(242,239,232,0.1)" stroke="rgba(242,239,232,0.22)" strokeWidth="1" />
+        ))}
+        <rect x="26" y="76" width="150" height="28" fill="rgba(242,239,232,0.08)" stroke="rgba(242,239,232,0.22)" strokeWidth="1" />
+        <text x="101" y="94" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" letterSpacing="2" fill="rgba(242,239,232,0.55)">BAULERAS</text>
+        <rect x="192" y="76" width="82" height="28" fill="rgba(242,239,232,0.08)" stroke="rgba(242,239,232,0.22)" strokeWidth="1" />
+        <text x="233" y="94" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" letterSpacing="2" fill="rgba(242,239,232,0.55)">TÉCNICA</text>
+        <text x="150" y="50" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" letterSpacing="3" fill="rgba(242,239,232,0.5)">PARQUEOS</text>
+      </svg>
+    );
+  }
+
+  const isPB = variant === "pb";
+  return (
+    <svg viewBox="0 0 300 130" className="h-auto w-full" role="img" aria-label="Plano del nivel">
+      {/* Ala Norte */}
+      <rect x="10" y="10" width="280" height="42" fill={fillFor(norte)} stroke={strokeFor(norte)} strokeWidth="1.4" />
+      <text x="22" y="35" fontFamily="var(--font-mono)" fontSize="10" letterSpacing="2.5" fill="rgba(242,239,232,0.8)">
+        {isPB ? "OF. NORTE" : "ALA NORTE"}
+      </text>
+      {norte === "libre" && (
+        <text x="278" y="35" textAnchor="end" fontFamily="var(--font-mono)" fontSize="9" letterSpacing="2" fill="#c0424e">DISPONIBLE</text>
+      )}
+      {/* Núcleo */}
+      <rect x="10" y="56" width="280" height="20" fill="rgba(242,239,232,0.05)" stroke="rgba(242,239,232,0.2)" strokeWidth="1" />
+      <text x="150" y="70" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="8.5" letterSpacing="2.5" fill="rgba(242,239,232,0.45)">
+        {isPB ? "LOBBY · RECEPCIÓN · CAFÉ" : "NÚCLEO · ASCENSORES · SANITARIOS"}
+      </text>
+      {/* Ala Sur */}
+      <rect x="10" y="80" width="280" height="42" fill={fillFor(sur)} stroke={strokeFor(sur)} strokeWidth="1.4" />
+      <text x="22" y="105" fontFamily="var(--font-mono)" fontSize="10" letterSpacing="2.5" fill="rgba(242,239,232,0.8)">
+        {isPB ? "OF. SUR / COMERCIAL" : "ALA SUR"}
+      </text>
+      {sur === "libre" && (
+        <text x="278" y="105" textAnchor="end" fontFamily="var(--font-mono)" fontSize="9" letterSpacing="2" fill="#c0424e">DISPONIBLE</text>
+      )}
+    </svg>
+  );
+}
+
 export function PlanTipo({
   norte,
   sur,

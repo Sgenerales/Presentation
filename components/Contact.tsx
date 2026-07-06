@@ -14,7 +14,7 @@ export default function Contact() {
         <div className="mx-auto max-w-[1440px] px-6 text-center md:px-12">
           <Reveal>
             <Eyebrow tone="dark" className="justify-center">
-              Visitas privadas — con cita previa
+              07 — Visitas privadas, con cita previa
             </Eyebrow>
           </Reveal>
 

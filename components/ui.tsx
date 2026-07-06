@@ -15,7 +15,7 @@ export const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 export function Reveal({
   children,
   delay = 0,
-  y = 32,
+  y = 24,
   className = "",
   once = true,
 }: {
@@ -30,8 +30,8 @@ export function Reveal({
       data-reveal
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: "-60px" }}
-      transition={{ duration: 0.9, delay, ease: EASE }}
+      viewport={{ once, margin: "-40px" }}
+      transition={{ duration: 0.65, delay, ease: EASE }}
       className={className}
     >
       {children}
@@ -53,17 +53,16 @@ export function RevealLines({
   lineClassName?: string;
   delay?: number;
 }) {
-  const reduced = useReducedMotion();
   return (
     <div className={className}>
       {lines.map((line, i) => (
         <div key={i} className="overflow-hidden">
           <motion.div
             data-reveal
-            initial={reduced ? { opacity: 0 } : { y: "110%" }}
-            whileInView={reduced ? { opacity: 1 } : { y: 0 }}
+            initial={{ y: "110%" }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 1.1, delay: delay + i * 0.12, ease: EASE }}
+            transition={{ duration: 0.85, delay: delay + i * 0.09, ease: EASE }}
             className={lineClassName}
           >
             {line}

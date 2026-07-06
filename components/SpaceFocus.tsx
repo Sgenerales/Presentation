@@ -7,7 +7,7 @@ import { PlanP8, PlanTipo } from "./FloorPlans";
 import Tour360, { type TourScene } from "./Tour360";
 import { EASE, Eyebrow, Img, Reveal } from "./ui";
 
-type View = "renders" | "plano" | "tour";
+type View = "renders" | "video" | "plano" | "tour";
 
 const PANO_NOTE = "Referencia ilustrativa · espacio antes del fit-out";
 
@@ -142,6 +142,9 @@ export default function SpaceFocus() {
               {(
                 [
                   ["renders", "Renders"],
+                  ...(space.videos?.length
+                    ? ([["video", "Video"]] as [View, string][])
+                    : []),
                   ["plano", "Plano interactivo"],
                   ["tour", "Tour 360°"],
                 ] as [View, string][]
@@ -248,6 +251,34 @@ export default function SpaceFocus() {
                       </span>
                     </figcaption>
                   </figure>
+                )}
+
+                {view === "video" && space.videos && (
+                  <div className="flex flex-col gap-8">
+                    {space.videos.map((v, i) => (
+                      <figure key={v.src}>
+                        <div className="relative bg-ink">
+                          <video
+                            src={v.src}
+                            poster={v.poster}
+                            controls
+                            muted
+                            loop
+                            playsInline
+                            autoPlay={i === 0}
+                            preload={i === 0 ? "auto" : "metadata"}
+                            className="aspect-video w-full object-cover"
+                          />
+                          <span className="eyebrow pointer-events-none absolute top-5 left-5 z-10 bg-ink/70 px-4 py-2 text-[0.58rem] text-bone backdrop-blur-sm">
+                            Video render · {String(i + 1).padStart(2, "0")}
+                          </span>
+                        </div>
+                        <figcaption className="mt-3 text-[0.9rem] font-light text-stone-dark italic">
+                          {v.caption}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
                 )}
 
                 {view === "plano" && (

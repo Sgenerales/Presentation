@@ -1,18 +1,12 @@
 "use client";
 
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { A, CONTACT } from "@/lib/tower";
 import { EASE } from "./ui";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -47,7 +41,7 @@ export default function Hero() {
         data-reveal
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3, duration: 1.2 }}
+        transition={{ delay: 2.1, duration: 0.9 }}
         className="absolute top-1/2 right-6 hidden -translate-y-1/2 rotate-90 md:block"
       >
         <span className="eyebrow text-bone/40">{CONTACT.coords}</span>
@@ -62,7 +56,7 @@ export default function Hero() {
           data-reveal
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.35, duration: 1, ease: EASE }}
+          transition={{ delay: 1.4, duration: 0.8, ease: EASE }}
           className="eyebrow mb-8 text-bone/70"
         >
           Equipetrol Norte · Santa Cruz de la Sierra · Bolivia
@@ -77,9 +71,9 @@ export default function Hero() {
             <span key={i} className="block overflow-hidden">
               <motion.span
                 data-reveal
-                initial={reduced ? { opacity: 0 } : { y: "112%" }}
-                animate={reduced ? { opacity: 1 } : { y: 0 }}
-                transition={{ delay: 2.5 + i * 0.14, duration: 1.2, ease: EASE }}
+                initial={{ y: "112%" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 1.5 + i * 0.1, duration: 0.95, ease: EASE }}
                 className="block text-[clamp(2.9rem,8.2vw,7.5rem)]"
               >
                 {a}{" "}
@@ -93,7 +87,7 @@ export default function Hero() {
           data-reveal
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.15, duration: 1, ease: EASE }}
+          transition={{ delay: 1.9, duration: 0.8, ease: EASE }}
           className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between"
         >
           <p className="max-w-md text-[0.95rem] leading-relaxed font-light text-bone/70">
@@ -125,7 +119,7 @@ export default function Hero() {
         data-reveal
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.6, duration: 1 }}
+        transition={{ delay: 2.3, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
         aria-hidden
       >

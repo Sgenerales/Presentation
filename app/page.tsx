@@ -6,6 +6,7 @@ import LocationSec from "@/components/LocationSec";
 import Manifesto from "@/components/Manifesto";
 import Nav from "@/components/Nav";
 import Preloader from "@/components/Preloader";
+import Ribbon from "@/components/Ribbon";
 import SmoothScroll from "@/components/SmoothScroll";
 import SpaceFocus from "@/components/SpaceFocus";
 import SpecsStrip from "@/components/SpecsStrip";
@@ -15,11 +16,12 @@ import TowerExplorer from "@/components/TowerExplorer";
 export default function Home() {
   return (
     <main>
-      <Preloader />
       <SmoothScroll />
       <Cursor />
+      <Preloader />
       <Nav />
       <Hero />
+      <Ribbon />
       <Manifesto />
       <SpecsStrip />
       <TowerExplorer />

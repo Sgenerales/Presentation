@@ -157,6 +157,7 @@ export interface Space {
   renders: { src: string; caption: string; tag: string }[];
   plan: { src: string; caption: string };
   program?: { name: string; detail: string }[];
+  videos?: { src: string; caption: string; poster?: string }[];
 }
 
 export const SPACES: Space[] = [
@@ -164,7 +165,7 @@ export const SPACES: Space[] = [
     id: "p8-modulo",
     code: "08",
     name: "Módulo Piso 8",
-    kicker: "La pieza más exclusiva",
+    kicker: "El último nivel",
     area: "183,17 m²",
     headline: "El último piso, con terraza propia.",
     description:
@@ -198,6 +199,18 @@ export const SPACES: Space[] = [
       { name: "Jefatura", detail: "Oficina privada" },
       { name: "Staff operativo", detail: "8 posiciones colaborativas" },
       { name: "Coffee point", detail: "Área de café y encuentro" },
+    ],
+    videos: [
+      {
+        src: `${A}/video-p8-1.mp4`,
+        caption: "Recorrido animado del módulo — propuesta LUMA",
+        poster: `${A}/render-p8-1.jpg`,
+      },
+      {
+        src: `${A}/video-p8-2.mp4`,
+        caption: "El espacio en movimiento — ambientes y circulación",
+        poster: `${A}/render-p8-2.jpg`,
+      },
     ],
   },
   {

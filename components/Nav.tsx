@@ -27,7 +27,7 @@ export default function Nav() {
       data-reveal
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, delay: 2.2, ease: EASE }}
+      transition={{ duration: 0.8, delay: 1.35, ease: EASE }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
         scrolled
           ? "border-b border-line-faint bg-ink/85 py-4 backdrop-blur-xl"

@@ -53,8 +53,8 @@ export default function Tour360({
 
     const isEqui = scene.type === "equirect";
 
-    // Estado de vista
-    let lon = isEqui ? 90 : 0;
+    // Estado de vista — el contenido queda centrado en +Z (lon 90)
+    let lon = 90;
     let lat = 0;
     let vLon = 0;
     let vLat = 0;
@@ -80,15 +80,16 @@ export default function Tour360({
         const r = 42;
         const width = r * arc;
         const height = width * (img.height / img.width);
+        // Segmento centrado en +Z (θ=0) — coincide con la mirada inicial
+        // de la cámara (lon 90). El espejado en X corrige la orientación
+        // del texto al verse desde adentro.
         geo = new THREE.CylinderGeometry(
           r, r, height, 64, 1, true,
-          Math.PI - arc / 2, arc,
+          -arc / 2, arc,
         );
         (geo as THREE.CylinderGeometry).scale(-1, 1, 1);
-        mat = new THREE.MeshBasicMaterial({ map: t });
-        const mesh = new THREE.Mesh(geo, mat);
-        mesh.rotation.y = Math.PI;
-        three.add(mesh);
+        mat = new THREE.MeshBasicMaterial({ map: t, side: THREE.DoubleSide });
+        three.add(new THREE.Mesh(geo, mat));
       }
       setLoading(false);
     });
@@ -180,7 +181,8 @@ export default function Tour360({
 
       const maxLat = isEqui ? 72 : 22;
       lat = THREE.MathUtils.clamp(lat, -maxLat, maxLat);
-      if (!isEqui) lon = THREE.MathUtils.clamp(lon, -maxLonFlat, maxLonFlat);
+      if (!isEqui)
+        lon = THREE.MathUtils.clamp(lon, 90 - maxLonFlat, 90 + maxLonFlat);
 
       camera.fov += (targetFov - camera.fov) * 0.08;
       camera.updateProjectionMatrix();

@@ -12,7 +12,7 @@ export default function Amenities() {
     <section id="experiencia" className="grain relative bg-ink py-28 md:py-40">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <Reveal>
-          <Eyebrow>La experiencia — servicios del edificio</Eyebrow>
+          <Eyebrow>04 — La experiencia</Eyebrow>
         </Reveal>
         <div className="mt-10 flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <Reveal delay={0.1}>
@@ -36,7 +36,7 @@ export default function Amenities() {
             return (
               <Reveal
                 key={a.title}
-                delay={(i % 2) * 0.12}
+                delay={(i % 2) * 0.08}
                 className={wide ? "md:col-span-4" : "md:col-span-2"}
               >
                 <figure className="group">

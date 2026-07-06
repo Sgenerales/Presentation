@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { FLOORS, type Floor, type Side } from "@/lib/tower";
+import { PlanChip } from "./FloorPlans";
 import { EASE, Eyebrow, Reveal } from "./ui";
 
 /** Notifica a SpaceFocus qué espacio abrir (secciones desacopladas). */
@@ -36,7 +37,7 @@ export default function TowerExplorer() {
     <section id="torre" className="grain relative bg-ink py-28 md:py-40">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <Reveal>
-          <Eyebrow>La torre — nivel por nivel</Eyebrow>
+          <Eyebrow>02 — La torre, nivel por nivel</Eyebrow>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="display mt-10 max-w-3xl text-[clamp(2.2rem,4.6vw,4.2rem)] text-bone">
@@ -126,7 +127,7 @@ export default function TowerExplorer() {
                   initial={{ opacity: 0, y: 26 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -18 }}
-                  transition={{ duration: 0.55, ease: EASE }}
+                  transition={{ duration: 0.4, ease: EASE }}
                 >
                   <div className="ghost-number pointer-events-none absolute -top-16 right-0 text-[clamp(8rem,18vw,16rem)] leading-none select-none">
                     {active.code}
@@ -138,7 +139,22 @@ export default function TowerExplorer() {
                       {active.detail}
                     </p>
 
-                    <div className="mt-10 grid grid-cols-2 gap-6">
+                    {/* Mini-plano del nivel */}
+                    <div className="mt-8 max-w-sm">
+                      <PlanChip
+                        norte={active.norte.status}
+                        sur={active.sur.status}
+                        variant={
+                          active.id === "ss"
+                            ? "ss"
+                            : active.id === "pb"
+                              ? "pb"
+                              : "tipo"
+                        }
+                      />
+                    </div>
+
+                    <div className="mt-8 grid grid-cols-2 gap-6">
                       {(["norte", "sur"] as const).map((k) => {
                         const side = active[k];
                         const free = side.status === "libre";
