@@ -1,0 +1,343 @@
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { A, SPACES, type Space } from "@/lib/tower";
+import { PlanP8, PlanTipo } from "./FloorPlans";
+import Tour360, { type TourScene } from "./Tour360";
+import { EASE, Eyebrow, Img, Reveal } from "./ui";
+
+type View = "renders" | "plano" | "tour";
+
+const PANO_NOTE = "Referencia ilustrativa · espacio antes del fit-out";
+
+function tourScenes(space: Space): TourScene[] {
+  const renders: TourScene[] = space.renders.map((r) => ({
+    type: "flat",
+    src: r.src,
+    label: r.tag,
+    note: r.caption,
+  }));
+  return [
+    {
+      type: "equirect",
+      src: `${A}/pano-planta-libre.jpg`,
+      label: "Planta libre",
+      note: PANO_NOTE,
+    },
+    ...renders,
+  ];
+}
+
+function SpacePlan({ space }: { space: Space }) {
+  if (space.id === "p8-modulo") return <PlanP8 />;
+  if (space.id === "p7-completo")
+    return <PlanTipo norte="libre" sur="libre" focus="ambas" />;
+  return <PlanTipo norte="libre" sur="ocupado" focus="norte" />;
+}
+
+export default function SpaceFocus() {
+  const [space, setSpace] = useState<Space>(SPACES[0]);
+  const [view, setView] = useState<View>("renders");
+  const [frame, setFrame] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Escucha selecciones desde el explorador de la torre
+  useEffect(() => {
+    const onSelect = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail;
+      const found = SPACES.find((s) => s.id === id);
+      if (found) {
+        setSpace(found);
+        setView("renders");
+        setFrame(0);
+      }
+    };
+    window.addEventListener("itc:select-space", onSelect);
+    return () => window.removeEventListener("itc:select-space", onSelect);
+  }, []);
+
+  const current = space.renders[frame] ?? space.renders[0];
+  const total = space.renders.length;
+  const step = (d: number) => setFrame((f) => (f + d + total) % total);
+
+  return (
+    <section
+      id="espacios"
+      ref={sectionRef}
+      className="relative bg-bone py-24 text-ink md:py-36"
+    >
+      <div className="mx-auto max-w-[1440px] px-6 md:px-12">
+        <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
+          <div>
+            <Reveal>
+              <Eyebrow tone="dark">03 — Espacios disponibles</Eyebrow>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h2 className="display mt-10 max-w-2xl text-[clamp(2.2rem,4.6vw,4.2rem)]">
+                Vea lo que su oficina{" "}
+                <em className="display-italic">puede llegar a ser.</em>
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal delay={0.12}>
+            <p className="max-w-sm text-[0.95rem] leading-relaxed font-light text-stone-dark">
+              Galería de renders, plano interactivo y recorrido inmersivo de
+              cada espacio. Todo se entrega llave en mano.
+            </p>
+          </Reveal>
+        </div>
+
+        {/* Selector de espacios */}
+        <Reveal delay={0.08}>
+          <div
+            role="tablist"
+            aria-label="Espacios disponibles"
+            className="mt-14 flex flex-wrap gap-3"
+          >
+            {SPACES.map((s) => {
+              const on = s.id === space.id;
+              return (
+                <button
+                  key={s.id}
+                  role="tab"
+                  aria-selected={on}
+                  onClick={() => {
+                    setSpace(s);
+                    setView("renders");
+                    setFrame(0);
+                  }}
+                  className={`group cursor-pointer border px-6 py-4 text-left transition-all duration-300 ${
+                    on
+                      ? "border-ink bg-ink text-bone"
+                      : "border-line bg-transparent text-ink hover:border-ink/40"
+                  }`}
+                >
+                  <span
+                    className={`font-mono text-[0.62rem] tracking-[0.24em] uppercase ${
+                      on ? "text-carmine-soft" : "text-stone"
+                    }`}
+                  >
+                    Nivel {s.code} · {s.area}
+                  </span>
+                  <span className="display mt-1 block text-[1.25rem] leading-tight">
+                    {s.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </Reveal>
+
+        {/* Escenario visual */}
+        <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Visor */}
+          <div className="lg:col-span-8">
+            {/* Controles de vista */}
+            <div
+              className="mb-5 flex gap-2"
+              role="tablist"
+              aria-label="Modo de vista"
+            >
+              {(
+                [
+                  ["renders", "Renders"],
+                  ["plano", "Plano interactivo"],
+                  ["tour", "Tour 360°"],
+                ] as [View, string][]
+              ).map(([v, label]) => (
+                <button
+                  key={v}
+                  role="tab"
+                  aria-selected={view === v}
+                  onClick={() => setView(v)}
+                  className={`cursor-pointer border px-5 py-2.5 text-[0.66rem] tracking-[0.18em] uppercase transition-all duration-300 ${
+                    view === v
+                      ? "border-ink bg-ink text-bone"
+                      : "border-line text-stone-dark hover:border-ink/40"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                data-reveal
+                key={space.id + view}
+                initial={{ opacity: 0, scale: 0.99 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45, ease: EASE }}
+              >
+                {view === "renders" && (
+                  <figure>
+                    <div className="img-zoom group relative bg-ink">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={frame}
+                          data-reveal
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.35, ease: EASE }}
+                        >
+                          <Img
+                            src={current.src}
+                            alt={current.caption}
+                            className="aspect-[16/10] w-full object-cover"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                      <span className="eyebrow absolute top-5 left-5 z-10 bg-ink/70 px-4 py-2 text-[0.58rem] text-bone backdrop-blur-sm">
+                        {current.tag}
+                      </span>
+
+                      {/* Flechas */}
+                      {total > 1 && (
+                        <>
+                          <button
+                            aria-label="Render anterior"
+                            onClick={() => step(-1)}
+                            className="absolute top-1/2 left-4 z-10 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center bg-ink/60 text-bone/80 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 hover:bg-carmine hover:text-bone"
+                          >
+                            ←
+                          </button>
+                          <button
+                            aria-label="Render siguiente"
+                            onClick={() => step(1)}
+                            className="absolute top-1/2 right-4 z-10 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center bg-ink/60 text-bone/80 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 hover:bg-carmine hover:text-bone"
+                          >
+                            →
+                          </button>
+                        </>
+                      )}
+                    </div>
+                    <figcaption className="mt-4 flex items-center justify-between gap-6">
+                      <span className="text-[0.9rem] font-light text-stone-dark italic">
+                        {current.caption}
+                      </span>
+                      <span className="flex shrink-0 items-center gap-4">
+                        <span className="font-mono text-[0.62rem] tracking-[0.2em] text-stone tabular-nums">
+                          {String(frame + 1).padStart(2, "0")} /{" "}
+                          {String(total).padStart(2, "0")}
+                        </span>
+                        {total > 1 && (
+                          <span className="flex items-center gap-2">
+                            {space.renders.map((r, i) => (
+                              <button
+                                key={r.src + i}
+                                aria-label={`Render ${i + 1}`}
+                                onClick={() => setFrame(i)}
+                                className={`cursor-pointer border transition-all duration-300 ${
+                                  i === frame
+                                    ? "border-carmine opacity-100"
+                                    : "border-transparent opacity-50 hover:opacity-90"
+                                }`}
+                              >
+                                <Img
+                                  src={r.src}
+                                  alt=""
+                                  className="h-10 w-14 object-cover"
+                                />
+                              </button>
+                            ))}
+                          </span>
+                        )}
+                      </span>
+                    </figcaption>
+                  </figure>
+                )}
+
+                {view === "plano" && (
+                  <figure>
+                    <SpacePlan space={space} />
+                    <figcaption className="mt-4 text-[0.9rem] font-light text-stone-dark italic">
+                      {space.plan.caption} — plano interactivo, pase el cursor
+                      por los ambientes.
+                    </figcaption>
+                  </figure>
+                )}
+
+                {view === "tour" && (
+                  <figure>
+                    <Tour360 scenes={tourScenes(space)} />
+                    <figcaption className="mt-4 text-[0.9rem] font-light text-stone-dark italic">
+                      Recorrido inmersivo — arrastre para mirar alrededor,
+                      rueda para acercar, esquina superior para pantalla
+                      completa.
+                    </figcaption>
+                  </figure>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Ficha del espacio */}
+          <div className="lg:col-span-4">
+            <AnimatePresence mode="wait">
+              <motion.div
+                data-reveal
+                key={space.id}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45, ease: EASE }}
+                className="lg:sticky lg:top-28"
+              >
+                <p className="eyebrow text-carmine">{space.kicker}</p>
+                <h3 className="display mt-5 text-[clamp(1.8rem,2.8vw,2.6rem)] leading-tight">
+                  {space.headline}
+                </h3>
+                <p className="mt-6 text-[0.95rem] leading-relaxed font-light text-stone-dark">
+                  {space.description}
+                </p>
+
+                <ul className="mt-8 flex flex-col gap-0">
+                  {space.highlights.map((h) => (
+                    <li
+                      key={h}
+                      className="flex items-start gap-4 border-t border-line py-3.5 text-[0.88rem] font-light text-ink/80"
+                    >
+                      <span className="mt-[0.55rem] h-px w-5 shrink-0 bg-carmine" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+
+                {space.program && (
+                  <div className="mt-10">
+                    <p className="eyebrow text-stone">
+                      Programa propuesto — LUMA · Beyond Office
+                    </p>
+                    <div className="mt-4 grid grid-cols-2 gap-px border border-line bg-line">
+                      {space.program.map((p) => (
+                        <div key={p.name} className="bg-bone p-4">
+                          <p className="text-[0.8rem] font-medium text-ink">
+                            {p.name}
+                          </p>
+                          <p className="mt-1 text-[0.72rem] font-light text-stone-dark">
+                            {p.detail}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <a
+                  href="#contacto"
+                  className="group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-8 py-4 text-[0.72rem] tracking-[0.22em] text-bone uppercase"
+                >
+                  <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
+                  <span className="relative">Consultar por este espacio</span>
+                </a>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

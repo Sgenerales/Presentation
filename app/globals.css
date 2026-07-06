@@ -1,26 +1,199 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   ITC TOWER — Sistema de diseño "Quiet Monument"
+   Minimalismo editorial · tinta marino + marfil + carmín ITC
+   ============================================================ */
+@theme {
+  /* Paleta */
+  --color-ink: #0a0e18;          /* tinta marino profundo (marca ITC navy) */
+  --color-ink-soft: #101624;     /* superficie elevada sobre tinta */
+  --color-ink-mist: #1a2234;     /* borde/hover sobre tinta */
+  --color-navy: #1e2c4c;         /* azul marino ITC */
+  --color-bone: #f2efe8;         /* marfil cálido (Aman) */
+  --color-bone-deep: #e7e2d6;    /* marfil profundo */
+  --color-carmine: #a8212e;      /* carmín ITC refinado — ÚNICO acento */
+  --color-carmine-soft: #c0424e;
+  --color-stone: #8f8a7e;        /* piedra cálida */
+  --color-stone-dark: #625e54;
+  --color-line: rgba(10, 14, 24, 0.14);
+  --color-line-light: rgba(242, 239, 232, 0.16);
+  --color-line-faint: rgba(242, 239, 232, 0.08);
+
+  /* Tipografías (variables inyectadas por next/font) */
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* Motion */
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-carmine);
+  color: var(--color-bone);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-mist);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-stone-dark);
+}
+
+/* ---------- Utilidades editoriales ---------- */
+
+/* Etiqueta arquitectónica: mono, mayúsculas, tracking amplio */
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* Titular display editorial */
+.display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+}
+
+.display-italic {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Hairline horizontal editorial */
+.hairline {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.16;
+}
+
+/* Grano fotográfico sutil para secciones cinematográficas */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Escala suave de imágenes al hover (editorial) */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 1.4s var(--ease-lux);
+  will-change: transform;
+}
+.img-zoom:hover img {
+  transform: scale(1.045);
+}
+
+/* Marquee infinito */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 42s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Ken Burns lento para el hero */
+@keyframes kenburns {
+  0% { transform: scale(1.08) translateY(0); }
+  100% { transform: scale(1.0) translateY(-1.5%); }
+}
+.kenburns {
+  animation: kenburns 18s var(--ease-lux) forwards;
+  will-change: transform;
+}
+
+/* Indicador de scroll */
+@keyframes scrollcue {
+  0%, 100% { transform: translateY(0); opacity: 0.9; }
+  50% { transform: translateY(8px); opacity: 0.3; }
+}
+.scroll-cue {
+  animation: scrollcue 2.4s ease-in-out infinite;
+}
+
+/* Subrayado que crece (links editoriales) */
+.link-lux {
+  position: relative;
+}
+.link-lux::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s var(--ease-lux);
+}
+.link-lux:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Número de piso gigante fantasma */
+.ghost-number {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 300;
+  -webkit-text-stroke: 1px rgba(242, 239, 232, 0.22);
+  color: transparent;
+}
+
+/* Accesibilidad: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .kenburns,
+  .marquee-track,
+  .scroll-cue {
+    animation: none;
+  }
+  .img-zoom img {
+    transition: none;
+  }
+  /* Motion descarta animaciones bajo reduced-motion y puede dejar
+     elementos en su estado inicial oculto (translate/opacity 0).
+     Forzamos visibilidad total: el contenido siempre legible. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
