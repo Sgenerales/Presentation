@@ -2,27 +2,30 @@
 
 import { SPECS } from "@/lib/tower";
 
-/** Cinta técnica infinita — lenguaje de plano arquitectónico. */
+/** Cinta técnica infinita: lenguaje de plano arquitectónico. */
 export default function SpecsStrip() {
-  const row = SPECS.map((s, i) => (
-    <span key={i} className="flex shrink-0 items-center gap-10 pr-10">
-      <span className="font-mono text-[0.68rem] tracking-[0.18em] whitespace-nowrap text-bone/55 uppercase">
-        {s}
+  const renderRow = (copy: string) =>
+    SPECS.map((s, i) => (
+      <span key={`${copy}-${i}`} className="flex shrink-0 items-center gap-10 pr-10">
+        <span className="font-mono text-[0.68rem] tracking-[0.18em] whitespace-nowrap text-bone/55 uppercase">
+          {s}
+        </span>
+        <span className="jewel-pulse h-1 w-1 shrink-0 rotate-45 bg-carmine/70" />
       </span>
-      <span className="h-1 w-1 shrink-0 rotate-45 bg-carmine/70" />
-    </span>
-  ));
+    ));
 
   return (
     <div
-      className="overflow-hidden border-y border-line-faint bg-ink-soft py-5"
+      className="ticker-shell relative overflow-hidden border-y border-line-faint bg-ink-soft py-5"
       aria-label="Especificaciones técnicas del edificio"
     >
-      <div className="marquee-track flex w-max">
-        <div className="flex">{row}</div>
-        <div className="flex" aria-hidden>
-          {row}
-        </div>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-carmine/40 to-transparent" />
+      <div className="marquee-track marquee-track-triple marquee-track-fast flex w-max">
+        {["a", "b", "c"].map((copy) => (
+          <div key={copy} className="flex">
+            {renderRow(copy)}
+          </div>
+        ))}
       </div>
     </div>
   );

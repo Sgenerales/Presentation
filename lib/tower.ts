@@ -21,24 +21,24 @@ export const CONTACT = {
 };
 
 export const STATS = [
-  { value: 14925, suffix: " m²", label: "Construcción total" },
-  { value: 10, suffix: "", label: "Plantas" },
-  { value: 87, suffix: "%", label: "Ocupación" },
-  { value: 10, suffix: " años", label: "Operación probada" },
+  { value: 14925, suffix: " m²", label: "Superficie construida" },
+  { value: 10, suffix: "", label: "Niveles operativos" },
+  { value: 87, suffix: "%", label: "Ocupación actual" },
+  { value: 10, suffix: " años", label: "Trayectoria operativa" },
 ];
 
 export const SPECS = [
-  "Doble vidriado hermético · −35% consumo energético",
-  "Reducción de ruido −30 dB",
+  "Doble vidriado hermético · eficiencia energética −35%",
+  "Atenuación acústica −30 dB",
   "Altura piso–cielo 3,72 m",
   "Plantas libres de columnas",
   "3 ascensores + montacargas independiente",
-  "Generadores con autonomía de 72 h",
-  "Tanque de emergencia 30.000 L",
-  "AC individual por oficina · volumen variable",
-  "CCTV y control de accesos con tarjeta magnética",
-  "Guardias 24/7 · 2 simulacros anuales",
-  "Póliza multiriesgo + servicio de ambulancia",
+  "Generadores con autonomía 72 h",
+  "Reserva de emergencia 30.000 L",
+  "Climatización individual por oficina",
+  "Control de accesos + CCTV",
+  "Seguridad permanente 24/7",
+  "Póliza multiriesgo + ambulancia",
 ];
 
 export type Side = { status: "libre" | "ocupado" | "proyecto"; note: string };
@@ -63,7 +63,7 @@ export const FLOORS: Floor[] = [
     sur: { status: "libre", note: "Módulo 183 m² + amenities" },
     spaceId: "p8-modulo",
     detail:
-      "El último nivel: módulo ejecutivo con terraza de uso exclusivo, y los proyectos de rooftop, cowork y amenities del edificio.",
+      "El último nivel reúne el módulo ejecutivo con terraza propia y el futuro programa de rooftop, cowork y amenities reservados para el edificio.",
   },
   {
     id: "p7",
@@ -73,7 +73,7 @@ export const FLOORS: Floor[] = [
     sur: { status: "libre", note: "Medio piso disponible" },
     spaceId: "p7-completo",
     detail:
-      "Planta completa disponible — la única del edificio. Norte y Sur libres para una operación corporativa unificada en altura.",
+      "La única planta completa disponible: alas Norte y Sur libres para una operación corporativa unificada en altura.",
   },
   {
     id: "p6",
@@ -107,7 +107,7 @@ export const FLOORS: Floor[] = [
     sur: { status: "ocupado", note: "Corporativo" },
     spaceId: "p3-norte",
     detail:
-      "Medio piso Norte disponible: planta libre de columnas lista para un fit-out llave en mano.",
+      "Medio piso Norte disponible: planta libre de columnas, luz natural y condiciones listas para una adecuación a medida.",
   },
   {
     id: "p2",
@@ -132,7 +132,7 @@ export const FLOORS: Floor[] = [
     norte: { status: "ocupado", note: "Oficina norte" },
     sur: { status: "libre", note: "Espacio comercial" },
     detail:
-      "Lobby corporativo de doble altura en granito y mármol, Work Café, ATM y un espacio comercial disponible con frente al acceso principal.",
+      "Lobby corporativo de doble altura, Work Café, ATM y un espacio comercial disponible con frente directo al acceso principal.",
   },
   {
     id: "ss",
@@ -141,7 +141,7 @@ export const FLOORS: Floor[] = [
     norte: { status: "ocupado", note: "Parqueos" },
     sur: { status: "ocupado", note: "Bauleras" },
     detail:
-      "Parqueos con acceso por tarjeta magnética, bauleras de almacenamiento y cuartos técnicos.",
+      "Parqueos con acceso controlado, bauleras de almacenamiento y cuartos técnicos fuera del flujo operativo de oficinas.",
   },
 ];
 
@@ -168,7 +168,7 @@ export const SPACES: Space[] = [
     area: "183,17 m²",
     headline: "El último piso, con terraza propia.",
     description:
-      "Un módulo ejecutivo en el nivel más alto de la torre, con terraza exterior de uso exclusivo sobre la cubierta del séptimo piso. El diseño de interiores propuesto por LUMA — recepción, gerencia general, sala de reuniones y área operativa — muestra lo que este espacio puede llegar a ser con el servicio llave en mano del edificio.",
+      "Un módulo ejecutivo en el nivel más alto de la torre, con terraza exterior de uso exclusivo sobre la cubierta del séptimo piso. La propuesta de interiores de LUMA — recepción, gerencia general, sala de reuniones y área operativa — ilustra una implantación sobria, precisa y lista para representar a una dirección corporativa.",
     highlights: [
       "Terraza exterior de propiedad exclusiva",
       "Contiguo al futuro rooftop y cowork del edificio",
@@ -208,7 +208,7 @@ export const SPACES: Space[] = [
     area: "Norte + Sur",
     headline: "Una planta completa para una sola compañía.",
     description:
-      "El séptimo piso ofrece ambas alas — Norte y Sur — libres. Es la oportunidad de consolidar toda una operación corporativa en un solo nivel, con la planta libre de columnas, el núcleo central de servicios y la flexibilidad de layout que caracterizan a la torre.",
+      "El séptimo piso ofrece ambas alas — Norte y Sur — libres. Permite consolidar una operación corporativa completa en un solo nivel, con planta libre de columnas, núcleo central de servicios y una flexibilidad de layout poco frecuente en la torre.",
     highlights: [
       "Ambas alas disponibles: operación unificada",
       "Planta libre de columnas, máxima flexibilidad",
@@ -240,7 +240,7 @@ export const SPACES: Space[] = [
     area: "Ala Norte",
     headline: "Media planta lista para su próxima sede.",
     description:
-      "El ala Norte del tercer piso: una superficie libre de columnas con fachada de doble vidriado hermético, lista para un diseño a medida. El edificio entrega el espacio llave en mano — layout, mobiliario e instalación — para una mudanza sin fricción.",
+      "El ala Norte del tercer piso ofrece una superficie libre de columnas con fachada de doble vidriado hermético. Es una base limpia para diseñar una sede ejecutiva con privacidad, luz natural y entrega llave en mano.",
     highlights: [
       "Planta libre de columnas con luz natural",
       "Fit-out llave en mano incluido como servicio",
@@ -284,46 +284,42 @@ export const AMENITIES: Amenity[] = [
   {
     title: "Work Café",
     meta: "Illy · planta baja",
-    desc: "Cafetería propia con bebidas gourmet, Wi-Fi y un ambiente pensado para reuniones informales, junto al ATM del lobby.",
+    desc: "Cafetería propia con servicio Illy, Wi-Fi y un ambiente discreto para encuentros breves, esperas ejecutivas y reuniones informales.",
     img: `${A}/work-cafe.jpg`,
   },
   {
     title: "Terraza · Piso 8",
     meta: "Rooftop en desarrollo",
-    desc: "Terrazas norte y sur en el último nivel, con proyecto de área de descanso, entretenimiento y rooftop para los arrendatarios.",
+    desc: "Terrazas norte y sur en el último nivel, con proyecto de descanso, encuentro y rooftop reservado para la comunidad del edificio.",
     img: `${A}/terraza-sur.jpg`,
   },
   {
     title: "Parqueos & bauleras",
     meta: "Subsuelo + lote cercano",
-    desc: "Estacionamiento en subsuelo con ingreso magnético para ejecutivos, parqueo cerrado adicional a metros del edificio y bauleras de custodia.",
+    desc: "Estacionamiento en subsuelo con acceso controlado, parqueo cerrado adicional a metros del edificio y bauleras de custodia.",
     img: `${A}/subsuelo.jpg`,
   },
   {
     title: "Seguridad integral",
     meta: "24 / 7 · 365",
-    desc: "Guardias permanentes, CCTV en áreas comunes, escalera de emergencia exterior ventilada, sistema contra incendios por piso y generadores con 72 h de autonomía.",
+    desc: "Guardias permanentes, CCTV en áreas comunes, escalera exterior ventilada, sistema contra incendios por piso y generadores con 72 h de autonomía.",
     img: `${A}/facade-day.jpg`,
   },
   {
     title: "Servicios incluidos",
     meta: "Expensas todo incluido",
-    desc: "Limpieza de áreas comunes con insumos incluidos, mantenimiento integral y sanitarios institucionales independientes — todo dentro de la expensa mensual.",
+    desc: "Limpieza de áreas comunes con insumos incluidos, mantenimiento integral y sanitarios institucionales independientes dentro de una expensa ordenada.",
     img: `${A}/sanitarios.jpg`,
   },
 ];
 
 export const TENANTS = [
-  "Repsol",
+  "Abbot",
   "Huawei",
-  "Abbott",
-  "Petrobras",
-  "Emirates",
-  "Corteva",
-  "Kimberly-Clark",
-  "Tropical Tours",
-  "estropical.com",
-  "ITC Servicios",
+  "Crediseguro",
+  "Repsol",
+  "Estropical.com",
+  "Bovinsa",
 ];
 
 export const LOCATION_POINTS = [

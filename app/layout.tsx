@@ -27,7 +27,7 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "ITC TOWER — Edificio Corporativo · Santa Cruz de la Sierra",
   description:
-    "Edificio corporativo categoría lujo-primera en el centro empresarial de Bolivia. Espacios de oficina en arrendamiento, plantas libres de columnas, servicios llave en mano y un perfil de arrendatarios multinacional. Equipetrol Norte, Santa Cruz de la Sierra.",
+    "Torre corporativa de gestión privada en Equipetrol Norte, Santa Cruz de la Sierra. Espacios ejecutivos en arrendamiento, plantas libres de columnas y servicios integrados para operaciones que requieren presencia y continuidad.",
   keywords: [
     "ITC Tower",
     "oficinas corporativas Santa Cruz",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ITC TOWER — Edificio Corporativo",
     description:
-      "El centro empresarial por excelencia de Bolivia. Espacios corporativos premium en arrendamiento con servicios llave en mano.",
+      "Torre corporativa de gestión privada con espacios ejecutivos en arrendamiento, servicios integrados y ubicación estratégica en Equipetrol Norte.",
     type: "website",
     locale: "es_BO",
   },

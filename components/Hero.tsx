@@ -97,15 +97,15 @@ export default function Hero() {
           className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between"
         >
           <p className="max-w-md text-[0.95rem] leading-relaxed font-light text-bone/70">
-            Un edificio corporativo categoría lujo-primera, propiedad de una
-            sola sociedad, donde las multinacionales tienen su dirección desde
-            hace una década.
+            Una torre corporativa de gestión privada, concebida para compañías
+            que necesitan presencia, reserva y continuidad operativa en Santa
+            Cruz.
           </p>
 
           <div className="flex items-center gap-8">
             <a
               href="#espacios"
-              className="group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/30 px-8 py-4 text-[0.72rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
+              className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/30 px-8 py-4 text-[0.72rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
             >
               <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
               <span className="relative">Ver disponibilidad</span>

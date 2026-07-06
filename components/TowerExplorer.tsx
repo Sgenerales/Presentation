@@ -15,7 +15,7 @@ export function requestSpace(spaceId: string) {
 function StatusDot({ side }: { side: Side }) {
   const cls =
     side.status === "libre"
-      ? "bg-carmine-soft"
+      ? "jewel-pulse bg-carmine-soft"
       : side.status === "proyecto"
         ? "bg-stone"
         : "bg-bone/25";
@@ -40,9 +40,9 @@ export default function TowerExplorer() {
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="display mt-10 max-w-3xl text-[clamp(2.2rem,4.6vw,4.2rem)] text-bone">
-            Diez plantas.{" "}
+            Diez niveles.{" "}
             <em className="display-italic text-bone/70">
-              Cada una, una dirección.
+              Cada uno, una condición precisa.
             </em>
           </h2>
         </Reveal>
@@ -170,7 +170,7 @@ export default function TowerExplorer() {
                       <a
                         href="#espacios"
                         onClick={() => requestSpace(active.spaceId!)}
-                        className="group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-8 py-4 text-[0.72rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
+                        className="lux-sheen group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-8 py-4 text-[0.72rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
                       >
                         <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
                         <span className="relative">Explorar este espacio</span>

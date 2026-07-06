@@ -18,13 +18,13 @@ export default function Amenities() {
           <Reveal delay={0.1}>
             <h2 className="display max-w-2xl text-[clamp(2.2rem,4.6vw,4.2rem)] text-bone">
               Más que oficinas,{" "}
-              <em className="display-italic text-bone/70">una operación.</em>
+              <em className="display-italic text-bone/70">un soporte diario.</em>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="max-w-sm text-[0.95rem] leading-relaxed font-light text-bone/60">
-              Todos los servicios — recepción, limpieza, seguridad y
-              mantenimiento — se incluyen en la expensa mensual del espacio.
+              Recepción, seguridad, limpieza y mantenimiento operan como una
+              sola capa de servicio: discreta, constante y administrada desde el edificio.
             </p>
           </Reveal>
         </div>
@@ -49,6 +49,7 @@ export default function Amenities() {
                       }`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-50" />
+                    <div className="absolute inset-x-5 top-5 h-px origin-left scale-x-0 bg-bone/50 transition-transform duration-700 group-hover:scale-x-100" />
                     <span className="eyebrow absolute bottom-5 left-5 text-[0.58rem] text-bone/80">
                       {a.meta}
                     </span>

@@ -22,18 +22,18 @@ export default function Contact() {
             className="display mx-auto mt-12 text-[clamp(2.6rem,6.5vw,6rem)]"
             delay={0.1}
             lines={[
-              <span key="1">Su próxima dirección</span>,
+              <span key="1">Una dirección con presencia</span>,
               <span key="2">
-                lo está <em className="display-italic">esperando.</em>
+                se conoce <em className="display-italic">en persona.</em>
               </span>,
             ]}
           />
 
           <Reveal delay={0.35}>
             <p className="mx-auto mt-10 max-w-xl text-[1rem] leading-relaxed font-light text-stone-dark">
-              Coordine una visita privada al edificio y conozca los espacios
-              disponibles, la propuesta llave en mano y las condiciones de
-              arrendamiento.
+              Coordine una visita privada para recorrer la torre, revisar los
+              espacios disponibles y evaluar una implantación a la medida de su
+              operación.
             </p>
           </Reveal>
 
@@ -41,7 +41,7 @@ export default function Contact() {
             <div className="mt-14 flex flex-col items-center justify-center gap-6 sm:flex-row">
               <a
                 href={`mailto:${CONTACT.email}?subject=Visita%20privada%20—%20ITC%20Tower`}
-                className="group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-10 py-5 text-[0.74rem] tracking-[0.24em] text-bone uppercase"
+                className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-10 py-5 text-[0.74rem] tracking-[0.24em] text-bone uppercase"
               >
                 <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
                 <span className="relative">Agendar una visita</span>

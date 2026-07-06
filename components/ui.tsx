@@ -79,10 +79,14 @@ export function Counter({
   value,
   suffix = "",
   className = "",
+  delay = 0,
+  duration = 2.2,
 }: {
   value: number;
   suffix?: string;
   className?: string;
+  delay?: number;
+  duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
@@ -94,12 +98,13 @@ export function Counter({
     if (!inView) return;
     if (reduced) return;
     const controls = animate(mv, value, {
-      duration: 2,
+      duration,
+      delay,
       ease: EASE,
       onUpdate: (v) => setText(Math.round(v).toLocaleString("es-BO")),
     });
     return controls.stop;
-  }, [inView, value, reduced, mv]);
+  }, [inView, value, reduced, mv, delay, duration]);
 
   return (
     <span ref={ref} className={className}>

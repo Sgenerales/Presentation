@@ -37,8 +37,8 @@ export default function LocationSec() {
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="display mt-10 max-w-3xl text-[clamp(2.2rem,4.6vw,4.2rem)] text-bone">
-            El triángulo de oro{" "}
-            <em className="display-italic text-bone/70">de la ciudad.</em>
+            Una dirección estratégica{" "}
+            <em className="display-italic text-bone/70">en la ciudad.</em>
           </h2>
         </Reveal>
 
@@ -46,10 +46,10 @@ export default function LocationSec() {
           <div className="lg:col-span-5">
             <Reveal delay={0.15}>
               <p className="text-[1rem] leading-relaxed font-light text-bone/70">
-                {CONTACT.address}. Acceso privilegiado a dos calles y una
-                avenida principal, a escasos metros del 4to anillo — en el
-                corazón del centro empresarial de Bolivia, rodeado de la
-                mejor hotelería, banca y gastronomía de Santa Cruz.
+                {CONTACT.address}. Acceso a dos calles y una avenida principal,
+                a metros del 4to anillo: una ubicación pensada para llegar,
+                recibir y operar con eficiencia en el eje empresarial de Santa
+                Cruz.
               </p>
             </Reveal>
             <Reveal delay={0.25} className="mt-10 flex flex-wrap gap-4">
@@ -57,7 +57,7 @@ export default function LocationSec() {
                 href={CONTACT.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-7 py-3.5 text-[0.7rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
+                className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-7 py-3.5 text-[0.7rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
               >
                 <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
                 <span className="relative">Google Maps ↗</span>

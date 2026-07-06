@@ -75,15 +75,15 @@ export default function SpaceFocus() {
             </Reveal>
             <Reveal delay={0.06}>
               <h2 className="display mt-10 max-w-2xl text-[clamp(2.2rem,4.6vw,4.2rem)]">
-                Vea lo que su oficina{" "}
-                <em className="display-italic">puede llegar a ser.</em>
+                Espacios que se leen en planta{" "}
+                <em className="display-italic">y se sienten en recorrido.</em>
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.12}>
             <p className="max-w-sm text-[0.95rem] leading-relaxed font-light text-stone-dark">
-              Galería de renders, plano interactivo y recorrido inmersivo de
-              cada espacio. Todo se entrega llave en mano.
+              Renders, planos y recorrido inmersivo para evaluar cada decisión
+              con claridad antes de una visita privada.
             </p>
           </Reveal>
         </div>
@@ -328,7 +328,7 @@ export default function SpaceFocus() {
 
                 <a
                   href="#contacto"
-                  className="group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-8 py-4 text-[0.72rem] tracking-[0.22em] text-bone uppercase"
+                  className="lux-sheen group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-8 py-4 text-[0.72rem] tracking-[0.22em] text-bone uppercase"
                 >
                   <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
                   <span className="relative">Consultar por este espacio</span>
