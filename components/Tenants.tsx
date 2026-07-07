@@ -24,9 +24,9 @@ export default function Tenants() {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="max-w-md text-[0.95rem] leading-relaxed font-light text-stone-dark">
-              Firmas regionales y globales han elegido ITC Tower por su
-              ubicación, gestión directa y discreción operativa. Una dirección
-              compartida por compañías que cuidan su presencia.
+              Grandes corporaciones — casi todas internacionales — con un
+              mismo compromiso: operar bajo el estándar normativo y de
+              compliance más alto de la ciudad.
             </p>
           </Reveal>
         </div>

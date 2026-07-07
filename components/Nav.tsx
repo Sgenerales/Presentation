@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { EASE } from "./ui";
 
 const LINKS = [
+  { href: "#concepto", label: "El concepto" },
   { href: "#torre", label: "La Torre" },
   { href: "#espacios", label: "Espacios" },
   { href: "#experiencia", label: "Experiencia" },
@@ -39,13 +40,13 @@ export default function Nav() {
         <a
           href="#inicio"
           className="flex items-baseline gap-2"
-          aria-label="ITC Tower — inicio"
+          aria-label="Milla Zero — inicio"
         >
           <span className="font-sans text-lg font-light tracking-[0.18em] text-bone">
-            ITC
+            MILLA
           </span>
           <span className="font-sans text-lg font-light tracking-[0.18em] text-carmine-soft">
-            TOWER
+            ZERO
           </span>
         </a>
 

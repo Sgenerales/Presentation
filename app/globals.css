@@ -273,26 +273,11 @@ body {
   color: transparent;
 }
 
-/* Accesibilidad: reduce motion */
+/* Pieza de presentación: la animación es parte del mensaje y corre
+   siempre. Bajo reduced-motion solo garantizamos que ningún contenido
+   quede oculto si un script de animación no llega a ejecutarse. */
 @media (prefers-reduced-motion: reduce) {
-  .kenburns,
-  .marquee-track,
-  .scroll-cue,
-  .jewel-pulse,
-  .lux-sheen::after {
-    animation: none;
-  }
   .preloader-failsafe {
-    animation: preloaderFailsafe 0.2s ease-out forwards;
-  }
-  .img-zoom img {
-    transition: none;
-  }
-  /* Motion descarta animaciones bajo reduced-motion y puede dejar
-     elementos en su estado inicial oculto (translate/opacity 0).
-     Forzamos visibilidad total: el contenido siempre legible. */
-  [data-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
+    animation: preloaderFailsafe 3s var(--ease-lux) forwards;
   }
 }

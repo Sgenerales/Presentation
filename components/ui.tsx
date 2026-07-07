@@ -4,7 +4,6 @@ import {
   motion,
   useInView,
   useMotionValue,
-  useReducedMotion,
   animate,
 } from "framer-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
@@ -89,13 +88,11 @@ export function Counter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
   const mv = useMotionValue(0);
   const [text, setText] = useState("0");
 
   useEffect(() => {
     if (!inView) return;
-    if (reduced) return;
     const controls = animate(mv, value, {
       duration,
       delay,
@@ -103,11 +100,11 @@ export function Counter({
       onUpdate: (v) => setText(Math.round(v).toLocaleString("es-BO")),
     });
     return controls.stop;
-  }, [inView, value, reduced, mv, delay, duration]);
+  }, [inView, value, mv, delay, duration]);
 
   return (
     <span ref={ref} className={className}>
-      {reduced && inView ? value.toLocaleString("es-BO") : text}
+      {text}
       {suffix}
     </span>
   );

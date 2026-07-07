@@ -24,19 +24,20 @@ export default function Manifesto() {
             />
             <Reveal delay={0.35} className="mt-10 max-w-xl">
               <p className="text-[1.02rem] leading-relaxed font-light text-stone-dark">
-                ITC Tower pertenece a una sola sociedad: Bienes Raíces ITC
-                Tropical, parte del grupo Tropical Tours, fundado en 1980. Esa
-                estructura permite una operación precisa: mantenimiento
-                constante, decisiones rápidas y una experiencia de edificio sin
-                fricción para cada ocupante.
+                Milla Zero es una propiedad horizontal mono-propietaria:
+                pertenece íntegramente a Bienes Raíces ITC Tropical, del grupo
+                Tropical Tours, fundado en 1980. Un solo dueño significa un
+                solo estándar — y la certeza de que sus condiciones nunca se
+                verán ni negociarán frente a otro arrendatario.
               </p>
             </Reveal>
             <Reveal delay={0.45} className="mt-8 max-w-xl">
               <p className="text-[1.02rem] leading-relaxed font-light text-stone-dark">
-                Los espacios se entregan bajo una lógica ejecutiva: plantas
-                claras, servicios centralizados y adecuación llave en mano para
-                compañías que necesitan instalarse con orden, privacidad y
-                representatividad.
+                Sus ocupantes son grandes corporaciones — casi todas
+                internacionales — unidas por el mismo compromiso: sostener un
+                edificio de alto valor, alto apego a la normativa y cultura de
+                compliance. Los espacios se entregan llave en mano, con orden,
+                privacidad y representatividad.
               </p>
             </Reveal>
           </div>
@@ -46,7 +47,7 @@ export default function Manifesto() {
               <figure className="img-zoom relative">
                 <Img
                   src={`${A}/facade-estropical.jpg`}
-                  alt="Fachada de ITC Tower con la señalética de estropical.com"
+                  alt="Fachada de Milla Zero con la señalética de estropical.com"
                   className="aspect-square w-full object-cover object-top"
                 />
                 <figcaption className="eyebrow mt-4 flex justify-between text-stone">

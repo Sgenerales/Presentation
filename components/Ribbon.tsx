@@ -6,12 +6,12 @@
  * proyectos inmobiliarios.
  */
 const ITEMS = [
-  { t: "Categoría lujo · primera", mono: false },
+  { t: "Boutique corporativo", mono: false },
+  { t: "Mono-propietario", mono: true },
+  { t: "100% corporativo", mono: false },
+  { t: "Compliance", mono: true },
+  { t: "Milla Zero", mono: false },
   { t: "Equipetrol Norte", mono: true },
-  { t: "Una sola propiedad", mono: false },
-  { t: "Perfil multinacional", mono: true },
-  { t: "Diez plantas", mono: false },
-  { t: "Desde hace una década", mono: true },
 ];
 
 export default function Ribbon() {

@@ -40,7 +40,7 @@ export default function Contact() {
           <Reveal delay={0.45}>
             <div className="mt-14 flex flex-col items-center justify-center gap-6 sm:flex-row">
               <a
-                href={`mailto:${CONTACT.email}?subject=Visita%20privada%20—%20ITC%20Tower`}
+                href={`mailto:${CONTACT.email}?subject=Visita%20privada%20—%20Milla%20Zero`}
                 className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-10 py-5 text-[0.74rem] tracking-[0.24em] text-bone uppercase"
               >
                 <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
@@ -66,15 +66,15 @@ export default function Contact() {
             <div>
               <div className="flex items-baseline gap-2">
                 <span className="font-sans text-2xl font-light tracking-[0.18em] text-bone">
-                  ITC
+                  MILLA
                 </span>
                 <span className="font-sans text-2xl font-light tracking-[0.18em] text-carmine-soft">
-                  TOWER
+                  ZERO
                 </span>
               </div>
               <p className="mt-4 max-w-xs text-[0.82rem] leading-relaxed font-light text-bone/45">
-                Bienes Raíces ITC Tropical S.R.L. — una inversión del grupo
-                Tropical Tours, desde 1980.
+                Milla Zero — Edificio ITC Tower. Bienes Raíces ITC Tropical
+                S.R.L., una inversión del grupo Tropical Tours, desde 1980.
               </p>
             </div>
 

@@ -1,5 +1,5 @@
 /**
- * ITC TOWER — Fuente única de datos.
+ * MILLA ZERO — Fuente única de datos.
  * Todo el contenido editable de la landing vive aquí: pisos, disponibilidad,
  * espacios, amenities, arrendatarios y contacto. Los assets viven en
  * /public/assets — reemplazar por mejores fotos/videos/renders a medida
@@ -20,6 +20,57 @@ export const CONTACT = {
   coords: "17°45′37″ S · 63°12′04″ W",
 };
 
+export const BRAND = {
+  name: "MILLA ZERO",
+  first: "MILLA",
+  second: "ZERO",
+  tagline: "Edificio corporativo boutique",
+  legal:
+    "Milla Zero — Edificio ITC Tower · Bienes Raíces ITC Tropical S.R.L., una inversión del grupo Tropical Tours, desde 1980.",
+};
+
+/**
+ * Lo que ningún otro edificio de la ciudad puede ofrecer —
+ * el argumento central de la presentación.
+ */
+export const EXCLUSIVES = [
+  {
+    code: "Z·01",
+    title: "Boutique por diseño",
+    desc: "Escala deliberadamente contenida: pocas compañías por piso, cero masificación y servicios dimensionados para cada ocupante, no para una multitud.",
+  },
+  {
+    code: "Z·02",
+    title: "Mono-propietario",
+    desc: "Propiedad horizontal de un solo dueño. Decisiones inmediatas, un único estándar de mantenimiento y condiciones que jamás se exponen ni negocian entre arrendatarios.",
+  },
+  {
+    code: "Z·03",
+    title: "100% corporativo",
+    desc: "Sin viviendas, sin gimnasio, sin instalaciones de gas. Un solo uso, un solo perfil de riesgo y un solo estándar de seguridad — la identidad del edificio no se mezcla.",
+  },
+  {
+    code: "Z·04",
+    title: "Compliance como cultura",
+    desc: "Grandes corporaciones — casi todas internacionales — que auditan dónde operan. Sus vecinos comparten su misma exigencia normativa.",
+  },
+  {
+    code: "Z·05",
+    title: "Ingeniería de fachada",
+    desc: "Doble vidriado hermético y disposición estudiada frente al recorrido del sol: −35% de consumo energético y −30 dB de ruido urbano.",
+  },
+  {
+    code: "Z·06",
+    title: "Parqueo a escritorio, menos de 3 minutos",
+    desc: "Del subsuelo a su silla sin pisar la calle: ingreso con tarjeta, ascensor directo y acceso independiente por piso.",
+  },
+  {
+    code: "Z·07",
+    title: "Doble salida al 4to anillo",
+    desc: "Dos frentes de calle y evacuación por dos avenidas principales: logística diaria y seguridad sin cuellos de botella.",
+  },
+];
+
 export const STATS = [
   { value: 14925, suffix: " m²", label: "Superficie construida" },
   { value: 10, suffix: "", label: "Niveles operativos" },
@@ -39,6 +90,10 @@ export const SPECS = [
   "Control de accesos + CCTV",
   "Seguridad permanente 24/7",
   "Póliza multiriesgo + ambulancia",
+  "Sin instalaciones de gas · uso 100% corporativo",
+  "Doble salida al 4to anillo",
+  "Parqueo a escritorio en menos de 3 minutos",
+  "Orientación estudiada frente al sol",
 ];
 
 export type Side = { status: "libre" | "ocupado" | "proyecto"; note: string };
@@ -336,7 +391,7 @@ export const TENANTS = [
 ];
 
 export const LOCATION_POINTS = [
-  { name: "4to Anillo", detail: "a metros del acceso" },
+  { name: "Doble salida al 4to Anillo", detail: "dos frentes de calle" },
   { name: "Av. San Martín", detail: "eje empresarial" },
   { name: "Marriott · Los Tajibos · Camino Real", detail: "hotelería 5★" },
   { name: "La Riviera · Patio Design · Ventura", detail: "shopping & dining" },

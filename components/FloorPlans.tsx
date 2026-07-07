@@ -68,7 +68,7 @@ function Sheet({
         {/* Rótulo de lámina */}
         <g transform="translate(1120, 836)" textAnchor="end" opacity="0.8">
           <text fontFamily="var(--font-mono)" fontSize="13" letterSpacing="2.5" fill={INK}>
-            ITC TOWER · {code}
+            MILLA ZERO · {code}
           </text>
           <text y="22" fontFamily="var(--font-mono)" fontSize="11" letterSpacing="2" fill={INK} opacity="0.55">
             {title.toUpperCase()}

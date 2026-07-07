@@ -6,12 +6,9 @@ import { useEffect } from "react";
 /**
  * Scroll con inercia (Lenis) — la base del feel "cinematográfico".
  * Intercepta anclas internas para un desplazamiento suave con offset del nav.
- * Se desactiva por completo con prefers-reduced-motion.
  */
 export default function SmoothScroll() {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
     const lenis = new Lenis({
       duration: 1.15,
       easing: (t) => 1 - Math.pow(1 - t, 3.2),

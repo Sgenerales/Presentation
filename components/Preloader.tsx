@@ -1,21 +1,20 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { EASE } from "./ui";
 
 /**
- * Cortina de entrada cinematográfica: logotipo ITC TOWER + línea que crece.
+ * Cortina de entrada cinematográfica: logotipo MILLA ZERO + línea que crece.
  * Breve (~2 s), se omite si el usuario prefiere menos movimiento.
  */
 export default function Preloader() {
-  const reduced = useReducedMotion();
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setDone(true), reduced ? 150 : 1250);
+    const t = setTimeout(() => setDone(true), 1250);
     return () => clearTimeout(t);
-  }, [reduced]);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -35,10 +34,10 @@ export default function Preloader() {
               className="flex items-baseline gap-3"
             >
               <span className="font-sans text-3xl font-light tracking-[0.18em] text-bone md:text-4xl">
-                ITC
+                MILLA
               </span>
               <span className="font-sans text-3xl font-light tracking-[0.18em] text-carmine-soft md:text-4xl">
-                TOWER
+                ZERO
               </span>
             </motion.div>
           </div>
@@ -54,7 +53,7 @@ export default function Preloader() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="eyebrow mt-6 text-stone"
           >
-            Santa Cruz de la Sierra
+            Edificio corporativo boutique
           </motion.p>
         </motion.div>
       )}

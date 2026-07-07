@@ -26,7 +26,7 @@ export default function Hero() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${A}/hero-facade-sunset.jpg`}
-          alt="Fachada de ITC Tower al atardecer, Santa Cruz de la Sierra"
+          alt="Fachada de Milla Zero al atardecer, Santa Cruz de la Sierra"
           className="kenburns h-full w-full scale-105 object-cover"
           fetchPriority="high"
         />
@@ -59,14 +59,14 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 0.8, ease: EASE }}
           className="eyebrow mb-8 text-bone/70"
         >
-          Equipetrol Norte · Santa Cruz de la Sierra · Bolivia
+          Edificio corporativo boutique · Equipetrol Norte · Santa Cruz
         </motion.p>
 
         <h1 className="display text-bone">
           {[
-            ["El centro", ""],
-            ["empresarial por", ""],
-            ["excelencia", "de Bolivia."],
+            ["La milla cero", ""],
+            ["del corporativo", ""],
+            ["", "boliviano."],
           ].map(([a, b], i) => (
             <span key={i} className="block overflow-hidden">
               <motion.span
@@ -91,9 +91,8 @@ export default function Hero() {
           className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between"
         >
           <p className="max-w-md text-[0.95rem] leading-relaxed font-light text-bone/70">
-            Una torre corporativa de gestión privada, concebida para compañías
-            que necesitan presencia, reserva y continuidad operativa en Santa
-            Cruz.
+            Boutique, mono-propietario y 100% corporativo: la dirección desde
+            la que las grandes compañías internacionales miden todo lo demás.
           </p>
 
           <div className="flex items-center gap-8">

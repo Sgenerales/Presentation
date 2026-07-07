@@ -13,7 +13,6 @@ export default function Cursor() {
 
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const dot = dotRef.current!;
     const ring = ringRef.current!;
 

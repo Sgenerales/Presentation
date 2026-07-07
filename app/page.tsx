@@ -1,6 +1,7 @@
 import Amenities from "@/components/Amenities";
 import Contact from "@/components/Contact";
 import Cursor from "@/components/Cursor";
+import Exclusives from "@/components/Exclusives";
 import Hero from "@/components/Hero";
 import LocationSec from "@/components/LocationSec";
 import Manifesto from "@/components/Manifesto";
@@ -22,6 +23,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <Ribbon />
+      <Exclusives />
       <Manifesto />
       <SpecsStrip />
       <TowerExplorer />

@@ -163,15 +163,11 @@ export default function Tour360({
     );
     io.observe(wrap);
 
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
     const tick = () => {
       raf = requestAnimationFrame(tick);
       if (!visible || !renderer) return;
 
-      if (auto && !reduced) lon += 0.028;
+      if (auto) lon += 0.028;
       if (!dragging) {
         vLon *= 0.93;
         vLat *= 0.93;
