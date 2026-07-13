@@ -132,7 +132,7 @@ export default function SpaceFocus() {
         {/* Escenario visual */}
         <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Visor */}
-          <div className="lg:col-span-8">
+          <div className="relative lg:col-span-8">
             {/* Controles de vista */}
             <div
               className="mb-5 flex gap-2"
@@ -165,34 +165,32 @@ export default function SpaceFocus() {
               ))}
             </div>
 
-            <AnimatePresence mode="wait">
+            <AnimatePresence initial={false}>
               <motion.div
                 data-reveal
                 key={space.id + view}
                 initial={{ opacity: 0, scale: 0.99 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.45, ease: EASE }}
+                exit={{ opacity: 0, scale: 0.99, position: "absolute" }}
+                transition={{ duration: 0.4, ease: EASE }}
+                className="w-full"
               >
                 {view === "renders" && (
                   <figure>
                     <div className="img-zoom group relative bg-ink">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={frame}
-                          data-reveal
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.35, ease: EASE }}
-                        >
-                          <Img
-                            src={current.src}
-                            alt={current.caption}
-                            className="aspect-[16/10] w-full object-cover"
-                          />
-                        </motion.div>
-                      </AnimatePresence>
+                      <motion.div
+                        key={frame}
+                        data-reveal
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3, ease: EASE }}
+                      >
+                        <Img
+                          src={current.src}
+                          alt={current.caption}
+                          className="aspect-[16/10] w-full object-cover"
+                        />
+                      </motion.div>
                       <span className="eyebrow absolute top-5 left-5 z-10 bg-ink/70 px-4 py-2 text-[0.58rem] text-bone backdrop-blur-sm">
                         {current.tag}
                       </span>
