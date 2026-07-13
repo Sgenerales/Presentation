@@ -36,7 +36,7 @@ export default function Exclusives() {
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="max-w-sm text-[0.95rem] leading-relaxed font-light text-bone/60">
+            <p className="max-w-sm text-[1.02rem] leading-relaxed font-light text-bone/60">
               Milla Zero no compite en metros cuadrados: compite en criterio.
               Siete decisiones de diseño que definen un edificio boutique — y
               que no se consiguen en ningún otro lugar de Santa Cruz.
@@ -56,7 +56,7 @@ export default function Exclusives() {
                   className="group grid cursor-default grid-cols-12 items-baseline gap-4 border-b border-line-faint py-6 transition-colors duration-500 hover:bg-ink-soft/40 md:py-8"
                 >
                   <span
-                    className={`col-span-2 font-mono text-[0.72rem] tracking-[0.26em] transition-colors duration-300 md:col-span-1 ${
+                    className={`col-span-2 font-mono text-[0.78rem] tracking-[0.26em] transition-colors duration-300 md:col-span-1 ${
                       on ? "text-carmine-soft" : "text-stone"
                     }`}
                   >
@@ -69,7 +69,7 @@ export default function Exclusives() {
                   >
                     {x.title}
                   </h3>
-                  <p className="col-span-10 col-start-3 text-[0.9rem] leading-relaxed font-light text-bone/55 md:col-span-6 md:col-start-7">
+                  <p className="col-span-10 col-start-3 text-[0.95rem] leading-relaxed font-light text-bone/55 md:col-span-6 md:col-start-7">
                     {x.desc}
                   </p>
                 </div>
@@ -124,10 +124,10 @@ export default function Exclusives() {
                           i === JOURNEY.length - 1 ? "bg-carmine" : ""
                         }`}
                       />
-                      <p className="display mt-4 text-[1.1rem] text-bone md:text-[1.4rem]">
+                      <p className="display mt-4 text-[1.2rem] text-bone md:text-[1.4rem]">
                         {j.label}
                       </p>
-                      <p className="eyebrow mt-1.5 text-[0.55rem] text-stone">
+                      <p className="eyebrow mt-1.5 text-[0.64rem] text-stone">
                         {j.note}
                       </p>
                     </motion.div>
@@ -142,7 +142,7 @@ export default function Exclusives() {
                   <span className="display block text-[clamp(3.4rem,7vw,6.5rem)] leading-none text-bone">
                     &lt;3<span className="display-italic text-carmine-soft"> min</span>
                   </span>
-                  <p className="mt-3 text-[0.9rem] font-light text-bone/55 lg:ml-auto lg:max-w-[260px]">
+                  <p className="mt-3 text-[0.95rem] font-light text-bone/55 lg:ml-auto lg:max-w-[260px]">
                     Desde que estaciona hasta que está sentado en su
                     escritorio. Sin calle, sin filas, sin fricción.
                   </p>

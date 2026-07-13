@@ -41,7 +41,7 @@ export default function Contact() {
             <div className="mt-14 flex flex-col items-center justify-center gap-6 sm:flex-row">
               <a
                 href={`mailto:${CONTACT.email}?subject=Visita%20privada%20—%20Milla%20Zero`}
-                className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-10 py-5 text-[0.74rem] tracking-[0.24em] text-bone uppercase"
+                className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-10 py-5 text-[0.8rem] tracking-[0.24em] text-bone uppercase"
               >
                 <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
                 <span className="relative">Agendar una visita</span>
@@ -50,7 +50,7 @@ export default function Contact() {
                 href={CONTACT.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-lux cursor-pointer text-[0.74rem] tracking-[0.24em] text-stone-dark uppercase transition-colors hover:text-ink"
+                className="link-lux cursor-pointer text-[0.8rem] tracking-[0.24em] text-stone-dark uppercase transition-colors hover:text-ink"
               >
                 Cómo llegar ↗
               </a>
@@ -72,7 +72,7 @@ export default function Contact() {
                   ZERO
                 </span>
               </div>
-              <p className="mt-4 max-w-xs text-[0.82rem] leading-relaxed font-light text-bone/45">
+              <p className="mt-4 max-w-xs text-[0.9rem] leading-relaxed font-light text-bone/45">
                 Milla Zero — Edificio ITC Tower. Bienes Raíces ITC Tropical
                 S.R.L., una inversión del grupo Tropical Tours, desde 1980.
               </p>
@@ -81,7 +81,7 @@ export default function Contact() {
             <div className="grid grid-cols-2 gap-12 md:gap-20">
               <div>
                 <p className="eyebrow text-stone">Dirección</p>
-                <p className="mt-4 text-[0.85rem] leading-relaxed font-light text-bone/60">
+                <p className="mt-4 text-[0.92rem] leading-relaxed font-light text-bone/60">
                   {CONTACT.address}
                   <br />
                   {CONTACT.city}
@@ -89,7 +89,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="eyebrow text-stone">Contacto</p>
-                <p className="mt-4 text-[0.85rem] leading-relaxed font-light text-bone/60">
+                <p className="mt-4 text-[0.92rem] leading-relaxed font-light text-bone/60">
                   <a
                     href={`mailto:${CONTACT.email}`}
                     className="link-lux cursor-pointer transition-colors hover:text-bone"
@@ -104,11 +104,11 @@ export default function Contact() {
           </div>
 
           <div className="mt-16 flex flex-col justify-between gap-4 border-t border-line-faint pt-8 md:flex-row">
-            <p className="font-mono text-[0.62rem] tracking-[0.18em] text-bone/30 uppercase">
+            <p className="font-mono text-[0.7rem] tracking-[0.18em] text-bone/30 uppercase">
               © {new Date().getFullYear()} BRITC Tropical S.R.L. — Todos los
               derechos reservados
             </p>
-            <p className="font-mono text-[0.62rem] tracking-[0.18em] text-bone/30 uppercase">
+            <p className="font-mono text-[0.7rem] tracking-[0.18em] text-bone/30 uppercase">
               {CONTACT.coords}
             </p>
           </div>

@@ -57,7 +57,7 @@ export default function LocationSec() {
                 href={CONTACT.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-7 py-3.5 text-[0.7rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
+                className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-7 py-3.5 text-[0.76rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
               >
                 <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
                 <span className="relative">Google Maps ↗</span>
@@ -66,7 +66,7 @@ export default function LocationSec() {
                 href={CONTACT.earthUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-lux inline-flex cursor-pointer items-center px-2 py-3.5 text-[0.7rem] tracking-[0.22em] text-bone/60 uppercase transition-colors hover:text-bone"
+                className="link-lux inline-flex cursor-pointer items-center px-2 py-3.5 text-[0.76rem] tracking-[0.22em] text-bone/60 uppercase transition-colors hover:text-bone"
               >
                 Ver en Google Earth
               </a>
@@ -84,7 +84,7 @@ export default function LocationSec() {
                     <span className="display text-[1.3rem] text-bone/85 transition-colors duration-300 group-hover:text-bone md:text-[1.6rem]">
                       {p.name}
                     </span>
-                    <span className="eyebrow shrink-0 text-[0.6rem] text-stone">
+                    <span className="eyebrow shrink-0 text-[0.68rem] text-stone">
                       {p.detail}
                     </span>
                   </li>

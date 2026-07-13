@@ -20,7 +20,7 @@ export default function Ribbon() {
       <span
         className={`whitespace-nowrap px-10 md:px-14 ${
           it.mono
-            ? "font-mono text-[0.72rem] tracking-[0.3em] uppercase text-bone/75"
+            ? "font-mono text-[0.78rem] tracking-[0.3em] uppercase text-bone/75"
             : "display-italic text-[1.5rem] text-bone md:text-[1.8rem]"
         }`}
       >
@@ -32,11 +32,13 @@ export default function Ribbon() {
 
   return (
     <div className="relative z-10 -my-6 -rotate-1 md:-my-8">
-      <div className="overflow-hidden border-y border-ink/30 bg-carmine py-4 shadow-[0_20px_60px_rgba(10,14,24,0.35)] md:py-5">
-        <div className="marquee-track flex w-max items-center">
-          <div className="flex items-center">{row}</div>
-          <div className="flex items-center" aria-hidden>
-            {row}
+      <div className="mq-duo overflow-hidden border-y border-ink/30 bg-carmine py-4 shadow-[0_20px_60px_rgba(10,14,24,0.35)] md:py-5">
+        <div className="mq-outer">
+          <div className="mq-inner items-center">
+            <div className="flex items-center">{row}</div>
+            <div className="flex items-center" aria-hidden>
+              {row}
+            </div>
           </div>
         </div>
       </div>

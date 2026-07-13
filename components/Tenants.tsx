@@ -23,7 +23,7 @@ export default function Tenants() {
             <Eyebrow tone="dark">05 — Comunidad corporativa</Eyebrow>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="max-w-md text-[0.95rem] leading-relaxed font-light text-stone-dark">
+            <p className="max-w-md text-[1.02rem] leading-relaxed font-light text-stone-dark">
               Grandes corporaciones — casi todas internacionales — con un
               mismo compromiso: operar bajo el estándar normativo y de
               compliance más alto de la ciudad.
@@ -33,13 +33,18 @@ export default function Tenants() {
       </div>
 
       <div className="mt-14 -rotate-1 md:mt-20">
-        <div className="ticker-shell overflow-hidden border-y border-line bg-bone py-6">
-          <div className="marquee-track marquee-track-triple marquee-track-slow flex w-max items-center">
-            {["a", "b", "c"].map((copy) => (
-              <div key={copy} className="flex items-center">
-                {renderRow(copy)}
-              </div>
-            ))}
+        <div
+          className="ticker-shell mq-duo mq-triple overflow-hidden border-y border-line bg-bone py-6"
+          style={{ "--mq": "48s" } as React.CSSProperties}
+        >
+          <div className="mq-outer">
+            <div className="mq-inner items-center">
+              {["a", "b", "c"].map((copy) => (
+                <div key={copy} className="flex items-center">
+                  {renderRow(copy)}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

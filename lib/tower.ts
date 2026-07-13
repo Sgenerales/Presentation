@@ -114,11 +114,11 @@ export const FLOORS: Floor[] = [
     id: "p8",
     code: "P8",
     name: "Piso Ocho · Rooftop",
-    norte: { status: "libre", note: "Proyecto cowork" },
-    sur: { status: "libre", note: "Módulo 183 m² + amenities" },
+    norte: { status: "proyecto", note: "Proyecto cowork del edificio" },
+    sur: { status: "libre", note: "Módulo 183,17 m² · único disponible" },
     spaceId: "p8-modulo",
     detail:
-      "El último nivel reúne el módulo ejecutivo con terraza propia y el futuro programa de rooftop, cowork y amenities reservados para el edificio.",
+      "En el último nivel queda un único espacio disponible: el módulo ejecutivo de 183,17 m² con terraza propia. El resto del piso alberga el futuro rooftop, cowork y amenities del edificio.",
   },
   {
     id: "p7",
@@ -185,9 +185,9 @@ export const FLOORS: Floor[] = [
     code: "PB",
     name: "Planta Baja",
     norte: { status: "ocupado", note: "Oficina norte" },
-    sur: { status: "libre", note: "Espacio comercial" },
+    sur: { status: "ocupado", note: "Espacio comercial" },
     detail:
-      "Lobby corporativo de doble altura, Work Café, ATM y un espacio comercial disponible con frente directo al acceso principal.",
+      "Lobby corporativo de doble altura en granito y mármol, Work Café, ATM y los espacios comerciales con frente al acceso principal — todos ocupados.",
   },
   {
     id: "ss",
@@ -389,6 +389,90 @@ export const TENANTS = [
   "Estropical.com",
   "Bovinsa",
 ];
+
+export interface ProposalSheet {
+  id: string;
+  code: string;
+  name: string;
+  role: string;
+  sheet: string;
+  capacity: string;
+  program: string[];
+}
+
+/**
+ * Propuesta integral de diseño LUMA (07.2026) para los pisos 1–3:
+ * cuatro láminas, una sola propuesta. Demuestra el alcance del servicio
+ * llave en mano a escala multi-planta — no implica disponibilidad de
+ * esos niveles.
+ */
+export const PROPOSAL = {
+  kicker: "Propuesta integral — llave en mano a escala",
+  title: "Tres plantas, un solo trazo.",
+  intro:
+    "Cuatro láminas y una sola propuesta: el estudio LUMA resolvió los pisos 1, 2 y 3 como una operación continua de más de 200 posiciones — dirección, directorio y plataformas operativas — con el mobiliario, la acústica y la iluminación definidos al detalle. El mismo estándar con el que se entrega cada espacio de Milla Zero.",
+  note: "Propuesta de diseño · no implica disponibilidad de estos niveles",
+  credit:
+    "LUMA · Beyond Office — Arq. Karen Castillo · Consultor: Arq. Mauricio Ardaya · 07.2026",
+  sheets: [
+    {
+      id: "prop-p1",
+      code: "P1",
+      name: "Piso Uno",
+      role: "Planta completa · operación y recepción",
+      sheet: `${A}/proposal-p1.jpg`,
+      capacity: "42 puestos operativos",
+      program: [
+        "Recepción y espera con escalera helicoidal",
+        "Staff operativo 24 + 12 + 6 personas",
+        "2 salas de reunión · 3 jefaturas",
+        "Coffee point · 2 áreas de impresión",
+        "Centro de control CCTV",
+      ],
+    },
+    {
+      id: "prop-p2a",
+      code: "P2·A",
+      name: "Piso Dos — Lado A",
+      role: "Dirección y gobierno",
+      sheet: `${A}/proposal-p2a.jpg`,
+      capacity: "Directorio 12 + gerencia general",
+      program: [
+        "Directorio para 12 personas",
+        "Gerencia general con lounge privado",
+        "2 jefaturas · staff de apoyo 8 + 12",
+        "2 salas de reunión · coffee point",
+        "Baños privados · salida a terraza exterior",
+      ],
+    },
+    {
+      id: "prop-p2b",
+      code: "P2·B",
+      name: "Piso Dos — Lado B",
+      role: "Plataforma operativa",
+      sheet: `${A}/proposal-p2b.jpg`,
+      capacity: "66 puestos operativos",
+      program: [
+        "Staff operativo 66 personas con divisiones verdes",
+        "3 jefaturas · 3 salas de reunión",
+        "Sala de copiado · lockers de personal",
+      ],
+    },
+    {
+      id: "prop-p3",
+      code: "P3",
+      name: "Piso Tres",
+      role: "Plataforma operativa mayor",
+      sheet: `${A}/proposal-p3.jpg`,
+      capacity: "75 puestos operativos",
+      program: [
+        "Staff operativo 75 personas",
+        "3 jefaturas · sala de reunión",
+        "Coffee point · 3 áreas de impresión",
+      ],
+    },
+  ] as ProposalSheet[],
+};
 
 export const LOCATION_POINTS = [
   { name: "Doble salida al 4to Anillo", detail: "dos frentes de calle" },

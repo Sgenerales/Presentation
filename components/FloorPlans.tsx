@@ -75,7 +75,7 @@ function Sheet({
           </text>
         </g>
       </svg>
-      <p className="border-t border-line px-5 py-3 font-mono text-[0.62rem] tracking-[0.16em] text-stone-dark uppercase">
+      <p className="border-t border-line px-5 py-3 font-mono text-[0.7rem] tracking-[0.16em] text-stone-dark uppercase">
         {legend}
       </p>
     </div>

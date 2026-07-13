@@ -22,7 +22,7 @@ export default function Amenities() {
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="max-w-sm text-[0.95rem] leading-relaxed font-light text-bone/60">
+            <p className="max-w-sm text-[1.02rem] leading-relaxed font-light text-bone/60">
               Recepción, seguridad, limpieza y mantenimiento operan como una
               sola capa de servicio: discreta, constante y administrada desde el edificio.
             </p>
@@ -50,15 +50,15 @@ export default function Amenities() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-50" />
                     <div className="absolute inset-x-5 top-5 h-px origin-left scale-x-0 bg-bone/50 transition-transform duration-700 group-hover:scale-x-100" />
-                    <span className="eyebrow absolute bottom-5 left-5 text-[0.58rem] text-bone/80">
+                    <span className="eyebrow absolute bottom-5 left-5 text-[0.66rem] text-bone/80">
                       {a.meta}
                     </span>
                   </div>
                   <figcaption className="mt-5">
-                    <h3 className="display text-[1.5rem] text-bone">
+                    <h3 className="display text-[1.75rem] text-bone">
                       {a.title}
                     </h3>
-                    <p className="mt-2 max-w-md text-[0.88rem] leading-relaxed font-light text-bone/55">
+                    <p className="mt-2 max-w-md text-[0.95rem] leading-relaxed font-light text-bone/55">
                       {a.desc}
                     </p>
                   </figcaption>

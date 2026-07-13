@@ -81,7 +81,7 @@ export default function TowerExplorer() {
                       />
                       <span className="flex items-baseline gap-5">
                         <span
-                          className={`font-mono text-[0.7rem] tracking-[0.2em] transition-colors duration-300 ${
+                          className={`font-mono text-[0.76rem] tracking-[0.2em] transition-colors duration-300 ${
                             selected ? "text-carmine-soft" : "text-stone"
                           }`}
                         >
@@ -97,7 +97,7 @@ export default function TowerExplorer() {
                       </span>
                       <span className="flex shrink-0 items-center gap-2">
                         {hasFree(f) && (
-                          <span className="eyebrow hidden text-[0.55rem] text-carmine-soft md:inline">
+                          <span className="eyebrow hidden text-[0.64rem] text-carmine-soft md:inline">
                             Disponible
                           </span>
                         )}
@@ -109,7 +109,7 @@ export default function TowerExplorer() {
                 );
               })}
             </ul>
-            <p className="eyebrow mt-6 flex items-center gap-3 text-[0.58rem] text-stone">
+            <p className="eyebrow mt-6 flex items-center gap-3 text-[0.66rem] text-stone">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-carmine-soft" />
               Disponible
               <span className="ml-4 inline-block h-1.5 w-1.5 rounded-full bg-bone/25" />
@@ -167,11 +167,11 @@ export default function TowerExplorer() {
                                 : "border-line-faint"
                             }`}
                           >
-                            <p className="eyebrow text-[0.58rem] text-stone">
+                            <p className="eyebrow text-[0.66rem] text-stone">
                               Ala {k === "norte" ? "Norte" : "Sur"}
                             </p>
                             <p
-                              className={`mt-2 text-[0.9rem] font-light ${
+                              className={`mt-2 text-[0.95rem] font-light ${
                                 free ? "text-carmine-soft" : "text-bone/60"
                               }`}
                             >
@@ -186,7 +186,7 @@ export default function TowerExplorer() {
                       <a
                         href="#espacios"
                         onClick={() => requestSpace(active.spaceId!)}
-                        className="lux-sheen group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-8 py-4 text-[0.72rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
+                        className="lux-sheen group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-8 py-4 text-[0.78rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
                       >
                         <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
                         <span className="relative">Explorar este espacio</span>

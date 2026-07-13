@@ -9,11 +9,18 @@ import { EASE } from "./ui";
  * Breve (~2 s), se omite si el usuario prefiere menos movimiento.
  */
 export default function Preloader() {
+  const [leaving, setLeaving] = useState(false);
   const [done, setDone] = useState(false);
 
+  // Dos fases: el contenido se desvanece primero, luego la cortina
+  // sube con una curva suave, sin corte brusco.
   useEffect(() => {
-    const t = setTimeout(() => setDone(true), 1250);
-    return () => clearTimeout(t);
+    const t1 = setTimeout(() => setLeaving(true), 1150);
+    const t2 = setTimeout(() => setDone(true), 1500);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, []);
 
   return (
@@ -22,10 +29,15 @@ export default function Preloader() {
         <motion.div
           key="preloader"
           exit={{ y: "-100%" }}
-          transition={{ duration: 0.65, ease: EASE }}
+          transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
           className="preloader-failsafe pointer-events-none fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink"
           aria-hidden
         >
+          <motion.div
+            animate={leaving ? { opacity: 0, y: -18 } : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: EASE }}
+            className="flex flex-col items-center"
+          >
           <div className="overflow-hidden">
             <motion.div
               initial={{ y: "120%" }}
@@ -55,6 +67,7 @@ export default function Preloader() {
           >
             Edificio corporativo boutique
           </motion.p>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

@@ -61,8 +61,8 @@ body {
 /* Etiqueta arquitectónica: mono, mayúsculas, tracking amplio */
 .eyebrow {
   font-family: var(--font-mono), monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.32em;
+  font-size: 0.76rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   font-weight: 400;
 }
@@ -136,20 +136,29 @@ body {
     transparent
   );
 }
-.marquee-track {
-  animation: marquee 30s linear infinite;
+/* Cinta de doble pista: dos animaciones anidadas cuyas velocidades se
+   suman. Al hacer hover se pausa solo la pista interna, dejando la
+   externa: la cinta baja a ~25% de velocidad en vez de detenerse. */
+.mq-duo {
+  --mq: 30s;
+}
+.mq-duo .mq-outer {
+  display: flex;
+  width: max-content;
+  animation: marquee calc(var(--mq) * 4) linear infinite;
   will-change: transform;
 }
-.marquee-track-triple {
+.mq-duo .mq-inner {
+  display: flex;
+  width: max-content;
+  animation: marquee calc(var(--mq) * 1.3334) linear infinite;
+  will-change: transform;
+}
+.mq-duo.mq-triple .mq-outer,
+.mq-duo.mq-triple .mq-inner {
   animation-name: marqueeThird;
 }
-.marquee-track-fast {
-  animation-duration: 28s;
-}
-.marquee-track-slow {
-  animation-duration: 48s;
-}
-.marquee-track:hover {
+.mq-duo:hover .mq-inner {
   animation-play-state: paused;
 }
 

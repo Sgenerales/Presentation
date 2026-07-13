@@ -56,7 +56,7 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="link-lux cursor-pointer text-[0.8rem] font-light tracking-[0.14em] text-bone/65 uppercase transition-colors duration-300 hover:text-bone"
+              className="link-lux cursor-pointer text-[0.88rem] font-light tracking-[0.14em] text-bone/65 uppercase transition-colors duration-300 hover:text-bone"
             >
               {l.label}
             </a>
@@ -66,7 +66,7 @@ export default function Nav() {
         <div className="hidden lg:block">
           <a
             href="#contacto"
-            className="group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-7 py-3 text-[0.72rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
+            className="group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-7 py-3 text-[0.78rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
           >
             <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
             <span className="relative">Agendar visita</span>
@@ -118,7 +118,7 @@ export default function Nav() {
               <a
                 href="#contacto"
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-block cursor-pointer border border-carmine px-7 py-3 text-center text-[0.72rem] tracking-[0.22em] text-bone uppercase"
+                className="mt-2 inline-block cursor-pointer border border-carmine px-7 py-3 text-center text-[0.78rem] tracking-[0.22em] text-bone uppercase"
               >
                 Agendar visita
               </a>

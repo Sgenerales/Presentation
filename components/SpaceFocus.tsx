@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { A, SPACES, type Space } from "@/lib/tower";
 import { PlanP8, PlanTipo } from "./FloorPlans";
+import ProposalSet from "./ProposalSet";
 import Tour360, { type TourScene } from "./Tour360";
 import { EASE, Eyebrow, Img, Reveal } from "./ui";
 
@@ -81,7 +82,7 @@ export default function SpaceFocus() {
             </Reveal>
           </div>
           <Reveal delay={0.12}>
-            <p className="max-w-sm text-[0.95rem] leading-relaxed font-light text-stone-dark">
+            <p className="max-w-sm text-[1.02rem] leading-relaxed font-light text-stone-dark">
               Renders, planos y recorrido inmersivo para evaluar cada decisión
               con claridad antes de una visita privada.
             </p>
@@ -114,7 +115,7 @@ export default function SpaceFocus() {
                   }`}
                 >
                   <span
-                    className={`font-mono text-[0.62rem] tracking-[0.24em] uppercase ${
+                    className={`font-mono text-[0.7rem] tracking-[0.24em] uppercase ${
                       on ? "text-carmine-soft" : "text-stone"
                     }`}
                   >
@@ -154,7 +155,7 @@ export default function SpaceFocus() {
                   role="tab"
                   aria-selected={view === v}
                   onClick={() => setView(v)}
-                  className={`cursor-pointer border px-5 py-2.5 text-[0.66rem] tracking-[0.18em] uppercase transition-all duration-300 ${
+                  className={`cursor-pointer border px-5 py-2.5 text-[0.72rem] tracking-[0.18em] uppercase transition-all duration-300 ${
                     view === v
                       ? "border-ink bg-ink text-bone"
                       : "border-line text-stone-dark hover:border-ink/40"
@@ -191,7 +192,7 @@ export default function SpaceFocus() {
                           className="aspect-[16/10] w-full object-cover"
                         />
                       </motion.div>
-                      <span className="eyebrow absolute top-5 left-5 z-10 bg-ink/70 px-4 py-2 text-[0.58rem] text-bone backdrop-blur-sm">
+                      <span className="eyebrow absolute top-5 left-5 z-10 bg-ink/70 px-4 py-2 text-[0.66rem] text-bone backdrop-blur-sm">
                         {current.tag}
                       </span>
 
@@ -216,11 +217,11 @@ export default function SpaceFocus() {
                       )}
                     </div>
                     <figcaption className="mt-4 flex items-center justify-between gap-6">
-                      <span className="text-[0.9rem] font-light text-stone-dark italic">
+                      <span className="text-[0.95rem] font-light text-stone-dark italic">
                         {current.caption}
                       </span>
                       <span className="flex shrink-0 items-center gap-4">
-                        <span className="font-mono text-[0.62rem] tracking-[0.2em] text-stone tabular-nums">
+                        <span className="font-mono text-[0.7rem] tracking-[0.2em] text-stone tabular-nums">
                           {String(frame + 1).padStart(2, "0")} /{" "}
                           {String(total).padStart(2, "0")}
                         </span>
@@ -267,11 +268,11 @@ export default function SpaceFocus() {
                             preload={i === 0 ? "auto" : "metadata"}
                             className="aspect-video w-full object-cover"
                           />
-                          <span className="eyebrow pointer-events-none absolute top-5 left-5 z-10 bg-ink/70 px-4 py-2 text-[0.58rem] text-bone backdrop-blur-sm">
+                          <span className="eyebrow pointer-events-none absolute top-5 left-5 z-10 bg-ink/70 px-4 py-2 text-[0.66rem] text-bone backdrop-blur-sm">
                             Video render · {String(i + 1).padStart(2, "0")}
                           </span>
                         </div>
-                        <figcaption className="mt-3 text-[0.9rem] font-light text-stone-dark italic">
+                        <figcaption className="mt-3 text-[0.95rem] font-light text-stone-dark italic">
                           {v.caption}
                         </figcaption>
                       </figure>
@@ -282,7 +283,7 @@ export default function SpaceFocus() {
                 {view === "plano" && (
                   <figure>
                     <SpacePlan space={space} />
-                    <figcaption className="mt-4 text-[0.9rem] font-light text-stone-dark italic">
+                    <figcaption className="mt-4 text-[0.95rem] font-light text-stone-dark italic">
                       {space.plan.caption} — plano interactivo, pase el cursor
                       por los ambientes.
                     </figcaption>
@@ -292,7 +293,7 @@ export default function SpaceFocus() {
                 {view === "tour" && (
                   <figure>
                     <Tour360 scenes={tourScenes(space)} />
-                    <figcaption className="mt-4 text-[0.9rem] font-light text-stone-dark italic">
+                    <figcaption className="mt-4 text-[0.95rem] font-light text-stone-dark italic">
                       Recorrido inmersivo — arrastre para mirar alrededor,
                       rueda para acercar, esquina superior para pantalla
                       completa.
@@ -319,7 +320,7 @@ export default function SpaceFocus() {
                 <h3 className="display mt-5 text-[clamp(1.8rem,2.8vw,2.6rem)] leading-tight">
                   {space.headline}
                 </h3>
-                <p className="mt-6 text-[0.95rem] leading-relaxed font-light text-stone-dark">
+                <p className="mt-6 text-[1.02rem] leading-relaxed font-light text-stone-dark">
                   {space.description}
                 </p>
 
@@ -327,7 +328,7 @@ export default function SpaceFocus() {
                   {space.highlights.map((h) => (
                     <li
                       key={h}
-                      className="flex items-start gap-4 border-t border-line py-3.5 text-[0.88rem] font-light text-ink/80"
+                      className="flex items-start gap-4 border-t border-line py-3.5 text-[0.95rem] font-light text-ink/80"
                     >
                       <span className="mt-[0.55rem] h-px w-5 shrink-0 bg-carmine" />
                       {h}
@@ -343,10 +344,10 @@ export default function SpaceFocus() {
                     <div className="mt-4 grid grid-cols-2 gap-px border border-line bg-line">
                       {space.program.map((p) => (
                         <div key={p.name} className="bg-bone p-4">
-                          <p className="text-[0.8rem] font-medium text-ink">
+                          <p className="text-[0.88rem] font-medium text-ink">
                             {p.name}
                           </p>
-                          <p className="mt-1 text-[0.72rem] font-light text-stone-dark">
+                          <p className="mt-1 text-[0.78rem] font-light text-stone-dark">
                             {p.detail}
                           </p>
                         </div>
@@ -357,7 +358,7 @@ export default function SpaceFocus() {
 
                 <a
                   href="#contacto"
-                  className="lux-sheen group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-8 py-4 text-[0.72rem] tracking-[0.22em] text-bone uppercase"
+                  className="lux-sheen group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-8 py-4 text-[0.78rem] tracking-[0.22em] text-bone uppercase"
                 >
                   <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
                   <span className="relative">Consultar por este espacio</span>
@@ -366,6 +367,9 @@ export default function SpaceFocus() {
             </AnimatePresence>
           </div>
         </div>
+
+        {/* Propuesta integral LUMA - pisos 1 a 3 */}
+        <ProposalSet />
       </div>
     </section>
   );

@@ -254,12 +254,12 @@ export default function Tour360({
 
       {/* Etiquetas */}
       <div className="pointer-events-none absolute top-4 left-4 flex flex-col gap-1.5">
-        <span className="eyebrow w-fit bg-ink/70 px-3.5 py-2 text-[0.58rem] text-bone backdrop-blur-sm">
+        <span className="eyebrow w-fit bg-ink/70 px-3.5 py-2 text-[0.66rem] text-bone backdrop-blur-sm">
           {scene.type === "equirect" ? "Tour 360°" : "Vista inmersiva"} ·{" "}
           {scene.label}
         </span>
         {scene.note && (
-          <span className="w-fit bg-ink/60 px-3.5 py-1.5 font-mono text-[0.55rem] tracking-[0.14em] text-bone/55 uppercase backdrop-blur-sm">
+          <span className="w-fit bg-ink/60 px-3.5 py-1.5 font-mono text-[0.64rem] tracking-[0.14em] text-bone/55 uppercase backdrop-blur-sm">
             {scene.note}
           </span>
         )}
@@ -268,7 +268,7 @@ export default function Tour360({
       {/* Hint de arrastre */}
       {!interacted && !loading && (
         <div className="pointer-events-none absolute inset-x-0 bottom-16 flex justify-center">
-          <span className="flex items-center gap-3 bg-ink/70 px-5 py-2.5 font-mono text-[0.6rem] tracking-[0.22em] text-bone/85 uppercase backdrop-blur-sm">
+          <span className="flex items-center gap-3 bg-ink/70 px-5 py-2.5 font-mono text-[0.68rem] tracking-[0.22em] text-bone/85 uppercase backdrop-blur-sm">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
               <path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -305,7 +305,7 @@ export default function Tour360({
                 setInteracted(false);
               }}
               aria-pressed={i === safeSceneIdx}
-              className={`cursor-pointer border px-4 py-2 font-mono text-[0.56rem] tracking-[0.16em] uppercase backdrop-blur-sm transition-all duration-300 ${
+              className={`cursor-pointer border px-4 py-2 font-mono text-[0.65rem] tracking-[0.16em] uppercase backdrop-blur-sm transition-all duration-300 ${
                 i === safeSceneIdx
                   ? "border-carmine bg-ink/80 text-bone"
                   : "border-bone/20 bg-ink/55 text-bone/60 hover:text-bone"
