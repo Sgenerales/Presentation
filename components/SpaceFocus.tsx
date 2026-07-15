@@ -339,7 +339,7 @@ export default function SpaceFocus() {
                 {space.program && (
                   <div className="mt-10">
                     <p className="eyebrow text-stone">
-                      Programa propuesto — LUMA · Beyond Office
+                      Programa propuesto — llave en mano Milla Zero
                     </p>
                     <div className="mt-4 grid grid-cols-2 gap-px border border-line bg-line">
                       {space.program.map((p) => (
@@ -368,7 +368,7 @@ export default function SpaceFocus() {
           </div>
         </div>
 
-        {/* Propuesta integral LUMA - pisos 1 a 3 */}
+        {/* Propuesta integral de interiorismo - pisos 1 a 3 */}
         <ProposalSet />
       </div>
     </section>

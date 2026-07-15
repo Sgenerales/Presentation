@@ -6,7 +6,7 @@ import { PROPOSAL, type ProposalSheet } from "@/lib/tower";
 import { EASE, Eyebrow, Img, Reveal } from "./ui";
 
 /**
- * Propuesta integral LUMA (pisos 1–3): cuatro láminas, una sola propuesta.
+ * Propuesta integral de interiorismo (pisos 1–3): cuatro láminas, una sola propuesta.
  * Visor de láminas con tabs por planta y lightbox a pantalla completa.
  * Vive dentro de la sección Espacios como demostración del llave en mano.
  */

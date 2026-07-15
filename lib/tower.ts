@@ -224,7 +224,7 @@ export const SPACES: Space[] = [
     area: "183,17 m²",
     headline: "El último piso, con terraza propia.",
     description:
-      "Un módulo ejecutivo en el nivel más alto de la torre, con terraza exterior de uso exclusivo sobre la cubierta del séptimo piso. La propuesta de interiores de LUMA — recepción, gerencia general, sala de reuniones y área operativa — ilustra una implantación sobria, precisa y lista para representar a una dirección corporativa.",
+      "Un módulo ejecutivo en el nivel más alto de la torre, con terraza exterior de uso exclusivo sobre la cubierta del séptimo piso. La propuesta de interiores — recepción, gerencia general, sala de reuniones y área operativa — ilustra una implantación sobria, precisa y lista para representar a una dirección corporativa.",
     highlights: [
       "Terraza exterior de propiedad exclusiva",
       "Contiguo al futuro rooftop y cowork del edificio",
@@ -234,7 +234,7 @@ export const SPACES: Space[] = [
     renders: [
       {
         src: `${A}/render-p8-1.jpg`,
-        caption: "Recepción y espera — propuesta LUMA",
+        caption: "Recepción y espera — propuesta de interiores",
         tag: "Render 01",
       },
       {
@@ -258,7 +258,7 @@ export const SPACES: Space[] = [
     videos: [
       {
         src: `${A}/video-p8-1.mp4`,
-        caption: "Recorrido animado del módulo — propuesta LUMA",
+        caption: "Recorrido animado del módulo — propuesta de interiores",
         poster: `${A}/render-p8-1.jpg`,
       },
       {
@@ -401,7 +401,7 @@ export interface ProposalSheet {
 }
 
 /**
- * Propuesta integral de diseño LUMA (07.2026) para los pisos 1–3:
+ * Propuesta integral de diseño de interiores (07.2026) para los pisos 1–3:
  * cuatro láminas, una sola propuesta. Demuestra el alcance del servicio
  * llave en mano a escala multi-planta — no implica disponibilidad de
  * esos niveles.
@@ -410,10 +410,10 @@ export const PROPOSAL = {
   kicker: "Propuesta integral — llave en mano a escala",
   title: "Tres plantas, un solo trazo.",
   intro:
-    "Cuatro láminas y una sola propuesta: el estudio LUMA resolvió los pisos 1, 2 y 3 como una operación continua de más de 200 posiciones — dirección, directorio y plataformas operativas — con el mobiliario, la acústica y la iluminación definidos al detalle. El mismo estándar con el que se entrega cada espacio de Milla Zero.",
+    "Cuatro láminas y una sola propuesta: el estudio de interiorismo resolvió los pisos 1, 2 y 3 como una operación continua de más de 200 posiciones — dirección, directorio y plataformas operativas — con el mobiliario, la acústica y la iluminación definidos al detalle. El mismo estándar con el que se entrega cada espacio de Milla Zero.",
   note: "Propuesta de diseño · no implica disponibilidad de estos niveles",
   credit:
-    "LUMA · Beyond Office — Arq. Karen Castillo · Consultor: Arq. Mauricio Ardaya · 07.2026",
+    "Propuesta de interiorismo · llave en mano Milla Zero",
   sheets: [
     {
       id: "prop-p1",
