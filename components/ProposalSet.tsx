@@ -1,7 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useState, type WheelEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type PointerEvent,
+  type WheelEvent,
+} from "react";
 import { PROPOSAL, type ProposalSheet } from "@/lib/tower";
 import { EASE, Eyebrow, Img, Reveal } from "./ui";
 
@@ -14,6 +21,14 @@ export default function ProposalSet() {
   const [sheet, setSheet] = useState<ProposalSheet>(PROPOSAL.sheets[0]);
   const [zoom, setZoom] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragState = useRef<{
+    pointerId: number;
+    startX: number;
+    startY: number;
+    scrollLeft: number;
+    scrollTop: number;
+  } | null>(null);
 
   const closeZoom = useCallback(() => {
     setZoom(false);
@@ -33,6 +48,44 @@ export default function ProposalSet() {
     },
     [changeZoom],
   );
+
+  const handlePointerDown = useCallback(
+    (event: PointerEvent<HTMLDivElement>) => {
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
+
+      const canvas = event.currentTarget;
+      canvas.setPointerCapture(event.pointerId);
+      dragState.current = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        scrollLeft: canvas.scrollLeft,
+        scrollTop: canvas.scrollTop,
+      };
+      setIsDragging(true);
+    },
+    [],
+  );
+
+  const handlePointerMove = useCallback(
+    (event: PointerEvent<HTMLDivElement>) => {
+      const drag = dragState.current;
+      if (!drag || drag.pointerId !== event.pointerId) return;
+
+      event.currentTarget.scrollLeft = drag.scrollLeft - (event.clientX - drag.startX);
+      event.currentTarget.scrollTop = drag.scrollTop - (event.clientY - drag.startY);
+    },
+    [],
+  );
+
+  const finishDragging = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    if (dragState.current?.pointerId !== event.pointerId) return;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    dragState.current = null;
+    setIsDragging(false);
+  }, []);
 
   // Cerrar lightbox con ESC y bloquear el scroll del fondo
   useEffect(() => {
@@ -251,13 +304,20 @@ export default function ProposalSet() {
               <div
                 data-lenis-prevent
                 onWheel={handleCanvasWheel}
-                title="Use la rueda del mouse para acercar o alejar el plano"
-                className="flex min-h-0 flex-1 cursor-zoom-in items-center justify-center overflow-auto overscroll-contain bg-white p-2 touch-pan-x touch-pan-y md:p-4"
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={finishDragging}
+                onPointerCancel={finishDragging}
+                onDragStart={(event) => event.preventDefault()}
+                title="Use la rueda para hacer zoom y arrastre con clic izquierdo para recorrer el plano"
+                className={`flex min-h-0 flex-1 items-center justify-center overflow-auto overscroll-contain bg-white p-2 touch-pan-x touch-pan-y select-none md:p-4 ${
+                  isDragging ? "cursor-grabbing" : "cursor-grab"
+                }`}
               >
                 <Img
                   src={sheet.sheet}
                   alt={`Lámina ampliada — ${sheet.name}`}
-                  className="block shrink-0 object-contain"
+                  className="pointer-events-none block shrink-0 object-contain"
                   style={{
                     maxWidth: zoomLevel === 1 ? "100%" : "none",
                     maxHeight: zoomLevel === 1 ? "100%" : "none",
