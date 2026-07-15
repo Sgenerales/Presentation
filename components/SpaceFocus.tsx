@@ -336,26 +336,6 @@ export default function SpaceFocus() {
                   ))}
                 </ul>
 
-                {space.program && (
-                  <div className="mt-10">
-                    <p className="eyebrow text-stone">
-                      Programa propuesto — llave en mano Milla Zero
-                    </p>
-                    <div className="mt-4 grid grid-cols-2 gap-px border border-line bg-line">
-                      {space.program.map((p) => (
-                        <div key={p.name} className="bg-bone p-4">
-                          <p className="text-[0.88rem] font-medium text-ink">
-                            {p.name}
-                          </p>
-                          <p className="mt-1 text-[0.78rem] font-light text-stone-dark">
-                            {p.detail}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 <a
                   href="#contacto"
                   className="lux-sheen group relative mt-10 inline-flex cursor-pointer items-center gap-3 overflow-hidden bg-ink px-8 py-4 text-[0.78rem] tracking-[0.22em] text-bone uppercase"
@@ -367,6 +347,37 @@ export default function SpaceFocus() {
             </AnimatePresence>
           </div>
         </div>
+
+        {/* Programa propuesto — bloque de ancho completo, independiente de la ficha lateral */}
+        {space.program && (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={space.id + "-programa"}
+              data-reveal
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: EASE }}
+              className="mt-16 border-t border-line pt-12 md:mt-20 md:pt-14"
+            >
+              <p className="eyebrow text-stone">
+                Programa propuesto — llave en mano Milla Zero
+              </p>
+              <div className="mt-6 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 lg:grid-cols-6">
+                {space.program.map((p) => (
+                  <div key={p.name} className="bg-bone p-5">
+                    <p className="text-[0.88rem] font-medium text-ink">
+                      {p.name}
+                    </p>
+                    <p className="mt-1 text-[0.78rem] font-light text-stone-dark">
+                      {p.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        )}
 
         {/* Propuesta integral de interiorismo - pisos 1 a 3 */}
         <ProposalSet />

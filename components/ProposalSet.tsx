@@ -27,7 +27,7 @@ export default function ProposalSet() {
   }, [zoom]);
 
   return (
-    <div className="mt-28 border-t border-line pt-20 md:mt-36 md:pt-24">
+    <div className="mt-20 border-t border-line pt-16 md:mt-28 md:pt-20">
       <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
         <div>
           <Reveal>
