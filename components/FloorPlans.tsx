@@ -4,8 +4,8 @@ import { useState } from "react";
 
 /**
  * Planos vectoriales interactivos — reemplazan a los escaneos pixelados.
- * Redibujados a partir de los planos reales del edificio, con hover por
- * ambiente y lenguaje de lámina arquitectónica (grilla, norte, escala).
+ * Redibujados a partir de los planos reales del edificio, con exploración por
+ * cursor o toque y lenguaje de lámina arquitectónica (grilla, norte, escala).
  */
 
 const INK = "#0a0e18";
@@ -169,6 +169,16 @@ export function PlanP8() {
               key={r.id}
               onMouseEnter={() => setHover(r)}
               onMouseLeave={() => setHover(null)}
+              onClick={() => setHover(r)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  setHover(r);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={`${r.name}${r.meta ? `, ${r.meta}` : ""}`}
               style={{ cursor: "pointer" }}
             >
               <path
@@ -300,6 +310,16 @@ export function PlanTipo({
       <g
         onMouseEnter={() => setHover(id)}
         onMouseLeave={() => setHover(null)}
+        onClick={() => setHover(id)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setHover(id);
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label={`Ala ${id} — ${free ? "disponible" : "ocupada"}`}
         style={{ cursor: "pointer" }}
       >
         <rect
@@ -371,7 +391,7 @@ export function PlanTipo({
         ? `Ala Sur — ${sur === "libre" ? "disponible · llave en mano" : "ocupada"}`
         : hover === "core"
           ? "Núcleo central — ascensores, sanitarios y técnica fuera del área de oficina"
-          : "Planta tipo · Torre Mayor — pase el cursor por las alas";
+          : "Planta tipo · Torre Mayor — toque o pase el cursor por las alas";
 
   return (
     <Sheet title="Planta tipo · Torre Mayor" code="PT" legend={legend}>
@@ -384,6 +404,16 @@ export function PlanTipo({
       <g
         onMouseEnter={() => setHover("core")}
         onMouseLeave={() => setHover(null)}
+        onClick={() => setHover("core")}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setHover("core");
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label="Núcleo central: ascensores, sanitarios y técnica"
         style={{ cursor: "pointer" }}
       >
         <rect

@@ -267,12 +267,13 @@ export default function Tour360({
 
       {/* Hint de arrastre */}
       {!interacted && !loading && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-16 flex justify-center">
-          <span className="flex items-center gap-3 bg-ink/70 px-5 py-2.5 font-mono text-[0.68rem] tracking-[0.22em] text-bone/85 uppercase backdrop-blur-sm">
+        <div className="pointer-events-none absolute inset-x-0 bottom-20 flex justify-center px-4 sm:bottom-16">
+          <span className="flex items-center gap-3 bg-ink/70 px-4 py-2.5 font-mono text-[0.62rem] tracking-[0.14em] text-bone/85 uppercase backdrop-blur-sm sm:px-5 sm:text-[0.68rem] sm:tracking-[0.22em]">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
               <path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Arrastre para explorar · rueda para acercar
+            <span className="sm:hidden">Deslice para explorar</span>
+            <span className="hidden sm:inline">Arrastre para explorar · rueda para acercar</span>
           </span>
         </div>
       )}
@@ -296,7 +297,7 @@ export default function Tour360({
 
       {/* Selector de escenas */}
       {scenes.length > 1 && (
-        <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2 px-4">
+        <div className="absolute inset-x-0 bottom-4 flex flex-wrap justify-center gap-2 px-4">
           {scenes.map((s, i) => (
             <button
               key={s.src + i}
@@ -305,7 +306,7 @@ export default function Tour360({
                 setInteracted(false);
               }}
               aria-pressed={i === safeSceneIdx}
-              className={`cursor-pointer border px-4 py-2 font-mono text-[0.65rem] tracking-[0.16em] uppercase backdrop-blur-sm transition-all duration-300 ${
+              className={`min-h-11 cursor-pointer touch-manipulation border px-3 py-2 font-mono text-[0.6rem] tracking-[0.1em] uppercase backdrop-blur-sm transition-all duration-300 sm:px-4 sm:text-[0.65rem] sm:tracking-[0.16em] ${
                 i === safeSceneIdx
                   ? "border-carmine bg-ink/80 text-bone"
                   : "border-bone/20 bg-ink/55 text-bone/60 hover:text-bone"

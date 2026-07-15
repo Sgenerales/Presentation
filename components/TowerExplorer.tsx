@@ -119,7 +119,7 @@ export default function TowerExplorer() {
 
           {/* Panel de detalle */}
           <div className="relative lg:col-span-7">
-            <div className="sticky top-28">
+            <div className="lg:sticky lg:top-28">
               <AnimatePresence mode="wait">
                 <motion.div
                   data-reveal
@@ -154,14 +154,14 @@ export default function TowerExplorer() {
                       />
                     </div>
 
-                    <div className="mt-8 grid grid-cols-2 gap-6">
+                    <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-6">
                       {(["norte", "sur"] as const).map((k) => {
                         const side = active[k];
                         const free = side.status === "libre";
                         return (
                           <div
                             key={k}
-                            className={`border px-5 py-4 transition-colors ${
+                            className={`border px-4 py-4 transition-colors sm:px-5 ${
                               free
                                 ? "border-carmine/40 bg-carmine/[0.06]"
                                 : "border-line-faint"

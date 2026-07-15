@@ -31,8 +31,8 @@ export default function Nav() {
       transition={{ duration: 0.8, delay: 1.35, ease: EASE }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "border-b border-line-faint bg-ink/85 py-4 backdrop-blur-xl"
-          : "bg-transparent py-7"
+          ? "border-b border-line-faint bg-ink/85 py-3.5 backdrop-blur-xl md:py-4"
+          : "bg-transparent py-5 sm:py-7"
       }`}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 md:px-12">
@@ -42,10 +42,10 @@ export default function Nav() {
           className="flex items-baseline gap-2"
           aria-label="Milla Zero — inicio"
         >
-          <span className="font-sans text-lg font-light tracking-[0.18em] text-bone">
+          <span className="font-sans text-[0.94rem] font-light tracking-[0.18em] text-bone sm:text-lg">
             MILLA
           </span>
-          <span className="font-sans text-lg font-light tracking-[0.18em] text-carmine-soft">
+          <span className="font-sans text-[0.94rem] font-light tracking-[0.18em] text-carmine-soft sm:text-lg">
             ZERO
           </span>
         </a>
@@ -77,8 +77,9 @@ export default function Nav() {
         <button
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
+          aria-controls="menu-principal"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[7px] lg:hidden"
+          className="flex h-12 w-12 cursor-pointer touch-manipulation flex-col items-center justify-center gap-[7px] lg:hidden"
         >
           <motion.span
             animate={open ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
@@ -95,11 +96,12 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.nav
+            id="menu-principal"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.5, ease: EASE }}
-            className="overflow-hidden border-t border-line-faint bg-ink/95 backdrop-blur-xl lg:hidden"
+            className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-line-faint bg-ink/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-6 px-6 py-8">
               {LINKS.map((l, i) => (
@@ -110,7 +112,7 @@ export default function Nav() {
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.08 * i, duration: 0.5, ease: EASE }}
-                  className="display cursor-pointer text-3xl text-bone/85"
+                className="display block cursor-pointer py-1 text-3xl text-bone/85"
                 >
                   {l.label}
                 </motion.a>
@@ -118,7 +120,7 @@ export default function Nav() {
               <a
                 href="#contacto"
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-block cursor-pointer border border-carmine px-7 py-3 text-center text-[0.78rem] tracking-[0.22em] text-bone uppercase"
+                className="mt-2 inline-flex min-h-12 cursor-pointer items-center justify-center border border-carmine px-7 py-3 text-center text-[0.78rem] tracking-[0.22em] text-bone uppercase"
               >
                 Agendar visita
               </a>

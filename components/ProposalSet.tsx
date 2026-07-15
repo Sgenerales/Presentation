@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { PROPOSAL, type ProposalSheet } from "@/lib/tower";
 import { EASE, Eyebrow, Img, Reveal } from "./ui";
 
@@ -13,18 +13,35 @@ import { EASE, Eyebrow, Img, Reveal } from "./ui";
 export default function ProposalSet() {
   const [sheet, setSheet] = useState<ProposalSheet>(PROPOSAL.sheets[0]);
   const [zoom, setZoom] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
+
+  const closeZoom = useCallback(() => {
+    setZoom(false);
+    setZoomLevel(1);
+  }, []);
+
+  const changeZoom = useCallback((amount: number) => {
+    setZoomLevel((current) =>
+      Math.min(2.5, Math.max(1, Number((current + amount).toFixed(2)))),
+    );
+  }, []);
 
   // Cerrar lightbox con ESC y bloquear el scroll del fondo
   useEffect(() => {
     if (!zoom) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setZoom(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeZoom();
+      if (e.key === "+" || e.key === "=") changeZoom(0.25);
+      if (e.key === "-") changeZoom(-0.25);
+      if (e.key === "0") setZoomLevel(1);
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [zoom]);
+  }, [zoom, closeZoom, changeZoom]);
 
   return (
     <div className="mt-20 border-t border-line pt-16 md:mt-28 md:pt-20">
@@ -52,7 +69,7 @@ export default function ProposalSet() {
         <div
           role="tablist"
           aria-label="Láminas de la propuesta"
-          className="mt-12 flex flex-wrap gap-3"
+          className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:grid-cols-4"
         >
           {PROPOSAL.sheets.map((s) => {
             const on = s.id === sheet.id;
@@ -62,7 +79,7 @@ export default function ProposalSet() {
                 role="tab"
                 aria-selected={on}
                 onClick={() => setSheet(s)}
-                className={`cursor-pointer border px-5 py-3.5 text-left transition-all duration-300 ${
+                className={`min-h-18 w-full cursor-pointer touch-manipulation border px-4 py-3.5 text-left transition-all duration-300 sm:px-5 ${
                   on
                     ? "border-ink bg-ink text-bone"
                     : "border-line text-ink hover:border-ink/40"
@@ -99,7 +116,10 @@ export default function ProposalSet() {
             >
               <div className="group relative border border-line bg-white">
                 <button
-                  onClick={() => setZoom(true)}
+                  onClick={() => {
+                    setZoomLevel(1);
+                    setZoom(true);
+                  }}
                   aria-label={`Ampliar lámina ${sheet.name}`}
                   className="block w-full cursor-zoom-in"
                 >
@@ -112,7 +132,7 @@ export default function ProposalSet() {
                 <span className="pointer-events-none absolute top-4 left-4 bg-ink/75 px-4 py-2 font-mono text-[0.7rem] tracking-[0.2em] text-bone uppercase backdrop-blur-sm">
                   Diseño mobiliario · {sheet.code}
                 </span>
-                <span className="pointer-events-none absolute right-4 bottom-4 flex items-center gap-2 bg-ink/75 px-4 py-2 font-mono text-[0.7rem] tracking-[0.18em] text-bone/85 uppercase opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                <span className="pointer-events-none absolute right-4 bottom-4 flex items-center gap-2 bg-ink/75 px-4 py-2 font-mono text-[0.65rem] tracking-[0.14em] text-bone/85 uppercase opacity-100 backdrop-blur-sm transition-opacity duration-300 sm:text-[0.7rem] sm:tracking-[0.18em] sm:opacity-0 sm:group-hover:opacity-100">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -121,7 +141,7 @@ export default function ProposalSet() {
               </div>
               <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-3">
                 <span className="text-[1.02rem] font-light text-stone-dark italic">
-                  {sheet.role} — clic sobre la lámina para ampliarla.
+                  {sheet.role} — toque la lámina para ampliarla.
                 </span>
                 <span className="font-mono text-[0.7rem] tracking-[0.18em] text-stone uppercase">
                   {PROPOSAL.note}
@@ -174,7 +194,7 @@ export default function ProposalSet() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[95] flex items-center justify-center bg-ink/95 p-4 backdrop-blur-sm md:p-10"
-            onClick={() => setZoom(false)}
+            onClick={closeZoom}
             role="dialog"
             aria-modal="true"
             aria-label={`Lámina ampliada — ${sheet.name}`}
@@ -184,17 +204,61 @@ export default function ProposalSet() {
               animate={{ scale: 1 }}
               exit={{ scale: 0.97 }}
               transition={{ duration: 0.35, ease: EASE }}
-              className="max-h-full w-full max-w-[1600px] overflow-auto bg-white"
+              className="flex h-[calc(100dvh-2rem)] w-full max-w-[1600px] flex-col overflow-hidden bg-white shadow-2xl md:h-[calc(100dvh-5rem)]"
               onClick={(e) => e.stopPropagation()}
             >
-              <Img
-                src={sheet.sheet}
-                alt={`Lámina ampliada — ${sheet.name}`}
-                className="w-full"
-              />
+              <div className="flex shrink-0 items-center justify-between border-b border-line bg-bone px-3 py-2 text-ink md:px-4">
+                <p className="font-mono text-[0.65rem] tracking-[0.16em] uppercase">
+                  Zoom {Math.round(zoomLevel * 100)}%
+                </p>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => changeZoom(-0.25)}
+                    disabled={zoomLevel <= 1}
+                    aria-label="Alejar plano"
+                    className="flex h-11 min-w-11 cursor-pointer items-center justify-center border border-line px-3 text-lg transition-colors hover:border-ink disabled:cursor-not-allowed disabled:opacity-35"
+                  >
+                    −
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setZoomLevel(1)}
+                    aria-label="Ajustar plano a la pantalla"
+                    className="h-11 cursor-pointer border border-line px-3 font-mono text-[0.62rem] tracking-[0.12em] uppercase transition-colors hover:border-ink"
+                  >
+                    Ajustar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => changeZoom(0.25)}
+                    disabled={zoomLevel >= 2.5}
+                    aria-label="Acercar plano"
+                    className="flex h-11 min-w-11 cursor-pointer items-center justify-center border border-line px-3 text-lg transition-colors hover:border-ink disabled:cursor-not-allowed disabled:opacity-35"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div
+                data-lenis-prevent
+                className="flex min-h-0 flex-1 items-center justify-center overflow-auto overscroll-contain bg-white p-2 touch-pan-x touch-pan-y md:p-4"
+              >
+                <Img
+                  src={sheet.sheet}
+                  alt={`Lámina ampliada — ${sheet.name}`}
+                  className="block shrink-0 object-contain"
+                  style={{
+                    maxWidth: zoomLevel === 1 ? "100%" : "none",
+                    maxHeight: zoomLevel === 1 ? "100%" : "none",
+                    height: zoomLevel === 1 ? "auto" : `${zoomLevel * 100}%`,
+                    width: "auto",
+                  }}
+                />
+              </div>
             </motion.div>
             <button
-              onClick={() => setZoom(false)}
+              onClick={closeZoom}
               aria-label="Cerrar lámina"
               className="absolute top-5 right-5 flex h-12 w-12 cursor-pointer items-center justify-center border border-bone/25 bg-ink/80 text-bone transition-colors hover:border-carmine"
             >

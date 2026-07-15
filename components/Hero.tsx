@@ -19,7 +19,7 @@ export default function Hero() {
     <section
       id="inicio"
       ref={ref}
-      className="grain relative flex h-[100svh] min-h-[640px] flex-col justify-end overflow-hidden"
+      className="grain relative flex h-[100svh] min-h-[560px] flex-col justify-end overflow-hidden sm:min-h-[640px]"
     >
       {/* Imagen de fondo con Ken Burns + parallax */}
       <motion.div style={{ y: yImg }} className="absolute inset-0">
@@ -50,7 +50,7 @@ export default function Hero() {
       {/* Contenido */}
       <motion.div
         style={{ y: yText, opacity }}
-        className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-24 md:px-12 md:pb-28"
+        className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-16 sm:pb-24 md:px-12 md:pb-28"
       >
         <motion.p
           data-reveal
@@ -88,17 +88,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.9, duration: 0.8, ease: EASE }}
-          className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between"
+          className="mt-8 flex flex-col gap-8 sm:mt-10 md:flex-row md:items-end md:justify-between"
         >
           <p className="max-w-md text-[1.02rem] leading-relaxed font-light text-bone/70">
             Boutique, mono-propietario y 100% corporativo: la dirección desde
             la que las grandes compañías internacionales miden todo lo demás.
           </p>
 
-          <div className="flex items-center gap-8">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
             <a
               href="#espacios"
-              className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/30 px-8 py-4 text-[0.78rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
+              className="lux-sheen group relative inline-flex min-h-12 cursor-pointer touch-manipulation items-center gap-3 overflow-hidden border border-bone/30 px-6 py-4 text-[0.72rem] tracking-[0.18em] text-bone uppercase transition-colors duration-500 hover:border-carmine sm:px-8 sm:text-[0.78rem] sm:tracking-[0.22em]"
             >
               <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
               <span className="relative">Ver disponibilidad</span>

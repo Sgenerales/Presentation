@@ -94,7 +94,7 @@ export default function SpaceFocus() {
           <div
             role="tablist"
             aria-label="Espacios disponibles"
-            className="mt-14 flex flex-wrap gap-3"
+            className="mt-12 grid gap-3 sm:mt-14 sm:grid-cols-3"
           >
             {SPACES.map((s) => {
               const on = s.id === space.id;
@@ -108,7 +108,7 @@ export default function SpaceFocus() {
                     setView("renders");
                     setFrame(0);
                   }}
-                  className={`group cursor-pointer border px-6 py-4 text-left transition-all duration-300 ${
+                  className={`group min-h-20 w-full cursor-pointer touch-manipulation border px-5 py-4 text-left transition-all duration-300 sm:px-6 ${
                     on
                       ? "border-ink bg-ink text-bone"
                       : "border-line bg-transparent text-ink hover:border-ink/40"
@@ -136,7 +136,7 @@ export default function SpaceFocus() {
           <div className="relative lg:col-span-8">
             {/* Controles de vista */}
             <div
-              className="mb-5 flex gap-2"
+              className="mb-5 grid grid-cols-2 gap-2 sm:flex"
               role="tablist"
               aria-label="Modo de vista"
             >
@@ -155,7 +155,7 @@ export default function SpaceFocus() {
                   role="tab"
                   aria-selected={view === v}
                   onClick={() => setView(v)}
-                  className={`cursor-pointer border px-5 py-2.5 text-[0.72rem] tracking-[0.18em] uppercase transition-all duration-300 ${
+                  className={`min-h-11 cursor-pointer touch-manipulation border px-3 py-2.5 text-[0.66rem] tracking-[0.12em] uppercase transition-all duration-300 sm:px-5 sm:text-[0.72rem] sm:tracking-[0.18em] ${
                     view === v
                       ? "border-ink bg-ink text-bone"
                       : "border-line text-stone-dark hover:border-ink/40"
@@ -202,31 +202,31 @@ export default function SpaceFocus() {
                           <button
                             aria-label="Render anterior"
                             onClick={() => step(-1)}
-                            className="absolute top-1/2 left-4 z-10 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center bg-ink/60 text-bone/80 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 hover:bg-carmine hover:text-bone"
+                            className="absolute top-1/2 left-3 z-10 flex h-12 w-12 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center bg-ink/60 text-bone/80 opacity-100 backdrop-blur-sm transition-all duration-300 hover:bg-carmine hover:text-bone sm:left-4 md:opacity-0 md:group-hover:opacity-100"
                           >
                             ←
                           </button>
                           <button
                             aria-label="Render siguiente"
                             onClick={() => step(1)}
-                            className="absolute top-1/2 right-4 z-10 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center bg-ink/60 text-bone/80 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 hover:bg-carmine hover:text-bone"
+                            className="absolute top-1/2 right-3 z-10 flex h-12 w-12 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center bg-ink/60 text-bone/80 opacity-100 backdrop-blur-sm transition-all duration-300 hover:bg-carmine hover:text-bone sm:right-4 md:opacity-0 md:group-hover:opacity-100"
                           >
                             →
                           </button>
                         </>
                       )}
                     </div>
-                    <figcaption className="mt-4 flex items-center justify-between gap-6">
+                    <figcaption className="mt-4 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center sm:gap-6">
                       <span className="text-[0.95rem] font-light text-stone-dark italic">
                         {current.caption}
                       </span>
-                      <span className="flex shrink-0 items-center gap-4">
+                      <span className="flex w-full items-center justify-between gap-4 sm:w-auto sm:shrink-0">
                         <span className="font-mono text-[0.7rem] tracking-[0.2em] text-stone tabular-nums">
                           {String(frame + 1).padStart(2, "0")} /{" "}
                           {String(total).padStart(2, "0")}
                         </span>
                         {total > 1 && (
-                          <span className="flex items-center gap-2">
+                          <span className="flex max-w-[calc(100vw-3rem)] items-center gap-2 overflow-x-auto pb-1 sm:max-w-none sm:overflow-visible sm:pb-0">
                             {space.renders.map((r, i) => (
                               <button
                                 key={r.src + i}
@@ -284,8 +284,8 @@ export default function SpaceFocus() {
                   <figure>
                     <SpacePlan space={space} />
                     <figcaption className="mt-4 text-[0.95rem] font-light text-stone-dark italic">
-                      {space.plan.caption} — plano interactivo, pase el cursor
-                      por los ambientes.
+                      {space.plan.caption} — plano interactivo, toque o pase el
+                      cursor por los ambientes.
                     </figcaption>
                   </figure>
                 )}
@@ -294,9 +294,8 @@ export default function SpaceFocus() {
                   <figure>
                     <Tour360 scenes={tourScenes(space)} />
                     <figcaption className="mt-4 text-[0.95rem] font-light text-stone-dark italic">
-                      Recorrido inmersivo — arrastre para mirar alrededor,
-                      rueda para acercar, esquina superior para pantalla
-                      completa.
+                      Recorrido inmersivo — arrastre o deslice para mirar
+                      alrededor; use los controles para acercar o ampliar.
                     </figcaption>
                   </figure>
                 )}
@@ -365,7 +364,7 @@ export default function SpaceFocus() {
               </p>
               <div className="mt-6 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 lg:grid-cols-6">
                 {space.program.map((p) => (
-                  <div key={p.name} className="bg-bone p-5">
+                  <div key={p.name} className="bg-bone p-4 sm:p-5">
                     <p className="text-[0.88rem] font-medium text-ink">
                       {p.name}
                     </p>
