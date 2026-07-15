@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type WheelEvent } from "react";
 import { PROPOSAL, type ProposalSheet } from "@/lib/tower";
 import { EASE, Eyebrow, Img, Reveal } from "./ui";
 
@@ -25,6 +25,14 @@ export default function ProposalSet() {
       Math.min(2.5, Math.max(1, Number((current + amount).toFixed(2)))),
     );
   }, []);
+
+  const handleCanvasWheel = useCallback(
+    (event: WheelEvent<HTMLDivElement>) => {
+      event.preventDefault();
+      changeZoom(event.deltaY < 0 ? 0.15 : -0.15);
+    },
+    [changeZoom],
+  );
 
   // Cerrar lightbox con ESC y bloquear el scroll del fondo
   useEffect(() => {
@@ -242,7 +250,9 @@ export default function ProposalSet() {
               </div>
               <div
                 data-lenis-prevent
-                className="flex min-h-0 flex-1 items-center justify-center overflow-auto overscroll-contain bg-white p-2 touch-pan-x touch-pan-y md:p-4"
+                onWheel={handleCanvasWheel}
+                title="Use la rueda del mouse para acercar o alejar el plano"
+                className="flex min-h-0 flex-1 cursor-zoom-in items-center justify-center overflow-auto overscroll-contain bg-white p-2 touch-pan-x touch-pan-y md:p-4"
               >
                 <Img
                   src={sheet.sheet}
