@@ -182,7 +182,7 @@ function PlanSlide({
   return (
     <div className="relative h-full w-full overflow-hidden bg-[#faf8f3] text-ink">
       <SheetTicks tone="dark" />
-      <div className="relative z-10 grid h-full grid-cols-1 gap-8 overflow-y-auto px-8 pt-16 pb-24 md:px-14 lg:grid-cols-12 lg:items-center lg:gap-12 lg:overflow-visible lg:pt-20">
+      <div data-deck-scroll className="relative z-10 grid h-full grid-cols-1 gap-8 overflow-y-auto overscroll-contain px-8 pt-20 pb-28 md:px-14 lg:grid-cols-12 lg:items-center lg:gap-12 lg:overflow-visible lg:pt-20">
         <motion.div
           initial={{ opacity: 0, y: 24, scale: 0.99 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -279,10 +279,11 @@ function ContextSlide({
           className="kenburns-slow h-full w-full object-cover"
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-ink/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/35 to-ink/45" />
+      <div className="absolute inset-x-0 bottom-0 h-[72%] bg-gradient-to-t from-ink via-ink/85 to-transparent" />
       <SheetTicks />
 
-      <div className="absolute inset-x-0 bottom-0 z-10 px-8 pb-24 md:px-16">
+      <div data-deck-scroll className="absolute inset-x-0 bottom-0 z-10 max-h-full overflow-y-auto overscroll-contain px-6 pt-24 pb-28 sm:px-8 md:px-16 md:pb-28">
         <motion.div {...stag(0, 0.2)}>
           <Kicker tone="carmine">{kicker}</Kicker>
         </motion.div>
@@ -292,12 +293,12 @@ function ContextSlide({
         >
           {title} <em className="display-italic">{titleItalic}</em>
         </motion.h2>
-        <div className="mt-7 flex flex-wrap gap-2.5">
+        <div className="mt-6 flex max-w-5xl flex-wrap gap-2.5">
           {chips.map((c, i) => (
             <motion.span
               key={c}
               {...stag(i, 0.45)}
-              className="border border-bone/20 bg-ink/40 px-4 py-2 font-mono text-[0.62rem] tracking-[0.18em] text-bone/80 uppercase backdrop-blur-sm"
+              className="border border-bone/30 bg-ink/80 px-3.5 py-2.5 font-mono text-[0.66rem] tracking-[0.14em] text-bone/90 uppercase shadow-[0_8px_30px_rgba(0,0,0,0.22)] backdrop-blur-md sm:px-4 sm:tracking-[0.18em]"
             >
               {c}
             </motion.span>
@@ -306,7 +307,7 @@ function ContextSlide({
         {note && (
           <motion.p
             {...stag(5, 0.6)}
-            className="mt-5 font-mono text-[0.6rem] tracking-[0.2em] text-bone/40 uppercase"
+            className="mt-4 font-mono text-[0.62rem] tracking-[0.16em] text-bone/85 uppercase sm:mt-5 sm:tracking-[0.2em]"
           >
             {note}
           </motion.p>
@@ -460,7 +461,7 @@ export default function NivelesDeck() {
           titleItalic="en el nivel más alto."
           plan={<PlanP8 />}
           program={P8.program}
-          legend="Pase el cursor por los ambientes del plano"
+          legend="Toque o pase el cursor por los ambientes del plano"
         />
       ),
     },
@@ -519,7 +520,7 @@ export default function NivelesDeck() {
           titleItalic="libres."
           plan={<PlanTipo norte="libre" sur="libre" focus="ambas" />}
           highlights={P7.highlights}
-          legend="Pase el cursor por las alas y el núcleo"
+          legend="Toque o pase el cursor por las alas y el núcleo"
         />
       ),
     },
@@ -547,7 +548,7 @@ export default function NivelesDeck() {
     {
       id: "cierre",
       chapter: "Cierre",
-      title: "Agendar visita privada",
+      title: "Visita privada",
       content: (
         <ClosingSlide
           title="Los últimos niveles"

@@ -69,7 +69,7 @@ export default function Exclusives() {
                   >
                     {x.title}
                   </h3>
-                  <p className="col-span-10 col-start-3 text-[0.95rem] leading-relaxed font-light text-bone/55 md:col-span-6 md:col-start-7">
+                  <p className="col-span-10 col-start-3 text-[0.95rem] leading-relaxed font-light text-bone/70 md:col-span-6 md:col-start-7">
                     {x.desc}
                   </p>
                 </div>
@@ -142,7 +142,7 @@ export default function Exclusives() {
                   <span className="display block text-[clamp(3.4rem,7vw,6.5rem)] leading-none text-bone">
                     &lt;3<span className="display-italic text-carmine-soft"> min</span>
                   </span>
-                  <p className="mt-3 text-[0.95rem] font-light text-bone/55 lg:ml-auto lg:max-w-[260px]">
+                  <p className="mt-3 text-[0.95rem] font-light text-bone/70 lg:ml-auto lg:max-w-[260px]">
                     Desde que estaciona hasta que está sentado en su
                     escritorio. Sin calle, sin filas, sin fricción.
                   </p>

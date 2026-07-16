@@ -47,7 +47,7 @@ function FloorShowcase({
         {numeral}
       </GhostNum>
 
-      <div className="relative z-10 grid h-full grid-cols-1 gap-6 px-8 pt-16 pb-24 md:px-14 lg:grid-cols-12 lg:gap-12 lg:pt-20">
+      <div data-deck-scroll className="relative z-10 grid h-full grid-cols-1 gap-6 overflow-y-auto overscroll-contain px-8 pt-20 pb-28 md:px-14 lg:grid-cols-12 lg:gap-12 lg:pt-20">
         {/* Ficha */}
         <div className="flex min-h-0 flex-col justify-center lg:col-span-4">
           <motion.div {...stag(0, 0.15)}>
@@ -86,14 +86,14 @@ function FloorShowcase({
 
           <motion.p
             {...stag(5, 0.6)}
-            className="mt-8 font-mono text-[0.62rem] tracking-[0.2em] text-stone uppercase"
+            className="mt-8 font-mono text-[0.62rem] tracking-[0.2em] text-stone-dark uppercase"
           >
             {PROPOSAL.note}
           </motion.p>
         </div>
 
         {/* Visual: render ⇄ lámina */}
-        <div className="flex min-h-0 flex-col lg:col-span-8">
+        <div className="flex min-h-[320px] flex-col lg:col-span-8 lg:min-h-0">
           <motion.div
             {...stag(1, 0.3)}
             role="tablist"
@@ -111,7 +111,7 @@ function FloorShowcase({
                 role="tab"
                 aria-selected={view === v}
                 onClick={() => setView(v)}
-                className={`cursor-pointer border px-4 py-2 font-mono text-[0.62rem] tracking-[0.2em] uppercase transition-all duration-300 md:px-5 md:py-2.5 ${
+                className={`min-h-11 cursor-pointer border px-4 py-2 font-mono text-[0.62rem] tracking-[0.16em] uppercase transition-all duration-300 md:px-5 md:py-2.5 md:tracking-[0.2em] ${
                   view === v
                     ? "border-ink bg-ink text-bone"
                     : "border-line text-stone-dark hover:border-ink/40"
@@ -149,7 +149,7 @@ function FloorShowcase({
                     className="absolute inset-0 h-full w-full object-contain p-2 md:p-3"
                   />
                 </div>
-                <figcaption className="mt-3 flex items-center justify-between gap-4 font-mono text-[0.6rem] tracking-[0.18em] text-stone uppercase md:text-[0.66rem]">
+                <figcaption className="mt-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[0.6rem] tracking-[0.16em] text-stone-dark uppercase md:gap-4 md:text-[0.66rem] md:tracking-[0.18em]">
                   <span>
                     {view === "render"
                       ? "Vista cenital foto-realista · mobiliario según propuesta"
@@ -179,7 +179,7 @@ function IntroSlide() {
   return (
     <div className="grain relative h-full w-full overflow-hidden bg-ink">
       <SheetTicks />
-      <div className="relative z-10 grid h-full grid-cols-1 gap-10 px-8 pt-20 pb-24 md:px-16 lg:grid-cols-12 lg:items-center">
+      <div data-deck-scroll className="relative z-10 grid h-full grid-cols-1 gap-10 overflow-y-auto overscroll-contain px-8 pt-24 pb-28 md:px-16 lg:grid-cols-12 lg:items-center lg:pt-20">
         <div className="lg:col-span-6">
           <motion.div {...stag(0, 0.15)}>
             <Kicker tone="carmine">01 — El encargo</Kicker>
@@ -207,7 +207,7 @@ function IntroSlide() {
                   {s.value}
                 </p>
                 <div className="mt-2 h-px w-full bg-gradient-to-r from-carmine/70 to-transparent" />
-                <p className="mt-2.5 font-mono text-[0.62rem] tracking-[0.24em] text-bone/45 uppercase md:text-[0.68rem]">
+                <p className="mt-2.5 font-mono text-[0.62rem] tracking-[0.2em] text-bone/70 uppercase md:text-[0.68rem] md:tracking-[0.24em]">
                   {s.label}
                 </p>
               </motion.div>
@@ -216,7 +216,7 @@ function IntroSlide() {
 
           {/* Recorrido */}
           <motion.div {...stag(4, 0.75)} className="mt-12">
-            <p className="font-mono text-[0.62rem] tracking-[0.26em] text-bone/40 uppercase">
+            <p className="font-mono text-[0.62rem] tracking-[0.26em] text-bone/65 uppercase">
               El recorrido
             </p>
             <div className="mt-4 grid grid-cols-4 gap-2.5">
@@ -229,7 +229,7 @@ function IntroSlide() {
                       className="h-full w-full object-cover"
                     />
                   </div>
-                  <figcaption className="mt-1.5 font-mono text-[0.58rem] tracking-[0.18em] text-bone/50 uppercase">
+                  <figcaption className="mt-1.5 font-mono text-[0.58rem] tracking-[0.18em] text-bone/70 uppercase">
                     {s.code}
                   </figcaption>
                 </figure>
@@ -247,7 +247,7 @@ function SynthesisSlide() {
   return (
     <div className="grain relative h-full w-full overflow-hidden bg-ink">
       <SheetTicks />
-      <div className="relative z-10 flex h-full flex-col px-8 pt-16 pb-24 md:px-16 lg:pt-20">
+      <div data-deck-scroll className="relative z-10 flex h-full flex-col overflow-y-auto overscroll-contain px-8 pt-20 pb-28 md:px-16 lg:pt-20">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <motion.div {...stag(0, 0.15)}>
@@ -265,7 +265,7 @@ function SynthesisSlide() {
           </motion.div>
         </div>
 
-        <div className="mt-8 grid min-h-0 flex-1 grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4">
+        <div className="mt-8 grid min-h-[360px] flex-1 grid-cols-2 gap-4 md:gap-5 lg:min-h-0 lg:grid-cols-4">
           {SHEETS.map((s, i) => (
             <motion.figure
               key={s.id}
@@ -337,7 +337,7 @@ export default function PropuestaDeck() {
     {
       id: "cierre",
       chapter: "Cierre",
-      title: "Agendar visita privada",
+      title: "Visita privada",
       content: (
         <ClosingSlide
           title="Listo para"

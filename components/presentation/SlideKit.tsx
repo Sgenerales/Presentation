@@ -53,7 +53,7 @@ export function Kicker({
       ? "text-carmine-soft"
       : tone === "dark"
         ? "text-stone-dark"
-        : "text-bone/55";
+        : "text-bone/75";
   return (
     <div className={`flex items-center gap-4 ${color} ${className}`}>
       <span className="hairline w-9 shrink-0" style={{ opacity: 0.6 }} />
@@ -74,7 +74,7 @@ export function MetaRow({
   tone?: "light" | "dark";
   className?: string;
 }) {
-  const color = tone === "light" ? "text-bone/45" : "text-stone";
+  const color = tone === "light" ? "text-bone/70" : "text-stone-dark";
   return (
     <div
       className={`flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.62rem] tracking-[0.22em] uppercase md:text-[0.7rem] ${color} ${className}`}
@@ -193,7 +193,7 @@ export function CoverSlide({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
-            className="shrink-0 font-mono text-[0.62rem] tracking-[0.2em] text-bone/35 uppercase md:text-[0.66rem]"
+            className="shrink-0 font-mono text-[0.62rem] tracking-[0.18em] text-bone/65 uppercase md:text-[0.66rem] md:tracking-[0.2em]"
           >
             {hint}
           </motion.p>
@@ -266,7 +266,7 @@ export function ChapterSlide({
         <div className="mt-14 flex max-w-3xl flex-wrap gap-x-14 gap-y-8">
           {facts.map((f, i) => (
             <motion.div key={f.label} {...stag(i, 0.55)}>
-              <p className="font-mono text-[0.62rem] tracking-[0.26em] text-bone/40 uppercase md:text-[0.68rem]">
+              <p className="font-mono text-[0.62rem] tracking-[0.24em] text-bone/65 uppercase md:text-[0.68rem] md:tracking-[0.26em]">
                 {f.label}
               </p>
               <p className="display mt-2 text-[clamp(1.5rem,2.6vw,2.4rem)] text-bone">
@@ -293,7 +293,7 @@ export function ClosingSlide({
   siblingLabel: string;
 }) {
   return (
-    <div className="grain relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-ink px-8 text-center">
+    <div data-deck-scroll className="grain relative flex h-full w-full flex-col items-center justify-start overflow-y-auto overscroll-contain bg-ink px-8 pt-24 pb-28 text-center [@media(min-height:700px)]:justify-center [@media(min-height:700px)]:py-16">
       <motion.div {...stag(0, 0.2)}>
         <Kicker className="justify-center">Milla Zero — Sala privada</Kicker>
       </motion.div>
@@ -310,30 +310,30 @@ export function ClosingSlide({
           className="lux-sheen group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-10 py-5 font-mono text-[0.74rem] tracking-[0.26em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
         >
           <span className="absolute inset-0 -translate-x-full bg-carmine transition-transform duration-500 ease-out group-hover:translate-x-0" />
-          <span className="relative">Agendar visita privada</span>
+          <span className="relative">Conocer Milla Zero</span>
         </Link>
       </motion.div>
 
       <motion.div {...stag(3, 0.65)} className="mt-12">
         <MetaRow
           className="justify-center"
-          items={[CONTACT.email, CONTACT.phone, CONTACT.city]}
+          items={[CONTACT.descriptor, CONTACT.city]}
         />
       </motion.div>
 
       <motion.div
         {...stag(4, 0.8)}
-        className="mt-16 flex items-center gap-10 font-mono text-[0.66rem] tracking-[0.22em] uppercase"
+        className="mt-10 flex flex-col items-center gap-5 font-mono text-[0.66rem] tracking-[0.18em] uppercase sm:mt-14 sm:flex-row sm:gap-10 sm:tracking-[0.22em]"
       >
         <Link
           href={siblingHref}
-          className="link-lux cursor-pointer text-bone/55 transition-colors hover:text-bone"
+          className="link-lux cursor-pointer text-bone/75 transition-colors hover:text-bone"
         >
           {siblingLabel} →
         </Link>
         <Link
           href="/presentacion"
-          className="link-lux cursor-pointer text-bone/55 transition-colors hover:text-bone"
+          className="link-lux cursor-pointer text-bone/75 transition-colors hover:text-bone"
         >
           Índice de presentaciones
         </Link>

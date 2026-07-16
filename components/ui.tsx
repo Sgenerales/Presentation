@@ -52,15 +52,17 @@ export function RevealLines({
   lineClassName?: string;
   delay?: number;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+
   return (
-    <div className={className}>
+    <div ref={ref} className={className}>
       {lines.map((line, i) => (
         <div key={i} className="overflow-hidden">
           <motion.div
             data-reveal
             initial={{ y: "110%" }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
+            animate={inView ? { y: 0 } : { y: "110%" }}
             transition={{ duration: 0.85, delay: delay + i * 0.09, ease: EASE }}
             className={lineClassName}
           >

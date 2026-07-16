@@ -33,7 +33,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Scrims cinematográficos */}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-ink/45" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-ink/50" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-transparent to-transparent" />
 
       {/* Coordenadas verticales — detalle arquitectónico */}
@@ -57,7 +57,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.8, ease: EASE }}
-          className="eyebrow mb-8 text-bone/70"
+          className="eyebrow mb-8 text-bone/82"
         >
           Edificio corporativo boutique · Equipetrol Norte · Santa Cruz
         </motion.p>
@@ -90,7 +90,7 @@ export default function Hero() {
           transition={{ delay: 1.9, duration: 0.8, ease: EASE }}
           className="mt-8 flex flex-col gap-8 sm:mt-10 md:flex-row md:items-end md:justify-between"
         >
-          <p className="max-w-md text-[1.02rem] leading-relaxed font-light text-bone/70">
+          <p className="max-w-md text-[1.02rem] leading-relaxed font-light text-bone/85">
             Boutique, mono-propietario y 100% corporativo: la dirección desde
             la que las grandes compañías internacionales miden todo lo demás.
           </p>
@@ -105,7 +105,7 @@ export default function Hero() {
             </a>
             <a
               href="#torre"
-              className="link-lux hidden cursor-pointer text-[0.78rem] tracking-[0.22em] text-bone/60 uppercase transition-colors hover:text-bone md:inline"
+              className="link-lux hidden cursor-pointer text-[0.78rem] tracking-[0.22em] text-bone/75 uppercase transition-colors hover:text-bone md:inline"
             >
               Explorar la torre
             </a>

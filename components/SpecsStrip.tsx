@@ -7,7 +7,7 @@ export default function SpecsStrip() {
   const renderRow = (copy: string) =>
     SPECS.map((s, i) => (
       <span key={`${copy}-${i}`} className="flex shrink-0 items-center gap-10 pr-10">
-        <span className="font-mono text-[0.74rem] tracking-[0.18em] whitespace-nowrap text-bone/55 uppercase">
+        <span className="font-mono text-[0.74rem] tracking-[0.18em] whitespace-nowrap text-bone/72 uppercase">
           {s}
         </span>
         <span className="jewel-pulse h-1 w-1 shrink-0 rotate-45 bg-carmine/70" />

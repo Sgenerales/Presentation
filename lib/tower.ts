@@ -9,9 +9,7 @@
 export const A = "/assets";
 
 export const CONTACT = {
-  // TODO: confirmar datos de contacto comercial definitivos
-  email: "contacto@estropical.com",
-  phone: "+591 (3) 000-0000",
+  descriptor: "Centro Empresarial",
   address: "Calle Tropical esq. Av. Las Ramblas #100, Equipetrol Norte",
   city: "Santa Cruz de la Sierra, Bolivia",
   mapsUrl: "https://maps.app.goo.gl/efP9smtL85Ryb1BJ9",

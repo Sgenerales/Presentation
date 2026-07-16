@@ -53,7 +53,7 @@ export default function Selector() {
   }, [router]);
 
   return (
-    <main className="grain relative flex h-dvh flex-col overflow-hidden bg-ink text-bone">
+    <main className="grain relative flex min-h-dvh flex-col overflow-x-hidden bg-ink text-bone">
       <SheetTicks />
 
       {/* Cabecera */}
@@ -68,7 +68,7 @@ export default function Selector() {
         </Link>
         <Link
           href="/"
-          className="link-lux cursor-pointer font-mono text-[0.64rem] tracking-[0.22em] text-bone/50 uppercase transition-colors hover:text-bone"
+          className="link-lux flex min-h-11 cursor-pointer items-center font-mono text-[0.64rem] tracking-[0.2em] text-bone/75 uppercase transition-colors hover:text-bone md:tracking-[0.22em]"
         >
           ← Volver al sitio
         </Link>
@@ -82,7 +82,7 @@ export default function Selector() {
       </motion.div>
 
       {/* Dossiers */}
-      <div className="relative z-10 mt-8 flex min-h-0 flex-1 flex-col gap-px border-t border-line-faint md:mt-10 md:flex-row">
+      <div className="relative z-10 mt-8 flex min-h-[580px] flex-1 flex-col gap-px border-t border-line-faint md:mt-10 md:min-h-[420px] md:flex-row">
         {DOSSIERS.map((d, i) => (
           <motion.div
             key={d.href}
@@ -91,7 +91,7 @@ export default function Selector() {
             transition={{ duration: 0.85, delay: 0.35 + i * 0.14, ease: EASE }}
             onMouseEnter={() => setHover(i)}
             onMouseLeave={() => setHover(null)}
-            className="relative min-h-0 flex-1 transition-all duration-700"
+            className="relative min-h-[290px] flex-1 transition-all duration-700 md:min-h-0"
             style={{ flexGrow: hover === i ? 1.35 : 1 }}
           >
             <Link
@@ -119,7 +119,7 @@ export default function Selector() {
                   <p className="font-mono text-[0.62rem] tracking-[0.26em] text-carmine-soft uppercase">
                     {d.code}
                   </p>
-                  <p className="hidden font-mono text-[0.62rem] tracking-[0.22em] text-bone/35 uppercase md:block">
+                  <p className="hidden font-mono text-[0.62rem] tracking-[0.22em] text-bone/60 uppercase md:block">
                     Tecla {d.key}
                   </p>
                 </div>
@@ -127,7 +127,7 @@ export default function Selector() {
                   {d.title}{" "}
                   <em className="display-italic">{d.titleItalic}</em>
                 </h2>
-                <p className="mt-4 max-w-md text-[0.98rem] leading-relaxed font-light text-bone/60">
+                <p className="mt-4 max-w-md text-[0.98rem] leading-relaxed font-light text-bone/78">
                   {d.desc}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
@@ -147,10 +147,10 @@ export default function Selector() {
 
       {/* Pie */}
       <footer className="relative z-10 flex items-center justify-between px-8 py-5 md:px-14">
-        <p className="font-mono text-[0.6rem] tracking-[0.2em] text-bone/30 uppercase">
+        <p className="font-mono text-[0.6rem] tracking-[0.18em] text-bone/55 uppercase md:tracking-[0.2em]">
           Documento privado · Milla Zero
         </p>
-        <p className="hidden font-mono text-[0.6rem] tracking-[0.2em] text-bone/30 uppercase md:block">
+        <p className="hidden font-mono text-[0.6rem] tracking-[0.2em] text-bone/55 uppercase md:block">
           En la presentación: ← → navegar · F pantalla completa · I índice
         </p>
       </footer>

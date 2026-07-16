@@ -22,7 +22,7 @@ export default function Amenities() {
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="max-w-sm text-[1.02rem] leading-relaxed font-light text-bone/60">
+            <p className="max-w-sm text-[1.02rem] leading-relaxed font-light text-bone/72">
               Recepción, seguridad, limpieza y mantenimiento operan como una
               sola capa de servicio: discreta, constante y administrada desde el edificio.
             </p>
@@ -58,7 +58,7 @@ export default function Amenities() {
                     <h3 className="display text-[1.75rem] text-bone">
                       {a.title}
                     </h3>
-                    <p className="mt-2 max-w-md text-[0.95rem] leading-relaxed font-light text-bone/55">
+                    <p className="mt-2 max-w-md text-[0.95rem] leading-relaxed font-light text-bone/70">
                       {a.desc}
                     </p>
                   </figcaption>

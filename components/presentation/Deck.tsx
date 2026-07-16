@@ -46,7 +46,11 @@ export default function Deck({
   const [showIndex, setShowIndex] = useState(false);
   const [chrome, setChrome] = useState(true);
   const wheelLock = useRef(0);
+  const wheelIntent = useRef({ delta: 0, at: 0 });
   const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const indexTriggerRef = useRef<HTMLButtonElement>(null);
+  const indexCloseRef = useRef<HTMLButtonElement>(null);
+  const indexWasOpen = useRef(false);
 
   const goTo = useCallback(
     (i: number) => {
@@ -93,6 +97,13 @@ export default function Deck({
   // Teclado
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (showIndex) {
+        if (e.key === "Escape" || e.key.toLowerCase() === "i") {
+          e.preventDefault();
+          setShowIndex(false);
+        }
+        return;
+      }
       if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " " || e.key === "PageDown") {
         e.preventDefault();
         next();
@@ -113,7 +124,17 @@ export default function Deck({
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [next, prev, goTo, total, toggleFullscreen]);
+  }, [next, prev, goTo, total, toggleFullscreen, showIndex]);
+
+  useEffect(() => {
+    if (showIndex) {
+      indexWasOpen.current = true;
+      indexCloseRef.current?.focus();
+    } else if (indexWasOpen.current) {
+      indexWasOpen.current = false;
+      indexTriggerRef.current?.focus({ preventScroll: true });
+    }
+  }, [showIndex]);
 
   // Chrome auto-ocultable
   useEffect(() => {
@@ -145,16 +166,36 @@ export default function Deck({
   }, []);
 
   const onWheel = (e: React.WheelEvent) => {
+    const target = e.target as HTMLElement;
     if (showIndex) return;
-    // Ignora el ruido leve del trackpad — exige un gesto deliberado.
-    if (Math.abs(e.deltaY) < 42) return;
+
+    const scrollArea = target.closest<HTMLElement>("[data-deck-scroll]");
+    if (scrollArea) {
+      const canScroll = scrollArea.scrollHeight > scrollArea.clientHeight + 1;
+      const atTop = scrollArea.scrollTop <= 1;
+      const atBottom =
+        scrollArea.scrollTop + scrollArea.clientHeight >=
+        scrollArea.scrollHeight - 1;
+      const canConsumeGesture =
+        canScroll && ((e.deltaY > 0 && !atBottom) || (e.deltaY < 0 && !atTop));
+      if (canConsumeGesture) return;
+    }
+
+    e.preventDefault();
     const now = Date.now();
-    const idle = now - wheelLock.current > 850;
-    // Reinicia el bloqueo en cada evento: mientras el gesto de scroll siga
-    // activo no se encadenan saltos; solo avanza una lámina por gesto.
+    if (now - wheelLock.current < 620) return;
+
+    const intent = wheelIntent.current;
+    const directionChanged = Math.sign(intent.delta) !== Math.sign(e.deltaY);
+    if (now - intent.at > 180 || directionChanged) intent.delta = 0;
+    intent.delta += e.deltaY;
+    intent.at = now;
+
+    if (Math.abs(intent.delta) < 56) return;
     wheelLock.current = now;
-    if (!idle) return;
-    if (e.deltaY > 0) next();
+    const direction = intent.delta;
+    intent.delta = 0;
+    if (direction > 0) next();
     else prev();
   };
 
@@ -230,11 +271,11 @@ export default function Deck({
         className={`transition-opacity duration-700 ${chrome ? "opacity-100" : "pointer-events-none opacity-0"}`}
       >
         {/* Cabecera */}
-        <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between px-6 py-5 md:px-10">
+        <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between bg-gradient-to-b from-ink/90 via-ink/55 to-transparent px-5 pt-4 pb-12 sm:px-6 md:px-10 md:pt-5 md:pb-14">
           <Link
             href="/presentacion"
             aria-label="Índice de presentaciones"
-            className="flex cursor-pointer items-baseline gap-2 mix-blend-difference"
+            className="flex min-h-11 cursor-pointer items-center gap-2"
           >
             <span className="font-sans text-[0.85rem] font-light tracking-[0.18em] text-bone">
               MILLA
@@ -244,22 +285,23 @@ export default function Deck({
             </span>
           </Link>
 
-          <p className="hidden font-mono text-[0.64rem] tracking-[0.28em] text-bone uppercase mix-blend-difference md:block">
+          <p className="hidden font-mono text-[0.64rem] tracking-[0.28em] text-bone/85 uppercase md:block">
             {code} — {name}
           </p>
 
           <div className="flex items-center gap-2">
             <button
+              ref={indexTriggerRef}
               onClick={() => setShowIndex(true)}
               aria-label="Abrir índice de láminas"
-              className="cursor-pointer px-3 py-2 font-mono text-[0.64rem] tracking-[0.24em] text-bone uppercase mix-blend-difference transition-opacity hover:opacity-70"
+              className="min-h-11 cursor-pointer px-3 font-mono text-[0.64rem] tracking-[0.2em] text-bone uppercase transition-colors hover:text-carmine-soft"
             >
               Índice
             </button>
             <button
               onClick={toggleFullscreen}
               aria-label="Pantalla completa"
-              className="cursor-pointer px-3 py-2 text-bone mix-blend-difference transition-opacity hover:opacity-70"
+              className="flex h-11 w-11 cursor-pointer items-center justify-center text-bone transition-colors hover:text-carmine-soft"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <path
@@ -274,7 +316,7 @@ export default function Deck({
             <Link
               href="/presentacion"
               aria-label="Salir de la presentación"
-              className="cursor-pointer px-3 py-2 text-bone mix-blend-difference transition-opacity hover:opacity-70"
+              className="flex h-11 w-11 cursor-pointer items-center justify-center text-bone transition-colors hover:text-carmine-soft"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <path
@@ -289,15 +331,15 @@ export default function Deck({
         </header>
 
         {/* Pie: riel de progreso + navegación */}
-        <footer className="absolute inset-x-0 bottom-0 z-30 px-6 pb-5 md:px-10 md:pb-6">
+        <footer className="absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-ink/95 via-ink/65 to-transparent px-5 pt-12 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 md:px-10 md:pt-14 md:pb-6">
           <div className="flex items-end justify-between gap-6">
-            <p className="min-w-0 truncate font-mono text-[0.62rem] tracking-[0.24em] text-bone uppercase mix-blend-difference md:text-[0.66rem]">
+            <p className="min-w-0 truncate font-mono text-[0.62rem] tracking-[0.2em] text-bone uppercase md:text-[0.66rem] md:tracking-[0.24em]">
               <span className="text-carmine-soft">{slide.chapter}</span>
               <span className="mx-3 opacity-40">·</span>
               <span className="opacity-80">{slide.title}</span>
             </p>
             <div className="flex shrink-0 items-center gap-5">
-              <p className="font-mono text-[0.66rem] tracking-[0.24em] text-bone mix-blend-difference tabular-nums">
+              <p className="font-mono text-[0.66rem] tracking-[0.2em] text-bone tabular-nums md:tracking-[0.24em]">
                 {String(index + 1).padStart(2, "0")} —{" "}
                 {String(total).padStart(2, "0")}
               </p>
@@ -306,7 +348,7 @@ export default function Deck({
                   onClick={prev}
                   aria-label="Lámina anterior"
                   disabled={index === 0}
-                  className="cursor-pointer px-2.5 py-1.5 text-bone mix-blend-difference transition-opacity hover:opacity-70 disabled:cursor-default disabled:opacity-25"
+                  className="flex h-11 w-11 cursor-pointer items-center justify-center text-bone transition-colors hover:text-carmine-soft disabled:cursor-default disabled:opacity-25"
                 >
                   ←
                 </button>
@@ -314,7 +356,7 @@ export default function Deck({
                   onClick={next}
                   aria-label="Lámina siguiente"
                   disabled={index === total - 1}
-                  className="cursor-pointer px-2.5 py-1.5 text-bone mix-blend-difference transition-opacity hover:opacity-70 disabled:cursor-default disabled:opacity-25"
+                  className="flex h-11 w-11 cursor-pointer items-center justify-center text-bone transition-colors hover:text-carmine-soft disabled:cursor-default disabled:opacity-25"
                 >
                   →
                 </button>
@@ -360,7 +402,8 @@ export default function Deck({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="absolute inset-0 z-40 overflow-y-auto bg-ink/[0.97] backdrop-blur-md"
+            data-deck-scroll
+            className="absolute inset-0 z-40 overflow-y-auto overscroll-contain bg-ink/[0.97] backdrop-blur-md"
             role="dialog"
             aria-modal="true"
             aria-label="Índice de láminas"
@@ -371,9 +414,10 @@ export default function Deck({
                   Índice — {name}
                 </p>
                 <button
+                  ref={indexCloseRef}
                   onClick={() => setShowIndex(false)}
                   aria-label="Cerrar índice"
-                  className="cursor-pointer p-2 text-bone transition-opacity hover:opacity-70"
+                  className="flex h-11 w-11 cursor-pointer items-center justify-center text-bone transition-colors hover:text-carmine-soft"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
