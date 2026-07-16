@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { EASE } from "./ui";
 
@@ -63,7 +64,13 @@ export default function Nav() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-8 lg:flex">
+          <Link
+            href="/presentacion"
+            className="link-lux cursor-pointer font-mono text-[0.68rem] tracking-[0.22em] text-bone/50 uppercase transition-colors duration-300 hover:text-bone"
+          >
+            Sala privada
+          </Link>
           <a
             href="#contacto"
             className="group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 px-7 py-3 text-[0.78rem] tracking-[0.22em] text-bone uppercase transition-colors duration-500 hover:border-carmine"
@@ -117,6 +124,13 @@ export default function Nav() {
                   {l.label}
                 </motion.a>
               ))}
+              <Link
+                href="/presentacion"
+                onClick={() => setOpen(false)}
+                className="display block cursor-pointer py-1 text-3xl text-bone/85"
+              >
+                Sala privada
+              </Link>
               <a
                 href="#contacto"
                 onClick={() => setOpen(false)}

@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { A, SPACES, type Space } from "@/lib/tower";
 import { PlanP8, PlanTipo } from "./FloorPlans";
@@ -82,10 +83,18 @@ export default function SpaceFocus() {
             </Reveal>
           </div>
           <Reveal delay={0.12}>
-            <p className="max-w-sm text-[1.02rem] leading-relaxed font-light text-stone-dark">
-              Renders, planos y recorrido inmersivo para evaluar cada decisión
-              con claridad antes de una visita privada.
-            </p>
+            <div className="max-w-sm">
+              <p className="text-[1.02rem] leading-relaxed font-light text-stone-dark">
+                Renders, planos y recorrido inmersivo para evaluar cada
+                decisión con claridad antes de una visita privada.
+              </p>
+              <Link
+                href="/presentacion/niveles"
+                className="link-lux mt-5 inline-flex cursor-pointer items-center gap-2 font-mono text-[0.68rem] tracking-[0.22em] text-carmine uppercase"
+              >
+                Ver en modo presentación →
+              </Link>
+            </div>
           </Reveal>
         </div>
 

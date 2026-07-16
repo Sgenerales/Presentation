@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import {
   useCallback,
   useEffect,
@@ -119,9 +120,17 @@ export default function ProposalSet() {
           </Reveal>
         </div>
         <Reveal delay={0.12}>
-          <p className="max-w-md text-[1.02rem] leading-relaxed font-light text-stone-dark">
-            {PROPOSAL.intro}
-          </p>
+          <div className="max-w-md">
+            <p className="text-[1.02rem] leading-relaxed font-light text-stone-dark">
+              {PROPOSAL.intro}
+            </p>
+            <Link
+              href="/presentacion/propuesta"
+              className="link-lux mt-5 inline-flex cursor-pointer items-center gap-2 font-mono text-[0.68rem] tracking-[0.22em] text-carmine uppercase"
+            >
+              Ver en modo presentación →
+            </Link>
+          </div>
         </Reveal>
       </div>
 

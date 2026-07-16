@@ -396,6 +396,8 @@ export interface ProposalSheet {
   name: string;
   role: string;
   sheet: string;
+  /** Render ejecutivo cenital (vista top-down foto-realista) */
+  render: string;
   capacity: string;
   program: string[];
 }
@@ -421,6 +423,7 @@ export const PROPOSAL = {
       name: "Piso Uno",
       role: "Planta completa · operación y recepción",
       sheet: `${A}/proposal-p1.jpg`,
+      render: `${A}/render-top-p1.jpg`,
       capacity: "42 puestos operativos",
       program: [
         "Recepción y espera con escalera helicoidal",
@@ -436,6 +439,7 @@ export const PROPOSAL = {
       name: "Piso Dos — Lado A",
       role: "Dirección y gobierno",
       sheet: `${A}/proposal-p2a.jpg`,
+      render: `${A}/render-top-p2a.jpg`,
       capacity: "Directorio 12 + gerencia general",
       program: [
         "Directorio para 12 personas",
@@ -451,6 +455,7 @@ export const PROPOSAL = {
       name: "Piso Dos — Lado B",
       role: "Plataforma operativa",
       sheet: `${A}/proposal-p2b.jpg`,
+      render: `${A}/render-top-p2b.jpg`,
       capacity: "66 puestos operativos",
       program: [
         "Staff operativo 66 personas con divisiones verdes",
@@ -464,6 +469,7 @@ export const PROPOSAL = {
       name: "Piso Tres",
       role: "Plataforma operativa mayor",
       sheet: `${A}/proposal-p3.jpg`,
+      render: `${A}/render-top-p3.jpg`,
       capacity: "75 puestos operativos",
       program: [
         "Staff operativo 75 personas",

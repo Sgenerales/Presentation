@@ -236,6 +236,16 @@ a {
   will-change: transform;
 }
 
+/* Ken Burns lentísimo para láminas de la sala de presentación */
+@keyframes kenburnsSlow {
+  from { transform: scale(1.045) translate(0.5%, 0.3%); }
+  to { transform: scale(1.13) translate(-0.7%, -0.5%); }
+}
+.kenburns-slow {
+  animation: kenburnsSlow 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
 /* Indicador de scroll */
 @keyframes scrollcue {
   0%, 100% { transform: translateY(0); opacity: 0.9; }
