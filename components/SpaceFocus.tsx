@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { A, SPACES, type Space } from "@/lib/tower";
+import { SPACES, type Space } from "@/lib/tower";
 import { PlanP8, PlanTipo } from "./FloorPlans";
 import ProposalSet from "./ProposalSet";
 import Tour360, { type TourScene } from "./Tour360";
@@ -11,24 +11,15 @@ import { EASE, Eyebrow, Img, Reveal } from "./ui";
 
 type View = "renders" | "video" | "plano" | "tour";
 
-const PANO_NOTE = "Referencia ilustrativa · espacio antes del fit-out";
-
+// Vista inmersiva sobre los renders reales del espacio. Sin panorámica
+// genérica: solo material real del proyecto, explorable con parallax.
 function tourScenes(space: Space): TourScene[] {
-  const renders: TourScene[] = space.renders.map((r) => ({
+  return space.renders.map((r) => ({
     type: "flat",
     src: r.src,
     label: r.tag,
     note: r.caption,
   }));
-  return [
-    {
-      type: "equirect",
-      src: `${A}/pano-planta-libre.jpg`,
-      label: "Planta libre",
-      note: PANO_NOTE,
-    },
-    ...renders,
-  ];
 }
 
 function SpacePlan({ space }: { space: Space }) {
@@ -156,7 +147,7 @@ export default function SpaceFocus() {
                     ? ([["video", "Video"]] as [View, string][])
                     : []),
                   ["plano", "Plano interactivo"],
-                  ["tour", "Tour 360°"],
+                  ["tour", "Vista inmersiva"],
                 ] as [View, string][]
               ).map(([v, label]) => (
                 <button
@@ -303,8 +294,8 @@ export default function SpaceFocus() {
                   <figure>
                     <Tour360 scenes={tourScenes(space)} />
                     <figcaption className="mt-4 text-[0.95rem] font-light text-stone-dark italic">
-                      Recorrido inmersivo — arrastre o deslice para mirar
-                      alrededor; use los controles para acercar o ampliar.
+                      Vista inmersiva — arrastre o deslice para explorar el
+                      render; use los controles para acercar o ampliar.
                     </figcaption>
                   </figure>
                 )}

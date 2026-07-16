@@ -110,8 +110,8 @@ const P8_ROOMS: Room[] = [
   },
   {
     id: "terraza",
-    name: "Terraza exterior",
-    meta: "uso exclusivo Of. Nº1",
+    name: "Terraza del edificio",
+    meta: "amenity de uso común",
     d: "M960 180 L1100 180 L1100 720 L960 720 Z",
     kind: "terrace",
     label: { x: 1030, y: 450, size: 15, vertical: true },

@@ -10,6 +10,7 @@ import {
   ChapterSlide,
   ClosingSlide,
   CoverSlide,
+  GhostNum,
   Kicker,
   SheetTicks,
   stag,
@@ -315,6 +316,79 @@ function ContextSlide({
   );
 }
 
+/** Lienzo en blanco: lámina sin foto — grilla técnica + specs. Honesta
+ *  para una planta vacía: no inventa un interior que aún no existe. */
+function CanvasSlide({
+  kicker,
+  title,
+  titleItalic,
+  intro,
+  chips,
+}: {
+  kicker: string;
+  title: string;
+  titleItalic: string;
+  intro: string;
+  chips: string[];
+}) {
+  return (
+    <div className="grain relative h-full w-full overflow-hidden bg-ink">
+      {/* Grilla de lámina de dibujo — el lienzo literal */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.5]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(242,239,232,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(242,239,232,0.05) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          maskImage:
+            "radial-gradient(120% 90% at 30% 40%, black 40%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(120% 90% at 30% 40%, black 40%, transparent 100%)",
+        }}
+      />
+      <SheetTicks />
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.1, delay: 0.25, ease: EASE }}
+        className="absolute top-1/2 right-[-1vw] -translate-y-1/2"
+      >
+        <GhostNum className="text-[clamp(14rem,36vw,36rem)]">07</GhostNum>
+      </motion.div>
+
+      <div className="relative z-10 flex h-full flex-col justify-center px-8 md:px-16">
+        <motion.div {...stag(0, 0.2)}>
+          <Kicker tone="carmine">{kicker}</Kicker>
+        </motion.div>
+        <motion.h2
+          {...stag(1, 0.28)}
+          className="display mt-6 max-w-3xl text-[clamp(2.2rem,5vw,4.8rem)] text-bone"
+        >
+          {title} <em className="display-italic">{titleItalic}</em>
+        </motion.h2>
+        <motion.p
+          {...stag(2, 0.4)}
+          className="mt-7 max-w-xl text-[1.04rem] leading-relaxed font-light text-bone/60"
+        >
+          {intro}
+        </motion.p>
+        <div className="mt-9 flex max-w-2xl flex-wrap gap-2.5">
+          {chips.map((c, i) => (
+            <motion.span
+              key={c}
+              {...stag(i, 0.52)}
+              className="border border-bone/20 bg-ink/40 px-4 py-2 font-mono text-[0.62rem] tracking-[0.18em] text-bone/80 uppercase backdrop-blur-sm"
+            >
+              {c}
+            </motion.span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function NivelesDeck() {
   const slides: SlideDef[] = [
     {
@@ -347,11 +421,11 @@ export default function NivelesDeck() {
           numeral="8"
           eyebrow="Capítulo 01 — Piso Ocho"
           title="El último piso,"
-          titleItalic="con terraza propia."
+          titleItalic="junto al rooftop."
           bg={P8.renders[0].src}
           facts={[
             { label: "Superficie", value: "183,17 m²" },
-            { label: "Terraza", value: "Uso exclusivo" },
+            { label: "Ubicación", value: "Último piso" },
             { label: "Entrega", value: "Llave en mano" },
           ]}
         />
@@ -393,19 +467,21 @@ export default function NivelesDeck() {
     {
       id: "p8-terraza",
       chapter: "P8",
-      title: "La terraza exclusiva",
+      title: "La terraza del edificio",
       thumb: `${A}/terraza-sur.jpg`,
       content: (
         <ContextSlide
           img={`${A}/terraza-sur.jpg`}
-          kicker="Piso 8 — El exterior"
-          title="Una terraza"
-          titleItalic="que es suya."
+          kicker="Piso 8 — La terraza del edificio"
+          title="La terraza,"
+          titleItalic="en su mismo piso."
           chips={[
-            "Uso exclusivo del módulo",
-            "Contigua al futuro rooftop",
-            "Vista despejada de Equipetrol",
+            "Terrazas norte y sur del edificio",
+            "Proyecto de rooftop y cowork",
+            "En el mismo nivel que el módulo",
+            "Vista despejada sobre Equipetrol",
           ]}
+          note="Amenity del edificio · reservado para la comunidad"
         />
       ),
     },
@@ -415,14 +491,15 @@ export default function NivelesDeck() {
       id: "p7-capitulo",
       chapter: "P7",
       title: "La única planta entera",
-      thumb: `${A}/glass-abstract.jpg`,
+      thumb: `${A}/hero-facade-sunset.jpg`,
       content: (
         <ChapterSlide
           numeral="7"
           eyebrow="Capítulo 02 — Piso Siete"
           title="Una planta completa,"
           titleItalic="una sola compañía."
-          bg={`${A}/glass-abstract.jpg`}
+          bg={`${A}/hero-facade-sunset.jpg`}
+          bgPos="center 35%"
           facts={[
             { label: "Alas", value: "Norte + Sur" },
             { label: "Estructura", value: "Libre de columnas" },
@@ -450,13 +527,12 @@ export default function NivelesDeck() {
       id: "p7-contexto",
       chapter: "P7",
       title: "El lienzo, antes del trazo",
-      thumb: `${A}/pano-planta-libre.jpg`,
       content: (
-        <ContextSlide
-          img={`${A}/pano-planta-libre.jpg`}
+        <CanvasSlide
           kicker="Piso 7 — La planta libre"
           title="El lienzo,"
           titleItalic="antes del trazo."
+          intro="Ambas alas libres, sin una sola columna: la base limpia para diseñar la próxima sede corporativa a medida, con el mismo estándar llave en mano de Milla Zero."
           chips={[
             "Altura piso–cielo 3,72 m",
             "Doble vidriado · −35% energía",
@@ -464,7 +540,6 @@ export default function NivelesDeck() {
             "Núcleo central de servicios",
             "Fit-out llave en mano",
           ]}
-          note="Referencia ilustrativa · espacio antes del fit-out"
         />
       ),
     },
@@ -492,8 +567,7 @@ export default function NivelesDeck() {
       preload={[
         ...P8.renders.map((r) => r.src),
         `${A}/terraza-sur.jpg`,
-        `${A}/glass-abstract.jpg`,
-        `${A}/pano-planta-libre.jpg`,
+        `${A}/hero-facade-sunset.jpg`,
       ]}
     />
   );

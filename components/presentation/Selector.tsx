@@ -32,7 +32,7 @@ const DOSSIERS = [
     key: "2",
     title: "Los últimos",
     titleItalic: "niveles.",
-    desc: "Los dos únicos espacios disponibles de la torre — el módulo del Piso 8 con terraza propia y la planta completa del Piso 7.",
+    desc: "Los dos únicos espacios disponibles de la torre — el módulo del Piso 8 en el nivel más alto y la planta completa del Piso 7.",
     meta: ["Pisos 7 — 8", "10 láminas"],
     img: `${A}/render-p8-1.jpg`,
     imgClass: "object-cover",

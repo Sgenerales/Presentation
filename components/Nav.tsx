@@ -64,12 +64,18 @@ export default function Nav() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-4 lg:flex">
           <Link
             href="/presentacion"
-            className="link-lux cursor-pointer font-mono text-[0.68rem] tracking-[0.22em] text-bone/50 uppercase transition-colors duration-300 hover:text-bone"
+            aria-label="Presentaciones — sala de propuestas para clientes"
+            className="lux-sheen group relative inline-flex cursor-pointer items-center gap-2.5 overflow-hidden border border-carmine-soft/55 bg-carmine/[0.12] px-5 py-3 font-mono text-[0.74rem] tracking-[0.2em] text-bone uppercase transition-all duration-300 hover:border-carmine-soft hover:bg-carmine/25"
           >
-            Sala privada
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden className="text-carmine-soft">
+              <rect x="3" y="4" width="18" height="13" rx="1" stroke="currentColor" strokeWidth="1.6" />
+              <path d="M10.5 8.2l4 2.8-4 2.8z" fill="currentColor" />
+              <path d="M8.5 20h7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+            </svg>
+            <span className="relative">Presentaciones</span>
           </Link>
           <a
             href="#contacto"
@@ -127,14 +133,19 @@ export default function Nav() {
               <Link
                 href="/presentacion"
                 onClick={() => setOpen(false)}
-                className="display block cursor-pointer py-1 text-3xl text-bone/85"
+                className="mt-2 inline-flex min-h-12 cursor-pointer items-center justify-center gap-2.5 border border-carmine-soft/55 bg-carmine/[0.12] px-6 py-4 text-center font-mono text-[0.82rem] tracking-[0.16em] text-bone uppercase"
               >
-                Sala privada
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden className="text-carmine-soft">
+                  <rect x="3" y="4" width="18" height="13" rx="1" stroke="currentColor" strokeWidth="1.6" />
+                  <path d="M10.5 8.2l4 2.8-4 2.8z" fill="currentColor" />
+                  <path d="M8.5 20h7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                </svg>
+                Presentaciones
               </Link>
               <a
                 href="#contacto"
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-flex min-h-12 cursor-pointer items-center justify-center border border-carmine px-7 py-3 text-center text-[0.78rem] tracking-[0.22em] text-bone uppercase"
+                className="inline-flex min-h-12 cursor-pointer items-center justify-center border border-carmine px-7 py-3 text-center text-[0.78rem] tracking-[0.22em] text-bone uppercase"
               >
                 Agendar visita
               </a>

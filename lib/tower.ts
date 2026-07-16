@@ -118,7 +118,7 @@ export const FLOORS: Floor[] = [
     sur: { status: "libre", note: "Módulo 183,17 m² · único disponible" },
     spaceId: "p8-modulo",
     detail:
-      "En el último nivel queda un único espacio disponible: el módulo ejecutivo de 183,17 m² con terraza propia. El resto del piso alberga el futuro rooftop, cowork y amenities del edificio.",
+      "En el último nivel queda un único espacio disponible: el módulo ejecutivo de 183,17 m² en el nivel más alto de la torre. El resto del piso alberga la terraza, el futuro rooftop, cowork y amenities del edificio.",
   },
   {
     id: "p7",
@@ -222,12 +222,12 @@ export const SPACES: Space[] = [
     name: "Módulo Piso 8",
     kicker: "El último nivel",
     area: "183,17 m²",
-    headline: "El último piso, con terraza propia.",
+    headline: "El último piso, junto al rooftop.",
     description:
-      "Un módulo ejecutivo en el nivel más alto de la torre, con terraza exterior de uso exclusivo sobre la cubierta del séptimo piso. La propuesta de interiores — recepción, gerencia general, sala de reuniones y área operativa — ilustra una implantación sobria, precisa y lista para representar a una dirección corporativa.",
+      "Un módulo ejecutivo en el nivel más alto de la torre, en el mismo piso que la terraza, el futuro rooftop y el cowork del edificio. La propuesta de interiores — recepción, gerencia general, sala de reuniones y área operativa — ilustra una implantación sobria, precisa y lista para representar a una dirección corporativa.",
     highlights: [
-      "Terraza exterior de propiedad exclusiva",
-      "Contiguo al futuro rooftop y cowork del edificio",
+      "El nivel más alto de la torre",
+      "En el mismo piso que la terraza, el rooftop y el cowork del edificio",
       "Fit-out llave en mano: layout, mobiliario, acústica e iluminación",
       "Altura piso–cielo 3,72 m con planta libre",
     ],

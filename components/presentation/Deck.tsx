@@ -146,9 +146,14 @@ export default function Deck({
 
   const onWheel = (e: React.WheelEvent) => {
     if (showIndex) return;
+    // Ignora el ruido leve del trackpad — exige un gesto deliberado.
+    if (Math.abs(e.deltaY) < 42) return;
     const now = Date.now();
-    if (now - wheelLock.current < 750 || Math.abs(e.deltaY) < 24) return;
+    const idle = now - wheelLock.current > 850;
+    // Reinicia el bloqueo en cada evento: mientras el gesto de scroll siga
+    // activo no se encadenan saltos; solo avanza una lámina por gesto.
     wheelLock.current = now;
+    if (!idle) return;
     if (e.deltaY > 0) next();
     else prev();
   };
