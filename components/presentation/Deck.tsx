@@ -30,6 +30,28 @@ export interface SlideDef {
   content: ReactNode;
 }
 
+const SCROLLABLE_OVERFLOW = new Set(["auto", "scroll", "overlay"]);
+
+function wheelUnit(e: React.WheelEvent) {
+  if (e.deltaMode === WheelEvent.DOM_DELTA_LINE) return 16;
+  if (e.deltaMode === WheelEvent.DOM_DELTA_PAGE) return window.innerHeight;
+  return 1;
+}
+
+function canScrollVertically(element: HTMLElement, delta: number) {
+  if (!delta) return false;
+
+  const overflowY = window.getComputedStyle(element).overflowY;
+  if (!SCROLLABLE_OVERFLOW.has(overflowY)) return false;
+  if (element.scrollHeight <= element.clientHeight + 1) return false;
+
+  const atTop = element.scrollTop <= 1;
+  const atBottom =
+    element.scrollTop + element.clientHeight >= element.scrollHeight - 1;
+
+  return delta > 0 ? !atBottom : !atTop;
+}
+
 export default function Deck({
   code,
   name,
@@ -166,32 +188,34 @@ export default function Deck({
   }, []);
 
   const onWheel = (e: React.WheelEvent) => {
-    const target = e.target as HTMLElement;
     if (showIndex) return;
 
-    const scrollArea = target.closest<HTMLElement>("[data-deck-scroll]");
-    if (scrollArea) {
-      const canScroll = scrollArea.scrollHeight > scrollArea.clientHeight + 1;
-      const atTop = scrollArea.scrollTop <= 1;
-      const atBottom =
-        scrollArea.scrollTop + scrollArea.clientHeight >=
-        scrollArea.scrollHeight - 1;
-      const canConsumeGesture =
-        canScroll && ((e.deltaY > 0 && !atBottom) || (e.deltaY < 0 && !atTop));
-      if (canConsumeGesture) return;
-    }
+    const unit = wheelUnit(e);
+    const verticalDelta = e.deltaY * unit;
+    const target = e.target;
+    const scrollArea =
+      target instanceof Element
+        ? target.closest<HTMLElement>("[data-deck-scroll]")
+        : null;
+    if (scrollArea && canScrollVertically(scrollArea, verticalDelta)) return;
 
     e.preventDefault();
+    const rawDelta =
+      Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+    const delta = rawDelta * unit;
+    if (!delta) return;
+
     const now = Date.now();
-    if (now - wheelLock.current < 620) return;
+    if (now - wheelLock.current < 500) return;
 
     const intent = wheelIntent.current;
-    const directionChanged = Math.sign(intent.delta) !== Math.sign(e.deltaY);
-    if (now - intent.at > 180 || directionChanged) intent.delta = 0;
-    intent.delta += e.deltaY;
+    const directionChanged =
+      intent.delta !== 0 && Math.sign(intent.delta) !== Math.sign(delta);
+    if (now - intent.at > 220 || directionChanged) intent.delta = 0;
+    intent.delta += delta;
     intent.at = now;
 
-    if (Math.abs(intent.delta) < 56) return;
+    if (Math.abs(intent.delta) < 48) return;
     wheelLock.current = now;
     const direction = intent.delta;
     intent.delta = 0;
@@ -235,6 +259,9 @@ export default function Deck({
       onWheel={onWheel}
       onPointerDown={onPointerDown}
       onPointerUp={onPointerUp}
+      onPointerCancel={() => {
+        touchStart.current = null;
+      }}
       className="fixed inset-0 touch-pan-y overflow-hidden bg-ink text-bone"
     >
       {/* Lámina activa */}
@@ -379,7 +406,7 @@ export default function Deck({
                 aria-label={`Ir a ${c.chapter}`}
                 title={c.chapter}
                 style={{ left: `${(c.i / Math.max(total - 1, 1)) * 100}%` }}
-                className="group absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                className="group absolute top-1/2 h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
               >
                 <span
                   className={`absolute top-1/2 left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rotate-45 border transition-all duration-300 ${
