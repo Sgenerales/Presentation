@@ -298,11 +298,11 @@ export default function Deck({
         className={`transition-opacity duration-700 ${chrome ? "opacity-100" : "pointer-events-none opacity-0"}`}
       >
         {/* Cabecera */}
-        <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between bg-gradient-to-b from-ink/90 via-ink/55 to-transparent px-5 pt-4 pb-12 sm:px-6 md:px-10 md:pt-5 md:pb-14">
+        <header className="pointer-events-none absolute inset-x-0 top-0 z-30 flex items-center justify-between bg-gradient-to-b from-ink/90 via-ink/55 to-transparent px-5 pt-4 pb-12 sm:px-6 md:px-10 md:pt-5 md:pb-14">
           <Link
             href="/presentacion"
             aria-label="Índice de presentaciones"
-            className="flex min-h-11 cursor-pointer items-center gap-2"
+            className="pointer-events-auto flex min-h-11 cursor-pointer items-center gap-2"
           >
             <span className="font-sans text-[0.85rem] font-light tracking-[0.18em] text-bone">
               MILLA
@@ -316,7 +316,7 @@ export default function Deck({
             {code} — {name}
           </p>
 
-          <div className="flex items-center gap-2">
+          <div className="pointer-events-auto flex items-center gap-2">
             <button
               ref={indexTriggerRef}
               onClick={() => setShowIndex(true)}

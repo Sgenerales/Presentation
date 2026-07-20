@@ -18,13 +18,13 @@ import {
 /**
  * DECK A — Propuesta integral (Pisos 1 · 2A · 2B · 3).
  * Cuatro plantas resueltas como una sola operación: cada piso se presenta
- * como lámina clara con su render ejecutivo cenital y el conmutador a la
- * lámina técnica de mobiliario.
+ * como lámina clara con su render ejecutivo cenital y el conmutador a los
+ * planos de mobiliario.
  */
 
 const SHEETS = PROPOSAL.sheets;
 
-/** Lámina de piso: render ejecutivo ⇄ lámina técnica. */
+/** Lámina de piso: render ejecutivo ⇄ planos. */
 function FloorShowcase({
   sheet,
   order,
@@ -32,7 +32,7 @@ function FloorShowcase({
   sheet: ProposalSheet;
   order: number;
 }) {
-  const [view, setView] = useState<"render" | "lamina">("render");
+  const [view, setView] = useState<"render" | "planos">("render");
   const numeral = String(order + 1).padStart(2, "0");
 
   return (
@@ -92,24 +92,23 @@ function FloorShowcase({
           </motion.p>
         </div>
 
-        {/* Visual: render ⇄ lámina */}
+        {/* Visual: render ⇄ planos */}
         <div className="flex min-h-[320px] flex-col lg:col-span-8 lg:min-h-0">
           <motion.div
             {...stag(1, 0.3)}
-            role="tablist"
-            aria-label="Modo de vista de la lámina"
+            role="group"
+            aria-label="Modo de visualización"
             className="mb-4 flex justify-end gap-2"
           >
             {(
               [
                 ["render", "Render ejecutivo"],
-                ["lamina", "Lámina técnica"],
+                ["planos", "Planos"],
               ] as const
             ).map(([v, label]) => (
               <button
                 key={v}
-                role="tab"
-                aria-selected={view === v}
+                aria-pressed={view === v}
                 onClick={() => setView(v)}
                 className={`min-h-11 cursor-pointer border px-4 py-2 font-mono text-[0.62rem] tracking-[0.16em] uppercase transition-all duration-300 md:px-5 md:py-2.5 md:tracking-[0.2em] ${
                   view === v
@@ -143,7 +142,7 @@ function FloorShowcase({
                     alt={
                       view === "render"
                         ? `Render ejecutivo cenital — ${sheet.name}`
-                        : `Lámina técnica de mobiliario — ${sheet.name}`
+                        : `Planos de mobiliario — ${sheet.name}`
                     }
                     eager
                     className="absolute inset-0 h-full w-full object-contain p-2 md:p-3"
@@ -153,7 +152,7 @@ function FloorShowcase({
                   <span>
                     {view === "render"
                       ? "Vista cenital foto-realista · mobiliario según propuesta"
-                      : "Diseño mobiliario · acústica e iluminación definidas"}
+                      : "Planos de mobiliario · acústica e iluminación definidas"}
                   </span>
                   <span className="shrink-0 text-carmine">
                     Milla Zero · {sheet.code}

@@ -21,7 +21,7 @@ const DOSSIERS = [
     key: "1",
     title: "La propuesta",
     titleItalic: "integral.",
-    desc: "Pisos 1, 2 y 3 resueltos como una sola operación de 200+ posiciones — render ejecutivo y lámina técnica de cada planta.",
+    desc: "Pisos 1, 2 y 3 resueltos como una sola operación de 200+ posiciones — render ejecutivo y planos de cada planta.",
     meta: ["Pisos 1 — 2 — 3", "8 láminas"],
     img: PROPOSAL.sheets[0].render,
     imgClass: "object-cover",
@@ -77,7 +77,7 @@ export default function Selector() {
       <motion.div {...stag(0, 0.15)} className="relative z-10 px-8 pt-10 md:px-14">
         <Kicker>Sala privada de presentación</Kicker>
         <h1 className="display mt-5 text-[clamp(1.9rem,3.6vw,3.2rem)]">
-          Elija el <em className="display-italic">dossier.</em>
+          Elige tu <em className="display-italic">espacio.</em>
         </h1>
       </motion.div>
 

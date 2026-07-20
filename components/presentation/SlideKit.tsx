@@ -20,7 +20,7 @@ export const stag = (i: number, base = 0.1) => ({
   transition: { duration: 0.7, delay: base + i * 0.09, ease: EASE },
 });
 
-/** Ticks de esquina — la lámina técnica que enmarca cada slide. */
+/** Ticks de esquina — el marco técnico que encuadra cada slide. */
 export function SheetTicks({ tone = "light" }: { tone?: "light" | "dark" }) {
   const c = tone === "light" ? "border-bone/25" : "border-ink/25";
   const pos = [
