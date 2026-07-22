@@ -24,7 +24,7 @@ export default function Exclusives() {
     <section id="concepto" className="grain relative bg-ink py-28 md:py-40">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <Reveal>
-          <Eyebrow>00 — Sólo aquí</Eyebrow>
+          <Eyebrow>00 · Sólo aquí</Eyebrow>
         </Reveal>
         <div className="mt-10 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <Reveal delay={0.08}>
@@ -38,7 +38,7 @@ export default function Exclusives() {
           <Reveal delay={0.16}>
             <p className="max-w-sm text-[1.02rem] leading-relaxed font-light text-bone/60">
               Milla Zero no compite en metros cuadrados: compite en criterio.
-              Siete decisiones de diseño que definen un edificio boutique — y
+              Siete decisiones de diseño que definen un edificio boutique, y
               que no se consiguen en ningún otro lugar de Santa Cruz.
             </p>
           </Reveal>

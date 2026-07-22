@@ -10,7 +10,7 @@ export default function Manifesto() {
         <div className="grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>
-              <Eyebrow tone="dark">01 — Propiedad única, gestión directa</Eyebrow>
+              <Eyebrow tone="dark">01 · Propiedad única, gestión directa</Eyebrow>
             </Reveal>
             <RevealLines
               className="display mt-10 text-[clamp(2.2rem,4.6vw,4.2rem)] text-ink"
@@ -27,14 +27,14 @@ export default function Manifesto() {
                 Milla Zero es una propiedad horizontal mono-propietaria:
                 pertenece íntegramente a Bienes Raíces ITC Tropical, del grupo
                 Tropical Tours, fundado en 1980. Un solo dueño significa un
-                solo estándar — y la certeza de que sus condiciones nunca se
+                solo estándar, y la certeza de que sus condiciones nunca se
                 verán ni negociarán frente a otro arrendatario.
               </p>
             </Reveal>
             <Reveal delay={0.45} className="mt-8 max-w-xl">
               <p className="text-[1.02rem] leading-relaxed font-light text-stone-dark">
-                Sus ocupantes son grandes corporaciones — casi todas
-                internacionales — unidas por el mismo compromiso: sostener un
+                Sus ocupantes son grandes corporaciones (casi todas
+                internacionales) unidas por el mismo compromiso: sostener un
                 edificio de alto valor, alto apego a la normativa y cultura de
                 compliance. Los espacios se entregan llave en mano, con orden,
                 privacidad y representatividad.

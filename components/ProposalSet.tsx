@@ -195,7 +195,7 @@ export default function ProposalSet() {
                 >
                   <Img
                     src={sheet.sheet}
-                    alt={`Lámina de diseño mobiliario — ${sheet.name}`}
+                    alt={`Lámina de diseño mobiliario · ${sheet.name}`}
                     className="aspect-[842/595] w-full object-contain"
                   />
                 </button>
@@ -211,7 +211,7 @@ export default function ProposalSet() {
               </div>
               <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-3">
                 <span className="text-[1.02rem] font-light text-stone-dark italic">
-                  {sheet.role} — toque la lámina para ampliarla.
+                  {sheet.role} · toque la lámina para ampliarla.
                 </span>
                 <span className="font-mono text-[0.7rem] tracking-[0.18em] text-stone uppercase">
                   {PROPOSAL.note}
@@ -267,7 +267,7 @@ export default function ProposalSet() {
             onClick={closeZoom}
             role="dialog"
             aria-modal="true"
-            aria-label={`Lámina ampliada — ${sheet.name}`}
+            aria-label={`Lámina ampliada · ${sheet.name}`}
           >
             <motion.div
               initial={{ scale: 0.96 }}
@@ -325,7 +325,7 @@ export default function ProposalSet() {
               >
                 <Img
                   src={sheet.sheet}
-                  alt={`Lámina ampliada — ${sheet.name}`}
+                  alt={`Lámina ampliada · ${sheet.name}`}
                   className="pointer-events-none block shrink-0 object-contain"
                   style={{
                     maxWidth: zoomLevel === 1 ? "100%" : "none",

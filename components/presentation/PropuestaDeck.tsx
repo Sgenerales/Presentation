@@ -16,7 +16,7 @@ import {
 } from "./SlideKit";
 
 /**
- * DECK A — Propuesta integral (Pisos 1 · 2A · 2B · 3).
+ * DECK A · Propuesta integral (Pisos 1 · 2A · 2B · 3).
  * Cuatro plantas resueltas como una sola operación: cada piso se presenta
  * como lámina clara con su render ejecutivo cenital y el conmutador a los
  * planos de mobiliario.
@@ -52,7 +52,7 @@ function FloorShowcase({
         <div className="flex min-h-0 flex-col justify-center lg:col-span-4">
           <motion.div {...stag(0, 0.15)}>
             <Kicker tone="carmine">
-              Lámina {numeral} / {String(SHEETS.length).padStart(2, "0")} —{" "}
+              Lámina {numeral} / {String(SHEETS.length).padStart(2, "0")} ·{" "}
               {sheet.role}
             </Kicker>
           </motion.div>
@@ -141,8 +141,8 @@ function FloorShowcase({
                     src={view === "render" ? sheet.render : sheet.sheet}
                     alt={
                       view === "render"
-                        ? `Render ejecutivo cenital — ${sheet.name}`
-                        : `Planos de mobiliario — ${sheet.name}`
+                        ? `Render ejecutivo cenital · ${sheet.name}`
+                        : `Planos de mobiliario · ${sheet.name}`
                     }
                     eager
                     className="absolute inset-0 h-full w-full object-contain p-2 md:p-3"
@@ -167,7 +167,7 @@ function FloorShowcase({
   );
 }
 
-/** Lámina 02 — el encargo, en números. */
+/** Lámina 02 · el encargo, en números. */
 function IntroSlide() {
   const stats = [
     { value: "3", label: "Plantas resueltas" },
@@ -181,7 +181,7 @@ function IntroSlide() {
       <div data-deck-scroll className="relative z-10 grid h-full grid-cols-1 gap-10 overflow-y-auto overscroll-contain px-8 pt-24 pb-28 md:px-16 lg:grid-cols-12 lg:items-center lg:pt-20">
         <div className="lg:col-span-6">
           <motion.div {...stag(0, 0.15)}>
-            <Kicker tone="carmine">01 — El encargo</Kicker>
+            <Kicker tone="carmine">01 · El encargo</Kicker>
           </motion.div>
           <motion.h2
             {...stag(1, 0.2)}
@@ -250,7 +250,7 @@ function SynthesisSlide() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <motion.div {...stag(0, 0.15)}>
-              <Kicker tone="carmine">06 — Síntesis</Kicker>
+              <Kicker tone="carmine">06 · Síntesis</Kicker>
             </motion.div>
             <motion.h2
               {...stag(1, 0.2)}
@@ -274,7 +274,7 @@ function SynthesisSlide() {
               <div className="img-zoom relative min-h-0 flex-1 border border-line-faint bg-white">
                 <Img
                   src={s.render}
-                  alt={`${s.name} — render ejecutivo`}
+                  alt={`${s.name} · render ejecutivo`}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
@@ -302,13 +302,11 @@ export default function PropuestaDeck() {
       title: "Tres plantas, un solo trazo",
       content: (
         <CoverSlide
-          eyebrow="Milla Zero — Sala privada"
+          eyebrow="Milla Zero · Sala privada"
           lines={["Tres plantas,", "un solo trazo."]}
           meta={[
-            "Propuesta integral · Pisos 1 — 2 — 3",
+            "Propuesta integral · Pisos 1 · 2 · 3",
             "Equipetrol Norte · Santa Cruz",
-            "07 · 2026",
-            "Documento privado",
           ]}
           bg={SHEETS[3].render}
         />
@@ -323,7 +321,7 @@ export default function PropuestaDeck() {
     ...SHEETS.map((sheet, i) => ({
       id: sheet.id,
       chapter: sheet.code,
-      title: `${sheet.name} — ${sheet.capacity}`,
+      title: `${sheet.name} · ${sheet.capacity}`,
       thumb: sheet.render,
       content: <FloorShowcase sheet={sheet} order={i} />,
     })),

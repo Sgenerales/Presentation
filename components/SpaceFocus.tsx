@@ -64,7 +64,7 @@ export default function SpaceFocus() {
         <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
           <div>
             <Reveal>
-              <Eyebrow tone="dark">03 — Espacios disponibles</Eyebrow>
+              <Eyebrow tone="dark">03 · Espacios disponibles</Eyebrow>
             </Reveal>
             <Reveal delay={0.06}>
               <h2 className="display mt-10 max-w-2xl text-[clamp(2.2rem,4.6vw,4.2rem)]">
@@ -284,7 +284,7 @@ export default function SpaceFocus() {
                   <figure>
                     <SpacePlan space={space} />
                     <figcaption className="mt-4 text-[0.95rem] font-light text-stone-dark italic">
-                      {space.plan.caption} — plano interactivo, toque o pase el
+                      {space.plan.caption} · plano interactivo, toque o pase el
                       cursor por los ambientes.
                     </figcaption>
                   </figure>
@@ -294,7 +294,7 @@ export default function SpaceFocus() {
                   <figure>
                     <Tour360 scenes={tourScenes(space)} />
                     <figcaption className="mt-4 text-[0.95rem] font-light text-stone-dark italic">
-                      Vista inmersiva — arrastre o deslice para explorar el
+                      Vista inmersiva · arrastre o deslice para explorar el
                       render; use los controles para acercar o ampliar.
                     </figcaption>
                   </figure>
@@ -347,7 +347,7 @@ export default function SpaceFocus() {
           </div>
         </div>
 
-        {/* Programa propuesto — bloque de ancho completo, independiente de la ficha lateral */}
+        {/* Programa propuesto · bloque de ancho completo, independiente de la ficha lateral */}
         {space.program && (
           <AnimatePresence mode="wait">
             <motion.div
@@ -360,7 +360,7 @@ export default function SpaceFocus() {
               className="mt-16 border-t border-line pt-12 md:mt-20 md:pt-14"
             >
               <p className="eyebrow text-stone">
-                Programa propuesto — llave en mano Milla Zero
+                Programa propuesto · llave en mano Milla Zero
               </p>
               <div className="mt-6 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 lg:grid-cols-6">
                 {space.program.map((p) => (

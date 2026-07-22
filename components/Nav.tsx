@@ -41,7 +41,7 @@ export default function Nav() {
         <a
           href="#inicio"
           className="flex items-baseline gap-2"
-          aria-label="Milla Zero — inicio"
+          aria-label="Milla Zero · inicio"
         >
           <span className="font-sans text-[0.94rem] font-light tracking-[0.18em] text-bone sm:text-lg">
             MILLA
@@ -67,7 +67,7 @@ export default function Nav() {
         <div className="hidden items-center gap-4 2xl:flex">
           <Link
             href="/presentacion"
-            aria-label="Presentaciones — sala de propuestas para clientes"
+            aria-label="Presentaciones · sala de propuestas para clientes"
             className="lux-sheen group relative inline-flex min-h-12 cursor-pointer items-center gap-3 overflow-hidden border border-bone/25 bg-ink/35 px-4 py-2 backdrop-blur-md transition-all duration-500 hover:border-bone/45 hover:bg-ink/60"
           >
             <span className="absolute inset-y-2 left-0 w-px bg-carmine-soft" />

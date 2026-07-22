@@ -7,7 +7,7 @@ import { CONTACT } from "@/lib/tower";
 import { EASE, Img } from "../ui";
 
 /**
- * SALA PRIVADA — primitivas compartidas de las láminas.
+ * SALA PRIVADA · primitivas compartidas de las láminas.
  * Cada slide se enmarca como una lámina de dibujo técnico: ticks de
  * esquina, metadatos mono y jerarquía editorial. Las piezas de acá se
  * combinan en los decks (PropuestaDeck / NivelesDeck).
@@ -20,7 +20,7 @@ export const stag = (i: number, base = 0.1) => ({
   transition: { duration: 0.7, delay: base + i * 0.09, ease: EASE },
 });
 
-/** Ticks de esquina — el marco técnico que encuadra cada slide. */
+/** Ticks de esquina · el marco técnico que encuadra cada slide. */
 export function SheetTicks({ tone = "light" }: { tone?: "light" | "dark" }) {
   const c = tone === "light" ? "border-bone/25" : "border-ink/25";
   const pos = [
@@ -38,7 +38,7 @@ export function SheetTicks({ tone = "light" }: { tone?: "light" | "dark" }) {
   );
 }
 
-/** Kicker mono con hairline — encabezado de lámina. */
+/** Kicker mono con hairline · encabezado de lámina. */
 export function Kicker({
   children,
   tone = "light",
@@ -64,7 +64,7 @@ export function Kicker({
   );
 }
 
-/** Fila de metadatos mono separados por puntos — pie de lámina. */
+/** Fila de metadatos mono separados por puntos · pie de lámina. */
 export function MetaRow({
   items,
   tone = "light",
@@ -89,7 +89,7 @@ export function MetaRow({
   );
 }
 
-/** Numeral fantasma gigante — trazo sin relleno detrás del contenido. */
+/** Numeral fantasma gigante · trazo sin relleno detrás del contenido. */
 export function GhostNum({
   children,
   tone = "light",
@@ -295,7 +295,7 @@ export function ClosingSlide({
   return (
     <div data-deck-scroll className="grain relative flex h-full w-full flex-col items-center justify-start overflow-y-auto overscroll-contain bg-ink px-8 pt-24 pb-28 text-center [@media(min-height:700px)]:justify-center [@media(min-height:700px)]:py-16">
       <motion.div {...stag(0, 0.2)}>
-        <Kicker className="justify-center">Milla Zero — Sala privada</Kicker>
+        <Kicker className="justify-center">Milla Zero · Sala privada</Kicker>
       </motion.div>
       <motion.h2
         {...stag(1, 0.25)}

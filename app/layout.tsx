@@ -26,7 +26,7 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MILLA ZERO — Edificio Corporativo Boutique · Santa Cruz de la Sierra",
+  title: "MILLA ZERO · Edificio Corporativo Boutique · Santa Cruz de la Sierra",
   description:
     "Torre corporativa de gestión privada en Equipetrol Norte, Santa Cruz de la Sierra. Espacios ejecutivos en arrendamiento, plantas libres de columnas y servicios integrados para operaciones que requieren presencia y continuidad.",
   keywords: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     "edificio corporativo",
   ],
   openGraph: {
-    title: "MILLA ZERO — Edificio Corporativo Boutique",
+    title: "MILLA ZERO · Edificio Corporativo Boutique",
     description:
       "Torre corporativa de gestión privada con espacios ejecutivos en arrendamiento, servicios integrados y ubicación estratégica en Equipetrol Norte.",
     type: "website",

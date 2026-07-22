@@ -4,7 +4,7 @@ import { AMENITIES } from "@/lib/tower";
 import { Eyebrow, Img, Reveal } from "./ui";
 
 /**
- * Experiencia del edificio — galería editorial asimétrica.
+ * Experiencia del edificio · galería editorial asimétrica.
  * Patrón de 6 tarjetas con ritmo 2/3 + 1/3 alternado (estilo One Vanderbilt).
  */
 export default function Amenities() {
@@ -12,7 +12,7 @@ export default function Amenities() {
     <section id="experiencia" className="grain relative bg-ink py-28 md:py-40">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <Reveal>
-          <Eyebrow>04 — La experiencia</Eyebrow>
+          <Eyebrow>04 · La experiencia</Eyebrow>
         </Reveal>
         <div className="mt-10 flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <Reveal delay={0.1}>

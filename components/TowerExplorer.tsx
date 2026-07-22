@@ -37,7 +37,7 @@ export default function TowerExplorer() {
     <section id="torre" className="grain relative bg-ink py-28 md:py-40">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <Reveal>
-          <Eyebrow>02 — La torre, nivel por nivel</Eyebrow>
+          <Eyebrow>02 · La torre, nivel por nivel</Eyebrow>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="display mt-10 max-w-3xl text-[clamp(2.2rem,4.6vw,4.2rem)] text-bone">

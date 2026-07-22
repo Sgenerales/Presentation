@@ -17,7 +17,7 @@ import {
 } from "./SlideKit";
 
 /**
- * DECK B — Los últimos niveles (Piso 8 · Piso 7).
+ * DECK B · Los últimos niveles (Piso 8 · Piso 7).
  * Los dos únicos espacios disponibles de la torre, presentados como
  * capítulos separados: renders, video, plano interactivo y contexto.
  */
@@ -317,7 +317,7 @@ function ContextSlide({
   );
 }
 
-/** Lienzo en blanco: lámina sin foto — grilla técnica + specs. Honesta
+/** Lienzo en blanco: lámina sin foto · grilla técnica + specs. Honesta
  *  para una planta vacía: no inventa un interior que aún no existe. */
 function CanvasSlide({
   kicker,
@@ -334,7 +334,7 @@ function CanvasSlide({
 }) {
   return (
     <div className="grain relative h-full w-full overflow-hidden bg-ink">
-      {/* Grilla de lámina de dibujo — el lienzo literal */}
+      {/* Grilla de lámina de dibujo · el lienzo literal */}
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.5]"
@@ -398,13 +398,12 @@ export default function NivelesDeck() {
       title: "Los últimos niveles",
       content: (
         <CoverSlide
-          eyebrow="Milla Zero — Sala privada"
+          eyebrow="Milla Zero · Sala privada"
           lines={["Los últimos", "niveles."]}
           meta={[
             "Disponibilidad actual · Pisos 7 y 8",
             "Equipetrol Norte · Santa Cruz",
             "Entrega llave en mano",
-            "Documento privado",
           ]}
           bg={P8.renders[0].src}
         />
@@ -420,7 +419,7 @@ export default function NivelesDeck() {
       content: (
         <ChapterSlide
           numeral="8"
-          eyebrow="Capítulo 01 — Piso Ocho"
+          eyebrow="Capítulo 01 · Piso Ocho"
           title="El último piso,"
           titleItalic="junto al rooftop."
           bg={P8.renders[0].src}
@@ -438,7 +437,7 @@ export default function NivelesDeck() {
       title: "El espacio, en imagen",
       thumb: P8.renders[1].src,
       content: (
-        <GallerySlide space={P8} kicker="Piso 8 — Renders de la propuesta" />
+        <GallerySlide space={P8} kicker="Piso 8 · Renders de la propuesta" />
       ),
     },
     {
@@ -447,7 +446,7 @@ export default function NivelesDeck() {
       title: "El espacio, en movimiento",
       thumb: P8.renders[0].src,
       content: (
-        <VideoSlide space={P8} kicker="Piso 8 — Recorrido animado" />
+        <VideoSlide space={P8} kicker="Piso 8 · Recorrido animado" />
       ),
     },
     {
@@ -456,7 +455,7 @@ export default function NivelesDeck() {
       title: "La planta, en detalle",
       content: (
         <PlanSlide
-          kicker="Piso 8 — Plano interactivo"
+          kicker="Piso 8 · Plano interactivo"
           title="183,17 m²"
           titleItalic="en el nivel más alto."
           plan={<PlanP8 />}
@@ -473,7 +472,7 @@ export default function NivelesDeck() {
       content: (
         <ContextSlide
           img={`${A}/terraza-sur.jpg`}
-          kicker="Piso 8 — La terraza del edificio"
+          kicker="Piso 8 · La terraza del edificio"
           title="La terraza,"
           titleItalic="en su mismo piso."
           chips={[
@@ -496,7 +495,7 @@ export default function NivelesDeck() {
       content: (
         <ChapterSlide
           numeral="7"
-          eyebrow="Capítulo 02 — Piso Siete"
+          eyebrow="Capítulo 02 · Piso Siete"
           title="Una planta completa,"
           titleItalic="una sola compañía."
           bg={`${A}/hero-facade-sunset.jpg`}
@@ -515,7 +514,7 @@ export default function NivelesDeck() {
       title: "La planta, en detalle",
       content: (
         <PlanSlide
-          kicker="Piso 7 — Plano interactivo"
+          kicker="Piso 7 · Plano interactivo"
           title="Ambas alas,"
           titleItalic="libres."
           plan={<PlanTipo norte="libre" sur="libre" focus="ambas" />}
@@ -530,12 +529,12 @@ export default function NivelesDeck() {
       title: "El lienzo, antes del trazo",
       content: (
         <CanvasSlide
-          kicker="Piso 7 — La planta libre"
+          kicker="Piso 7 · La planta libre"
           title="El lienzo,"
           titleItalic="antes del trazo."
           intro="Ambas alas libres, sin una sola columna: la base limpia para diseñar la próxima sede corporativa a medida, con el mismo estándar llave en mano de Milla Zero."
           chips={[
-            "Altura piso–cielo 3,72 m",
+            "Altura piso-cielo 3,72 m",
             "Doble vidriado · −35% energía",
             "Atenuación acústica −30 dB",
             "Núcleo central de servicios",

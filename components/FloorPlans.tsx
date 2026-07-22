@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 /**
- * Planos vectoriales interactivos — reemplazan a los escaneos pixelados.
+ * Planos vectoriales interactivos · reemplazan a los escaneos pixelados.
  * Redibujados a partir de los planos reales del edificio, con exploración por
  * cursor o toque y lenguaje de lámina arquitectónica (grilla, norte, escala).
  */
@@ -152,7 +152,7 @@ export function PlanP8() {
       <Sheet
         title="Piso 8 · Lado Sur"
         code="P8-S"
-        legend={`${active.name}${active.meta ? " — " + active.meta : ""}`}
+        legend={`${active.name}${active.meta ? " · " + active.meta : ""}`}
       >
         {/* Contorno general */}
         <path
@@ -319,7 +319,7 @@ export function PlanTipo({
         }}
         role="button"
         tabIndex={0}
-        aria-label={`Ala ${id} — ${free ? "disponible" : "ocupada"}`}
+        aria-label={`Ala ${id} · ${free ? "disponible" : "ocupada"}`}
         style={{ cursor: "pointer" }}
       >
         <rect
@@ -386,12 +386,12 @@ export function PlanTipo({
 
   const legend =
     hover === "norte"
-      ? `Ala Norte — ${norte === "libre" ? "disponible · llave en mano" : "ocupada"}`
+      ? `Ala Norte · ${norte === "libre" ? "disponible · llave en mano" : "ocupada"}`
       : hover === "sur"
-        ? `Ala Sur — ${sur === "libre" ? "disponible · llave en mano" : "ocupada"}`
+        ? `Ala Sur · ${sur === "libre" ? "disponible · llave en mano" : "ocupada"}`
         : hover === "core"
-          ? "Núcleo central — ascensores, sanitarios y técnica fuera del área de oficina"
-          : "Planta tipo · Torre Mayor — toque o pase el cursor por las alas";
+          ? "Núcleo central · ascensores, sanitarios y técnica fuera del área de oficina"
+          : "Planta tipo · Torre Mayor · toque o pase el cursor por las alas";
 
   return (
     <Sheet title="Planta tipo · Torre Mayor" code="PT" legend={legend}>

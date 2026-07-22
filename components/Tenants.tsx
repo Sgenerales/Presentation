@@ -20,11 +20,11 @@ export default function Tenants() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <Reveal>
-            <Eyebrow tone="dark">05 — Comunidad corporativa</Eyebrow>
+            <Eyebrow tone="dark">05 · Comunidad corporativa</Eyebrow>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="max-w-md text-[1.02rem] leading-relaxed font-light text-stone-dark">
-              Grandes corporaciones — casi todas internacionales — con un
+              Grandes corporaciones (casi todas internacionales) con un
               mismo compromiso: operar bajo el estándar normativo y de
               compliance más alto de la ciudad.
             </p>

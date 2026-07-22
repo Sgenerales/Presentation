@@ -33,7 +33,7 @@ export default function LocationSec() {
 
       <div className="relative z-10 mx-auto max-w-[1440px] px-6 md:px-12">
         <Reveal>
-          <Eyebrow>06 — Equipetrol Norte</Eyebrow>
+          <Eyebrow>06 · Equipetrol Norte</Eyebrow>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="display mt-10 max-w-3xl text-[clamp(2.2rem,4.6vw,4.2rem)] text-bone">

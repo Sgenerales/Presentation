@@ -14,7 +14,7 @@ export default function Contact() {
         <div className="mx-auto max-w-[1440px] px-6 text-center md:px-12">
           <Reveal>
             <Eyebrow tone="dark" className="justify-center">
-              07 — Visitas privadas, con cita previa
+              07 · Visitas privadas, con cita previa
             </Eyebrow>
           </Reveal>
 
@@ -69,7 +69,7 @@ export default function Contact() {
                 </span>
               </div>
               <p className="mt-4 max-w-xs text-[0.9rem] leading-relaxed font-light text-bone/65">
-                Milla Zero — Edificio ITC Tower. Bienes Raíces ITC Tropical
+                Milla Zero · Edificio ITC Tower. Bienes Raíces ITC Tropical
                 S.R.L., una inversión del grupo Tropical Tours, desde 1980.
               </p>
             </div>
@@ -92,7 +92,7 @@ export default function Contact() {
 
           <div className="mt-16 flex flex-col justify-between gap-4 border-t border-line-faint pt-8 md:flex-row">
             <p className="font-mono text-[0.7rem] tracking-[0.18em] text-bone/55 uppercase">
-              © {new Date().getFullYear()} BRITC Tropical S.R.L. — Todos los
+              © {new Date().getFullYear()} BRITC Tropical S.R.L. · Todos los
               derechos reservados
             </p>
             <p className="font-mono text-[0.7rem] tracking-[0.18em] text-bone/55 uppercase">

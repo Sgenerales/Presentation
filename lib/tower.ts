@@ -24,7 +24,7 @@ export const BRAND = {
   second: "ZERO",
   tagline: "Edificio corporativo boutique",
   legal:
-    "Milla Zero — Edificio ITC Tower · Bienes Raíces ITC Tropical S.R.L., una inversión del grupo Tropical Tours, desde 1980.",
+    "Milla Zero · Edificio ITC Tower · Bienes Raíces ITC Tropical S.R.L., una inversión del grupo Tropical Tours, desde 1980.",
 };
 
 /**
@@ -45,12 +45,12 @@ export const EXCLUSIVES = [
   {
     code: "Z·03",
     title: "100% corporativo",
-    desc: "Sin viviendas, sin gimnasio, sin instalaciones de gas. Un solo uso, un solo perfil de riesgo y un solo estándar de seguridad — la identidad del edificio no se mezcla.",
+    desc: "Sin viviendas, sin gimnasio, sin instalaciones de gas. Un solo uso, un solo perfil de riesgo y un solo estándar de seguridad: la identidad del edificio no se mezcla.",
   },
   {
     code: "Z·04",
     title: "Compliance como cultura",
-    desc: "Grandes corporaciones — casi todas internacionales — que auditan dónde operan. Sus vecinos comparten su misma exigencia normativa.",
+    desc: "Grandes corporaciones (casi todas internacionales) que auditan dónde operan. Sus vecinos comparten su misma exigencia normativa.",
   },
   {
     code: "Z·05",
@@ -79,7 +79,7 @@ export const STATS = [
 export const SPECS = [
   "Doble vidriado hermético · eficiencia energética −35%",
   "Atenuación acústica −30 dB",
-  "Altura piso–cielo 3,72 m",
+  "Altura piso-cielo 3,72 m",
   "Plantas libres de columnas",
   "3 ascensores + montacargas independiente",
   "Generadores con autonomía 72 h",
@@ -185,7 +185,7 @@ export const FLOORS: Floor[] = [
     norte: { status: "ocupado", note: "Oficina norte" },
     sur: { status: "ocupado", note: "Espacio comercial" },
     detail:
-      "Lobby corporativo de doble altura en granito y mármol, Work Café, ATM y los espacios comerciales con frente al acceso principal — todos ocupados.",
+      "Lobby corporativo de doble altura en granito y mármol, Work Café, ATM y los espacios comerciales con frente al acceso principal, todos ocupados.",
   },
   {
     id: "ss",
@@ -222,17 +222,17 @@ export const SPACES: Space[] = [
     area: "183,17 m²",
     headline: "El último piso, junto al rooftop.",
     description:
-      "Un módulo ejecutivo en el nivel más alto de la torre, en el mismo piso que la terraza, el futuro rooftop y el cowork del edificio. La propuesta de interiores — recepción, gerencia general, sala de reuniones y área operativa — ilustra una implantación sobria, precisa y lista para representar a una dirección corporativa.",
+      "Un módulo ejecutivo en el nivel más alto de la torre, en el mismo piso que la terraza, el futuro rooftop y el cowork del edificio. La propuesta de interiores (recepción, gerencia general, sala de reuniones y área operativa) ilustra una implantación sobria, precisa y lista para representar a una dirección corporativa.",
     highlights: [
       "El nivel más alto de la torre",
       "En el mismo piso que la terraza, el rooftop y el cowork del edificio",
       "Fit-out llave en mano: layout, mobiliario, acústica e iluminación",
-      "Altura piso–cielo 3,72 m con planta libre",
+      "Altura piso-cielo 3,72 m con planta libre",
     ],
     renders: [
       {
         src: `${A}/render-p8-1.jpg`,
-        caption: "Recepción y espera — propuesta de interiores",
+        caption: "Recepción y espera · propuesta de interiores",
         tag: "Render 01",
       },
       {
@@ -243,7 +243,7 @@ export const SPACES: Space[] = [
     ],
     plan: {
       src: `${A}/p8-layout.jpg`,
-      caption: "Piso 8 · Lado Sur — módulo de 183,17 m²",
+      caption: "Piso 8 · Lado Sur · módulo de 183,17 m²",
     },
     program: [
       { name: "Recepción + espera", detail: "Frente de ingreso con lounge" },
@@ -256,12 +256,12 @@ export const SPACES: Space[] = [
     videos: [
       {
         src: `${A}/video-p8-1.mp4`,
-        caption: "Recorrido animado del módulo — propuesta de interiores",
+        caption: "Recorrido animado del módulo · propuesta de interiores",
         poster: `${A}/render-p8-1.jpg`,
       },
       {
         src: `${A}/video-p8-2.mp4`,
-        caption: "El espacio en movimiento — ambientes y circulación",
+        caption: "El espacio en movimiento · ambientes y circulación",
         poster: `${A}/render-p8-2.jpg`,
       },
     ],
@@ -274,7 +274,7 @@ export const SPACES: Space[] = [
     area: "Norte + Sur",
     headline: "Una planta completa para una sola compañía.",
     description:
-      "El séptimo piso ofrece ambas alas — Norte y Sur — libres. Permite consolidar una operación corporativa completa en un solo nivel, con planta libre de columnas, núcleo central de servicios y una flexibilidad de layout poco frecuente en la torre.",
+      "El séptimo piso ofrece ambas alas (Norte y Sur) libres. Permite consolidar una operación corporativa completa en un solo nivel, con planta libre de columnas, núcleo central de servicios y una flexibilidad de layout poco frecuente en la torre.",
     highlights: [
       "Ambas alas disponibles: operación unificada",
       "Planta libre de columnas, máxima flexibilidad",
@@ -295,7 +295,7 @@ export const SPACES: Space[] = [
     ],
     plan: {
       src: `${A}/plan-tipo.png`,
-      caption: "Planta tipo — alas Norte (azul) y Sur (verde)",
+      caption: "Planta tipo · alas Norte (azul) y Sur (verde)",
     },
   },
   {
@@ -316,7 +316,7 @@ export const SPACES: Space[] = [
     renders: [
       {
         src: `${A}/render-p8-2.jpg`,
-        caption: "Referencia de fit-out — estaciones y guardado",
+        caption: "Referencia de fit-out · estaciones y guardado",
         tag: "Referencia",
       },
       {
@@ -327,7 +327,7 @@ export const SPACES: Space[] = [
     ],
     plan: {
       src: `${A}/plan-tipo.png`,
-      caption: "Planta tipo — ala Norte en azul",
+      caption: "Planta tipo · ala Norte en azul",
     },
   },
 ];
@@ -407,10 +407,10 @@ export interface ProposalSheet {
  * esos niveles.
  */
 export const PROPOSAL = {
-  kicker: "Propuesta integral — llave en mano a escala",
+  kicker: "Propuesta integral · llave en mano a escala",
   title: "Tres plantas, un solo trazo.",
   intro:
-    "Cuatro láminas y una sola propuesta: el estudio de interiorismo resolvió los pisos 1, 2 y 3 como una operación continua de más de 200 posiciones — dirección, directorio y plataformas operativas — con el mobiliario, la acústica y la iluminación definidos al detalle. El mismo estándar con el que se entrega cada espacio de Milla Zero.",
+    "Cuatro láminas y una sola propuesta: el estudio de interiorismo resolvió los pisos 1, 2 y 3 como una operación continua de más de 200 posiciones (dirección, directorio y plataformas operativas) con el mobiliario, la acústica y la iluminación definidos al detalle. El mismo estándar con el que se entrega cada espacio de Milla Zero.",
   note: "Propuesta de diseño · no implica disponibilidad de estos niveles",
   credit:
     "Propuesta de interiorismo · llave en mano Milla Zero",
@@ -434,7 +434,7 @@ export const PROPOSAL = {
     {
       id: "prop-p2a",
       code: "P2·A",
-      name: "Piso Dos — Lado A",
+      name: "Piso Dos · Lado A",
       role: "Dirección y gobierno",
       sheet: `${A}/proposal-p2a.jpg`,
       render: `${A}/render-top-p2a.jpg`,
@@ -450,7 +450,7 @@ export const PROPOSAL = {
     {
       id: "prop-p2b",
       code: "P2·B",
-      name: "Piso Dos — Lado B",
+      name: "Piso Dos · Lado B",
       role: "Plataforma operativa",
       sheet: `${A}/proposal-p2b.jpg`,
       render: `${A}/render-top-p2b.jpg`,

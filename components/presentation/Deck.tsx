@@ -12,7 +12,7 @@ import {
 import { EASE } from "../ui";
 
 /**
- * SALA PRIVADA — motor de presentación.
+ * SALA PRIVADA · motor de presentación.
  * Un deck es una secuencia de láminas a pantalla completa navegable con
  * teclado (←/→, espacio, Home/End, F pantalla completa, I índice), rueda,
  * swipe táctil y ticks de capítulo. El chrome se desvanece tras unos
@@ -313,7 +313,7 @@ export default function Deck({
           </Link>
 
           <p className="hidden font-mono text-[0.64rem] tracking-[0.28em] text-bone/85 uppercase md:block">
-            {code} — {name}
+            {code} · {name}
           </p>
 
           <div className="pointer-events-auto flex items-center gap-2">
@@ -367,7 +367,7 @@ export default function Deck({
             </p>
             <div className="flex shrink-0 items-center gap-5">
               <p className="font-mono text-[0.66rem] tracking-[0.2em] text-bone tabular-nums md:tracking-[0.24em]">
-                {String(index + 1).padStart(2, "0")} —{" "}
+                {String(index + 1).padStart(2, "0")} /{" "}
                 {String(total).padStart(2, "0")}
               </p>
               <div className="flex items-center gap-1">
@@ -438,7 +438,7 @@ export default function Deck({
             <div className="mx-auto max-w-6xl px-8 py-16 md:py-20">
               <div className="flex items-center justify-between">
                 <p className="font-mono text-[0.7rem] tracking-[0.3em] text-bone/55 uppercase">
-                  Índice — {name}
+                  Índice · {name}
                 </p>
                 <button
                   ref={indexCloseRef}

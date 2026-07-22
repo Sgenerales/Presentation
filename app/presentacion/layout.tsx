@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 /**
- * Sala privada de presentación — material para reuniones con clientes.
+ * Sala privada de presentación · material para reuniones con clientes.
  * Fuera del índice de buscadores: se comparte solo por enlace directo.
  */
 export const metadata: Metadata = {
-  title: "Sala privada — MILLA ZERO",
+  title: "Sala privada · MILLA ZERO",
   description:
     "Presentación ejecutiva de los espacios de Milla Zero para clientes.",
   robots: { index: false, follow: false },
